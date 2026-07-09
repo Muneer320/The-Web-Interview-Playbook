@@ -2,149 +2,57 @@
 
 **Train for it. Don't just read it.**
 
-An interactive learning site built on top of a structured web-dev interview-prep
-guide for 2nd/3rd-year engineering students. The written guide teaches the
-material; the site makes you *do* it — predict outputs before answers unlock,
-watch the event loop and a load balancer actually run, rehearse STAR stories
-against a real 75-second clock, and track your progress across ~100 documents.
+A web-development interview guide you can practice with: predict an output before revealing its answer, step through a concept, rehearse a story and run a timed mock round. It is aimed at students preparing for internships and junior web roles.
 
-**Live staging/demo:** https://om-midya.github.io/The-Web-Interview-Playbook/
+![Actual local Playbook home page with its study roadmap, progress ring and topic sections](.github/previews/home-desktop.png)
 
-## What's on the site
+The [written guide](web-dev-interview-playbook/README.md) stands on its own. The Astro site turns that same Markdown into searchable lessons, practice tools and a browser-local training log.
 
-- **26 interactive visualizers** across the technical sections — among them the
-  JavaScript event loop, closures and coercion steppers, a CSS grid/flexbox
-  playground, React re-render and `key` reconciliation demos, an Express
-  middleware pipeline, a JWT sign–verify–tamper lab (real WebCrypto), a browser
-  rendering-pipeline stepper, and live simulations of load balancing, caching,
-  CAP theorem, a double-booking race, and WebSocket pub/sub.
-- **Two prep tools** — a [STAR Answer Builder](https://om-midya.github.io/The-Web-Interview-Playbook/star-builder/)
-  (draft stories against the guide's timing budgets, map them to every
-  behavioral question, export your bank) and a
-  [Timed Mock Interview Simulator](https://om-midya.github.io/The-Web-Interview-Playbook/mock-interviews/)
-  (run any mock round on its real section clocks, score yourself on the rubric,
-  watch your radar chart grow between attempts).
-- **An interactive content layer** generated from the markdown at build time:
-  every checklist item becomes a persistent checkbox feeding per-section
-  progress rings; interview-question docs render as think-first reveal cards;
-  tricky-output questions lock their answers until you *type a prediction*;
-  the roadmap doc becomes a clickable 4-week planner.
-- Full-text search (Cmd/Ctrl+K), light/dark "coach's chalkboard" themes,
-  freshness badges on recently updated docs. Everything is fully static —
-  progress lives in your browser's localStorage.
+## Choose your practice
 
-## Repository layout
-
-```
-web-dev-interview-playbook/   The guide itself — plain markdown, 13 sections.
-                              SOURCE OF TRUTH. The site never modifies it.
-site/                         The Astro 7 app that renders the guide
-                              interactively. See site/README.md for commands.
-```
-
-Two READMEs go deeper: [the guide's](web-dev-interview-playbook/README.md)
-(content philosophy, how to study with it) and [the site's](site/README.md)
-(commands, deployment requirements).
-
-## Running locally
-
-```bash
-cd site
-npm install
-npm run dev        # localhost:4321 (search unavailable in dev)
-npm run test       # Vitest suite
-npm run build      # static build + search index → dist/
-npm run preview    # serve dist/ with working search
-```
-
-Node ≥ 22.12 (pinned in `site/.node-version`).
-
-## How pages come to exist (and how to add one)
-
-The site glob-loads the guide as an [Astro content collection] — **markdown in,
-pages out**. There is no per-page wiring.
-
-### Add a document to an existing section
-
-Drop a `.md` file into the section's folder (e.g.
-`web-dev-interview-playbook/04-react/my-new-topic.md`). That's the whole
-process: it gets a page, appears in the sidebar and the section's doc list,
-is indexed for search, and its checklists/questions pick up interactivity
-automatically if they follow the conventions below.
-
-### Add a whole new section
-
-Create a numbered folder with a `README.md`
-(e.g. `web-dev-interview-playbook/13-company-questions/README.md` plus docs).
-New sections self-register: navigation, search, progress tracking, and a
-section index page all appear without touching the site code.
-
-### Conventions that unlock interactivity
-
-The build-time transforms key off ordinary markdown patterns:
-
-| You write… | The site renders… |
+| Need | Start here |
 | --- | --- |
-| `- [ ] task` checklists | Persistent checkboxes + progress rings |
-| `### Question` / `**Answer:**` / `**Follow-ups:**` in an `interview-questions.md` | Think-first reveal cards |
-| `**Answer:** … **Why:** …` in a `tricky-output-questions.md` | Type-a-prediction gates (answer locked until the reader commits a guess) |
-| The `ROADMAP.md` week tables | The interactive planner at `/roadmap/` |
+| A study plan | The four-week roadmap and persistent daily checkboxes |
+| Technical intuition | Section visualizers: event loop, layout, React, APIs and system design |
+| Output questions | Type a prediction before unlocking the explanation |
+| Behavioral answers | STAR story builder, timed rehearsal and text export |
+| A rehearsal round | Mock-interview clocks, self-scoring and attempt history |
 
-### Add an interactive widget (site code)
+Search works in the production build; progress, drafts and attempts stay in the current browser. Clearing browser storage can erase them. Export anything you want to keep. These are teaching models and self-assessment tools, not an assessment of hiring readiness or a job guarantee.
 
-Widgets follow a strict three-step recipe, enforced by tests:
+## Try it locally
 
-1. Create the component in `site/src/widgets/<name>/` (default export). Most
-   widgets ride an existing engine — `Stepper` (hand-authored state traces),
-   `PlaygroundFrame` (controls → live preview), or `Simulation` + `topo-svg`
-   (deterministic tick-based animations). Hand-authored trace/model data gets
-   its own `.ts` file with semantic unit tests.
-2. Add one `lazy()` line to the `REGISTRY` in `site/src/widgets/WidgetHost.tsx`.
-3. Add one metadata entry to `SECTION_WIDGETS` in `site/src/widgets/manifest.ts`
-   (which section page shows it, title, description).
+Install Git and **Node.js 24+** with npm. Node 24 on Windows was used for the local walkthrough; the verification workflow also selects Node 24. No account, API key or backend is needed.
 
-Drift-guard tests fail if a widget is registered but unplaced or placed but
-unregistered, and if any manifest key isn't a real section folder. One rule of
-thumb from this codebase: the teaching data is the product — model semantics
-and trace notes are tested against real behavior, not just structure.
+```sh
+git clone https://github.com/Muneer320/The-Web-Interview-Playbook.git
+cd The-Web-Interview-Playbook/site
+npm ci
+npm run build
+npm run preview
+```
 
-### Add a standalone tool page
+Open **http://localhost:4321**. Search for `closure`, tick a roadmap day and reload, then try **STAR Answer Builder** or **Timed Mock Interview Simulator**. Use a sample story to explore saving and export.
 
-Tool pages (like `/star-builder/`) are Astro pages that parse guide documents
-at build time and pass the data to a React island:
-`site/src/pages/<tool>.astro` + a widget folder + a card entry in
-`SECTION_TOOLS` (`site/src/widgets/manifest.ts`) so the section page links it.
-Parsers live in `site/src/lib/` and must fail soft — a malformed source doc
-renders a link to the original, never a broken page.
+<details>
+<summary><strong>Phone-sized view</strong></summary>
 
-### Two house rules for any new page or component
+<img src=".github/previews/home-mobile.png" width="360" alt="The real Playbook home page in dark mode with compact mobile navigation">
 
-- **Internal links go through `withBase()`** (`site/src/lib/base.ts`) — never a
-  raw `href="/…"`. This keeps the site deployable at a domain root *or* under a
-  subpath (the staging deploy checks for leaks and fails loudly on violations).
-- **Styling uses the design tokens** in `site/src/styles/tokens.css`
-  (light "playbook paper" / dark "chalkboard"). Token names are a contract —
-  retune values freely, never rename.
+</details>
 
-## Quality bar
+## How it fits together
 
-~216 unit tests run in CI and locally (`npm run test`): parser and transform
-tests against real corpus shapes, semantic tests on every hand-authored widget
-trace (the event-loop, coercion, and CAP models are verified against actual
-language/system behavior), storage round-trips, and the wiring drift guards.
-Everything is fail-soft: a malformed doc, missing git metadata, or blocked
-localStorage never breaks a build or crashes a page.
+The Markdown corpus is the content source; Astro builds the pages and interactive React tools, and Pagefind indexes the generated HTML. Browser storage keeps practice local. A last-change badge is Git history metadata, not proof that every technical answer is current.
 
-## Deployment
+For development, `npm run dev` starts Astro; search becomes available after a production build. `npm run test` runs the existing Vitest suite. See [site setup and deployment](site/README.md), [authoring tools and content](site/AUTHORING.md), and the [contribution guide](web-dev-interview-playbook/CONTRIBUTING.md).
 
-The build output (`site/dist/`) is a fully static site deployable anywhere.
-Two knobs make it location-independent: `ASTRO_SITE` (canonical origin) and
-`ASTRO_BASE` (subpath), both optional env vars read by `site/astro.config.mjs`.
+The two tools that restore personal browser state mount on the client, avoiding a mismatch between a prebuilt empty page and saved stories/attempts. Their surrounding explanations and source-document links remain static; JavaScript is required for the tools.
 
-This repository's `staging` branch deploys the demo to GitHub Pages on every
-push to that branch (workflow lives only on that branch; sync it with
-`git checkout staging && git merge main && git push`). Production deployments
-are up to the repository owner's own strategy — `main` intentionally carries
-no deployment configuration.
+## Status, deployment and credits
 
-[Astro content collection]: https://docs.astro.build/en/guides/content-collections/
+Kept as a useful learning project after source, unit-test, build and real-browser review. The local checks cover search, roadmap/theme persistence, prediction gates, story save/export, mock start/pause/score and saved-attempt reload, plus desktop/mobile navigation. They do not certify every answer or every visualizer's scientific accuracy.
+
+This repository's Pages source is the `gh-pages` branch. Publishing details and the separate collaborator staging branch are explained in the [site notes](site/README.md); a source commit alone does not update generated Pages output.
+
+Original guide work by [Mrinal Bhattacharya](https://github.com/mrinal1224), interactive site work by [Om Midya](https://github.com/Om-Midya), and responsive/site improvements by [Muneer Alam](https://github.com/Muneer320), as recorded in Git history. All contributor history is preserved. No project-wide license file is present; no reuse license is asserted here. Contact the contributors about reuse permissions.

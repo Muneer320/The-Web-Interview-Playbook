@@ -28,7 +28,9 @@ const navDocs = docs.map((d) => ({ id: d.id, title: extractTitle(d.body ?? '', d
       <a href={withBase('/10-mock-interview-kits/evaluation-rubric/')}>the rubric</a>. Attempts stay in your browser.
     </p>
     {kits.length > 0 && rubric.length > 0 ? (
-      <MockSimulator client:load kits={kits} rubric={rubric} />
+      <MockSimulator client:only="react" kits={kits} rubric={rubric}>
+        <p slot="fallback">Loading your local interview practice. JavaScript is required for this tool.</p>
+      </MockSimulator>
     ) : (
       <p>The mock kits could not be parsed — start from <a href={withBase('/10-mock-interview-kits/')}>the kit docs</a>.</p>
     )}
