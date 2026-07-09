@@ -1,0 +1,809 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-z4jru4n3><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Interactive web dev interview preparation"><title>Common HR Interview Questions · Web Interview Playbook</title><script>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem('theme'); } catch {}
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script><link rel="stylesheet" href="/The-Web-Interview-Playbook/_astro/BaseLayout.Dl7qG8Ba.css"><style>.fresh-badge[data-astro-cid-crdmdfjq]{color:var(--fresh);background:var(--fresh-bg);cursor:default;border-radius:999px;align-items:center;gap:.3rem;padding:.28rem .65rem;font-size:.78rem;font-weight:600;line-height:1;transition:box-shadow .15s;display:inline-flex;position:relative}.fresh-badge[data-astro-cid-crdmdfjq]:hover,.fresh-badge[data-astro-cid-crdmdfjq]:focus-visible{box-shadow:0 0 0 1px color-mix(in srgb, var(--fresh) 45%, transparent)}.tooltip[data-astro-cid-crdmdfjq]{z-index:20;background:var(--surface);width:max-content;max-width:260px;color:var(--text);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 4px 16px color-mix(in srgb, var(--text) 20%, transparent);opacity:0;pointer-events:none;padding:.5rem .7rem;font-size:.78rem;font-weight:400;line-height:1.45;transition:opacity .12s,transform .12s;position:absolute;top:calc(100% + 6px);left:0;transform:translateY(-2px)}.fresh-badge[data-astro-cid-crdmdfjq]:hover .tooltip[data-astro-cid-crdmdfjq],.fresh-badge[data-astro-cid-crdmdfjq]:focus .tooltip[data-astro-cid-crdmdfjq],.fresh-badge[data-astro-cid-crdmdfjq]:focus-visible .tooltip[data-astro-cid-crdmdfjq]{opacity:1;transform:translateY(0)}.status-banner[data-astro-cid-c4lk2q6h]{background:var(--warn-bg);color:var(--warn);border:1px solid color-mix(in srgb, var(--warn) 35%, transparent);border-radius:var(--radius);align-items:center;gap:.5rem;margin-bottom:1.75rem;padding:.65rem 1rem;font-size:.9rem;font-weight:500;display:flex}.prose{max-width:var(--content-width)}.prose h1{letter-spacing:-.02em;margin:0 0 1rem;font-size:clamp(1.5rem,4vw,2rem);line-height:1.2}.prose h2{border-top:2px dashed var(--border);letter-spacing:-.01em;margin:2rem 0 .75rem;padding-top:1.25rem;scroll-margin-top:4.5rem;font-size:clamp(1.15rem,2.5vw,1.35rem)}.prose h3{color:var(--text);margin:1.5rem 0 .5rem;scroll-margin-top:4.5rem;font-size:clamp(.95rem,2vw,1.05rem)}.prose p,.prose li{color:var(--text)}.prose ul,.prose ol{padding-left:1.4rem}@media (width<=600px){.prose ul,.prose ol{padding-left:1.1rem}}.prose li+li{margin-top:.35rem}.prose strong{font-weight:700}.prose blockquote{border-left:3px solid var(--accent-2);color:var(--text-muted);background:var(--surface-2);border-radius:0 var(--radius) var(--radius) 0;overflow-wrap:break-word;word-wrap:break-word;margin:1rem 0;padding:.35rem 1rem}@media (width<=600px){.prose blockquote{margin:.75rem 0;padding:.35rem .75rem}}.prose table{border-collapse:collapse;width:100%;font-size:.9rem;display:block;overflow-x:auto}@media (width<=600px){.prose table{font-size:.82rem}}.prose th,.prose td{border:1px solid var(--border);text-align:left;padding:.5rem .75rem}@media (width<=600px){.prose th,.prose td{padding:.35rem .5rem}}.prose th{background:var(--surface-2);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.05em;font-size:.78rem}.prose hr{border:none;border-top:2px dashed var(--border);margin:2.5rem 0}.prose img{border-radius:var(--radius);max-width:100%}
+.toc[data-astro-cid-td5y3ttw]{border-left:1px solid var(--border);flex-shrink:0;width:220px;max-height:calc(100vh - 6rem);padding-left:1rem;font-size:.83rem;position:sticky;top:4.5rem;overflow-y:auto}.toc-title[data-astro-cid-td5y3ttw]{text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0 0 .75rem;font-size:.72rem}ul[data-astro-cid-td5y3ttw]{margin:0;padding:0;list-style:none}li[data-astro-cid-td5y3ttw]{margin:.4rem 0}a[data-astro-cid-td5y3ttw]{color:var(--text-muted);line-height:1.4;transition:color .12s;display:block}a[data-astro-cid-td5y3ttw]:hover,a[data-astro-cid-td5y3ttw]:focus-visible{color:var(--accent);text-decoration:none}@media (width<=1300px){.toc[data-astro-cid-td5y3ttw]{display:none}}.doc-shell[data-astro-cid-n67f4zmd]{justify-content:center;gap:2rem;display:flex}.crumbs[data-astro-cid-n67f4zmd]{align-items:center;gap:.75rem;margin-bottom:.5rem;font-size:.85rem;display:flex}.crumbs[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]{color:var(--text-muted);font-weight:500}.crumbs[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]:hover{color:var(--accent);text-decoration:none}.pager[data-astro-cid-n67f4zmd]{justify-content:space-between;gap:1rem;margin-top:3.5rem;display:flex}.pager-link[data-astro-cid-n67f4zmd]{border:1px solid var(--border);border-radius:var(--radius);max-width:45%;color:var(--text);padding:.7rem 1rem;font-size:.88rem;transition:border-color .15s,color .15s;display:block}.pager-link[data-astro-cid-n67f4zmd].next{text-align:right;margin-left:auto}.pager-link[data-astro-cid-n67f4zmd]:hover,.pager-link[data-astro-cid-n67f4zmd]:focus-visible{border-color:var(--accent);color:var(--accent);text-decoration:none}.toc-inline[data-astro-cid-n67f4zmd]{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface-2);max-width:var(--content-width);width:100%;margin-bottom:.5rem;padding:.5rem .8rem;font-size:.85rem;display:none}.toc-inline[data-astro-cid-n67f4zmd] summary[data-astro-cid-n67f4zmd]{cursor:pointer;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);padding:.15rem 0;font-size:.72rem;font-weight:600;list-style:none}.toc-inline[data-astro-cid-n67f4zmd] summary[data-astro-cid-n67f4zmd]:before{content:"▸ ";font-size:.7rem}.toc-inline[data-astro-cid-n67f4zmd][open] summary[data-astro-cid-n67f4zmd]:before{content:"▾ "}.toc-inline[data-astro-cid-n67f4zmd] ul[data-astro-cid-n67f4zmd]{gap:.2rem;margin:.5rem 0 0;padding:0;list-style:none;display:grid}.toc-inline[data-astro-cid-n67f4zmd] li[data-astro-cid-n67f4zmd]{margin:0}.toc-inline[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]{color:var(--text-muted);border-radius:6px;padding:.35rem .5rem;transition:color .12s;display:block}.toc-inline[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]:hover,.toc-inline[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]:focus-visible{color:var(--text);background:var(--surface);text-decoration:none}@media (width<=1300px){.toc-inline[data-astro-cid-n67f4zmd]{display:block}}@media (width<=600px){.pager[data-astro-cid-n67f4zmd]{flex-direction:column;gap:.5rem}.pager-link[data-astro-cid-n67f4zmd]{max-width:100%}.pager-link[data-astro-cid-n67f4zmd].next{text-align:left;margin-left:0}}
+.sidebar[data-astro-cid-wv7whodv]{border-right:1px solid var(--border);background:var(--bg);z-index:20;flex-shrink:0;width:260px;height:calc(100vh - 3.2rem);padding:1.25rem .9rem;font-size:.86rem;position:sticky;top:3.2rem;overflow-y:auto}summary[data-astro-cid-wv7whodv]{cursor:pointer;padding:.3rem .4rem;font-weight:600;list-style:none}summary[data-astro-cid-wv7whodv]:before{content:"▸ ";color:var(--text-muted);font-size:.7rem}details[data-astro-cid-wv7whodv][open] summary[data-astro-cid-wv7whodv]:before{content:"▾ "}summary[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv]{color:var(--text)}ul[data-astro-cid-wv7whodv]{margin:0 0 .5rem;padding:0 0 0 1.1rem;list-style:none}li[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv]{color:var(--text-muted);border-radius:6px;padding:.22rem .5rem;display:block}li[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv]:hover{color:var(--text);background:var(--surface-2);text-decoration:none}li[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv][aria-current=page]{color:var(--accent);background:var(--surface-2);font-weight:600}@media (width<=900px){.sidebar[data-astro-cid-wv7whodv]{border-right:1px solid var(--border);width:280px;height:calc(100vh - 3.2rem);box-shadow:4px 0 24px -12px color-mix(in srgb, var(--text) 25%, transparent);transition:transform .25s;position:fixed;top:3.2rem;left:0;overflow-y:auto;transform:translate(-100%)}html[data-nav-open=true] .sidebar[data-astro-cid-wv7whodv]{transform:translate(0)}}
+</style></head><body data-astro-cid-z4jru4n3><a class="skip-link" href="#main-content" data-astro-cid-z4jru4n3>Skip to content</a><header class="site-header" data-astro-cid-z4jru4n3><a class="brand" href="/The-Web-Interview-Playbook/" data-astro-cid-z4jru4n3><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" data-astro-cid-z4jru4n3><circle cx="6.5" cy="17.5" r="3.4" data-astro-cid-z4jru4n3></circle><path d="M15 15 l6 6 m0 -6 l-6 6" data-astro-cid-z4jru4n3></path><path d="M8 13 C 10 7, 14 8, 18 5.5" stroke-dasharray="3.5 3" data-astro-cid-z4jru4n3></path></svg><span class="brand-text" data-astro-cid-z4jru4n3>Web Interview <strong data-astro-cid-z4jru4n3>Playbook</strong></span></a><div class="header-actions" data-astro-cid-z4jru4n3><button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-astro-cid-z4jru4n3><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" data-astro-cid-z4jru4n3><path class="nav-line-top" d="M4 7 L20 7" data-astro-cid-z4jru4n3></path><path class="nav-line-mid" d="M4 12 L20 12" data-astro-cid-z4jru4n3></path><path class="nav-line-bot" d="M4 17 L20 17" data-astro-cid-z4jru4n3></path></svg></button><button id="search-open" aria-label="Search (Cmd+K)" title="Search" data-astro-cid-etsyzymg><span aria-hidden="true" data-astro-cid-etsyzymg>🔍</span> <kbd data-astro-cid-etsyzymg>⌘K</kbd></button><dialog id="search-dialog" aria-label="Search the playbook" data-astro-cid-etsyzymg><div id="pagefind-container" data-astro-cid-etsyzymg><p class="hint" data-astro-cid-etsyzymg>Search is available after the site is built (`npm run build && npm run preview`).</p></div></dialog><script type="module" src="/The-Web-Interview-Playbook/_astro/SearchModal.astro_astro_type_script_index_0_lang.Cx4GfOgE.js"></script><button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme" data-astro-cid-l6lhmie6><span class="icon-sun" aria-hidden="true" data-astro-cid-l6lhmie6>☀️</span><span class="icon-moon" aria-hidden="true" data-astro-cid-l6lhmie6>🌙</span></button><script type="module">document.getElementById(`theme-toggle`)?.addEventListener(`click`,()=>{let e=document.documentElement,t=e.dataset.theme===`dark`?`light`:`dark`;e.dataset.theme=t;try{localStorage.setItem(`theme`,t)}catch{}});</script></div></header><div id="nav-backdrop" aria-hidden="true" data-astro-cid-z4jru4n3></div><div class="shell" data-astro-cid-z4jru4n3><aside class="sidebar" aria-label="All sections" data-astro-cid-wv7whodv><nav data-astro-cid-wv7whodv><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/" data-astro-cid-wv7whodv>Start Here</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/answer-frameworks/" data-astro-cid-wv7whodv>Answer Frameworks</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/how-to-use-this-repo/" data-astro-cid-wv7whodv>How to Use This Repository</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/interview-mindset/" data-astro-cid-wv7whodv>Interview Mindset</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/last-7-days-plan/" data-astro-cid-wv7whodv>Last 7 Days Plan</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/" data-astro-cid-wv7whodv>HTML &amp; CSS</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/topics-not-to-miss/" data-astro-cid-wv7whodv>HTML &amp; CSS: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/interview-questions/" data-astro-cid-wv7whodv>HTML &amp; CSS Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/mini-tasks/" data-astro-cid-wv7whodv>HTML &amp; CSS: Mini Tasks</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/common-mistakes/" data-astro-cid-wv7whodv>HTML &amp; CSS: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/revision-sheet/" data-astro-cid-wv7whodv>HTML &amp; CSS: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/mock-interview/" data-astro-cid-wv7whodv>HTML &amp; CSS: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/" data-astro-cid-wv7whodv>JavaScript Core</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/topics-not-to-miss/" data-astro-cid-wv7whodv>JavaScript Core: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/interview-questions/" data-astro-cid-wv7whodv>JavaScript Core Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/tricky-output-questions/" data-astro-cid-wv7whodv>JavaScript Core: Tricky Output Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/polyfills/" data-astro-cid-wv7whodv>JavaScript Core: Polyfills</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/coding-questions/" data-astro-cid-wv7whodv>JavaScript Core: Coding Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/common-mistakes/" data-astro-cid-wv7whodv>JavaScript Core: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/revision-sheet/" data-astro-cid-wv7whodv>JavaScript Core: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/mock-interview/" data-astro-cid-wv7whodv>JavaScript Core: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/" data-astro-cid-wv7whodv>JavaScript &amp; DOM</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/topics-not-to-miss/" data-astro-cid-wv7whodv>JavaScript DOM: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/interview-questions/" data-astro-cid-wv7whodv>JavaScript DOM Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/mini-dom-challenges/" data-astro-cid-wv7whodv>JavaScript DOM: Mini Challenges</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/project-style-questions/" data-astro-cid-wv7whodv>JavaScript DOM: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/revision-sheet/" data-astro-cid-wv7whodv>JavaScript DOM: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/mock-interview/" data-astro-cid-wv7whodv>JavaScript DOM: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/" data-astro-cid-wv7whodv>React</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/topics-not-to-miss/" data-astro-cid-wv7whodv>React: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/interview-questions/" data-astro-cid-wv7whodv>React Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/hooks-deep-dive/" data-astro-cid-wv7whodv>React Hooks: Deep Dive</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/performance/" data-astro-cid-wv7whodv>React: Performance</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/project-style-questions/" data-astro-cid-wv7whodv>React: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/common-mistakes/" data-astro-cid-wv7whodv>React: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/revision-sheet/" data-astro-cid-wv7whodv>React: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/mock-interview/" data-astro-cid-wv7whodv>React: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/" data-astro-cid-wv7whodv>Node &amp; Express</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/topics-not-to-miss/" data-astro-cid-wv7whodv>Node.js &amp; Express: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/interview-questions/" data-astro-cid-wv7whodv>Node.js &amp; Express Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/api-design/" data-astro-cid-wv7whodv>Node.js &amp; Express: API Design</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/auth-security/" data-astro-cid-wv7whodv>Node.js &amp; Express: Auth &amp; Security</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/project-style-questions/" data-astro-cid-wv7whodv>Node.js &amp; Express: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/common-mistakes/" data-astro-cid-wv7whodv>Node.js &amp; Express: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/revision-sheet/" data-astro-cid-wv7whodv>Node.js &amp; Express: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/mock-interview/" data-astro-cid-wv7whodv>Node.js &amp; Express: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/" data-astro-cid-wv7whodv>Next.js</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/topics-not-to-miss/" data-astro-cid-wv7whodv>Next.js: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/interview-questions/" data-astro-cid-wv7whodv>Next.js Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/rendering-patterns/" data-astro-cid-wv7whodv>Next.js: Rendering Patterns</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/project-style-questions/" data-astro-cid-wv7whodv>Next.js: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/revision-sheet/" data-astro-cid-wv7whodv>Next.js: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/mock-interview/" data-astro-cid-wv7whodv>Next.js: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/" data-astro-cid-wv7whodv>System Design</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/interview-questions/" data-astro-cid-wv7whodv>System Design Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/revision-sheet/" data-astro-cid-wv7whodv>System Design: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/mock-interview/" data-astro-cid-wv7whodv>System Design: Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/backend-system-design/" data-astro-cid-wv7whodv>Backend System Design</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/design-a-chat-app/" data-astro-cid-wv7whodv>Design a Chat App (Student-Level Walkthrough)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/design-a-social-media-app/" data-astro-cid-wv7whodv>Design a Social Media App (Student-Level Walkthrough)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/design-a-url-shortener/" data-astro-cid-wv7whodv>Design a URL Shortener (Student-Level Walkthrough)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/frontend-system-design/" data-astro-cid-wv7whodv>Frontend System Design</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/fundamentals/" data-astro-cid-wv7whodv>System Design Fundamentals (Student Level)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/" data-astro-cid-wv7whodv>Project Interview Bible</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/api-design/" data-astro-cid-wv7whodv>Explaining API Design in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/performance/" data-astro-cid-wv7whodv>Explaining Performance in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/architecture/" data-astro-cid-wv7whodv>Explaining Your Project Architecture</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/authentication/" data-astro-cid-wv7whodv>Explaining Authentication in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/challenges-and-tradeoffs/" data-astro-cid-wv7whodv>Challenges and Tradeoffs in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/database-design/" data-astro-cid-wv7whodv>Explaining Database Design in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/deployment/" data-astro-cid-wv7whodv>Explaining Deployment in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/future-improvements/" data-astro-cid-wv7whodv>Future Improvements for Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/how-to-explain-your-project/" data-astro-cid-wv7whodv>How to Explain Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/mock-project-interview/" data-astro-cid-wv7whodv>Project Interview: Mock Practice (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/project-question-bank/" data-astro-cid-wv7whodv>Project Interview Question Bank</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/sample-project-explanations/" data-astro-cid-wv7whodv>Sample Project Explanations</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/security/" data-astro-cid-wv7whodv>Explaining Security in Your Project</a></li></ul></details><details open data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/" data-astro-cid-wv7whodv>HR Interviews</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/behavioral-questions/" data-astro-cid-wv7whodv>Behavioral Interview Questions (STAR Format)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/common-hr-questions/" aria-current="page" data-astro-cid-wv7whodv>Common HR Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/how-to-answer-tell-me-about-yourself/" data-astro-cid-wv7whodv>How to Answer &quot;Tell Me About Yourself&quot;</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/mock-hr-interview/" data-astro-cid-wv7whodv>HR Interview: Mock Practice (30 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/" data-astro-cid-wv7whodv>Mock Interview Kits</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/backend-round/" data-astro-cid-wv7whodv>Backend (Node/Express) Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/evaluation-rubric/" data-astro-cid-wv7whodv>Mock Interview Evaluation Rubric</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/fullstack-round/" data-astro-cid-wv7whodv>Full-Stack Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/html-css-round/" data-astro-cid-wv7whodv>HTML &amp; CSS Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/javascript-round/" data-astro-cid-wv7whodv>JavaScript Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/react-round/" data-astro-cid-wv7whodv>React Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/system-design-round/" data-astro-cid-wv7whodv>System Design Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/" data-astro-cid-wv7whodv>Interview Patterns</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/architecture-questions/" data-astro-cid-wv7whodv>Architecture Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/comparison-questions/" data-astro-cid-wv7whodv>X vs Y Comparison Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/debugging-questions/" data-astro-cid-wv7whodv>Debugging Scenario Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/project-defense-questions/" data-astro-cid-wv7whodv>Project Defense Question Patterns</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/top-why-questions/" data-astro-cid-wv7whodv>Top &quot;Why&quot; Interview Questions</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/12-interview-experiences/" data-astro-cid-wv7whodv>Interview Experiences</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/12-interview-experiences/experience-template/" data-astro-cid-wv7whodv>Interview Experience Template</a></li></ul></details></nav></aside><main id="main-content" data-pagefind-body="true" data-astro-cid-z4jru4n3><div class="doc-shell" data-astro-cid-n67f4zmd><details class="toc-inline" data-astro-cid-n67f4zmd><summary data-astro-cid-n67f4zmd>On this page</summary><ul data-astro-cid-n67f4zmd><li data-astro-cid-n67f4zmd><a href="#question-tell-me-about-yourself" data-astro-cid-n67f4zmd>Question: Tell me about yourself.</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-your-greatest-strengths" data-astro-cid-n67f4zmd>Question: What are your greatest strengths?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-your-greatest-weakness" data-astro-cid-n67f4zmd>Question: What is your greatest weakness?</a></li><li data-astro-cid-n67f4zmd><a href="#question-why-do-you-want-to-work-at-this-company" data-astro-cid-n67f4zmd>Question: Why do you want to work at this company?</a></li><li data-astro-cid-n67f4zmd><a href="#question-why-should-we-hire-you" data-astro-cid-n67f4zmd>Question: Why should we hire you?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-your-salary-expectations" data-astro-cid-n67f4zmd>Question: What are your salary expectations?</a></li><li data-astro-cid-n67f4zmd><a href="#question-are-you-open-to-relocation" data-astro-cid-n67f4zmd>Question: Are you open to relocation?</a></li><li data-astro-cid-n67f4zmd><a href="#question-describe-a-time-you-worked-effectively-in-a-team" data-astro-cid-n67f4zmd>Question: Describe a time you worked effectively in a team.</a></li><li data-astro-cid-n67f4zmd><a href="#question-tell-me-about-a-conflict-with-a-teammate-how-did-you-handle-it" data-astro-cid-n67f4zmd>Question: Tell me about a conflict with a teammate. How did you handle it?</a></li><li data-astro-cid-n67f4zmd><a href="#question-tell-me-about-a-time-you-failed" data-astro-cid-n67f4zmd>Question: Tell me about a time you failed.</a></li><li data-astro-cid-n67f4zmd><a href="#question-describe-a-leadership-experience" data-astro-cid-n67f4zmd>Question: Describe a leadership experience.</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-manage-your-time-and-priorities" data-astro-cid-n67f4zmd>Question: How do you manage your time and priorities?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-explain-a-gap-in-your-resume" data-astro-cid-n67f4zmd>Question: How do you explain a gap in your resume?</a></li><li data-astro-cid-n67f4zmd><a href="#question-are-you-looking-for-internship-or-full-time-roles" data-astro-cid-n67f4zmd>Question: Are you looking for internship or full-time roles?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-your-thoughts-on-working-from-the-office" data-astro-cid-n67f4zmd>Question: What are your thoughts on working from the office?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-your-notice-period" data-astro-cid-n67f4zmd>Question: What is your notice period?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-questions-do-you-have-for-us" data-astro-cid-n67f4zmd>Question: What questions do you have for us?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-your-career-goals-for-the-next-35-years" data-astro-cid-n67f4zmd>Question: What are your career goals for the next 3–5 years?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-handle-pressure-and-tight-deadlines" data-astro-cid-n67f4zmd>Question: How do you handle pressure and tight deadlines?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-your-biggest-professional-achievement" data-astro-cid-n67f4zmd>Question: What is your biggest professional achievement?</a></li><li data-astro-cid-n67f4zmd><a href="#question-describe-an-ethical-dilemma-you-faced" data-astro-cid-n67f4zmd>Question: Describe an ethical dilemma you faced.</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-does-diversity-and-inclusion-mean-to-you-in-the-workplace" data-astro-cid-n67f4zmd>Question: What does diversity and inclusion mean to you in the workplace?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-handle-critical-feedback" data-astro-cid-n67f4zmd>Question: How do you handle critical feedback?</a></li><li data-astro-cid-n67f4zmd><a href="#question-walk-me-through-your-resume--a-project-on-your-resume" data-astro-cid-n67f4zmd>Question: Walk me through your resume / a project on your resume.</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-stay-updated-with-web-development" data-astro-cid-n67f4zmd>Question: How do you stay updated with web development?</a></li><li data-astro-cid-n67f4zmd><a href="#question-why-are-you-leaving-your-current-role--why-did-you-leave" data-astro-cid-n67f4zmd>Question: Why are you leaving your current role / why did you leave?</a></li><li data-astro-cid-n67f4zmd><a href="#question-where-do-you-see-yourself-in-5-years" data-astro-cid-n67f4zmd>Question: Where do you see yourself in 5 years?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-deal-with-repetitive-or-boring-tasks" data-astro-cid-n67f4zmd>Question: How do you deal with repetitive or boring tasks?</a></li><li data-astro-cid-n67f4zmd><a href="#question-are-you-interviewing-with-other-companies" data-astro-cid-n67f4zmd>Question: Are you interviewing with other companies?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-motivates-you-at-work" data-astro-cid-n67f4zmd>Question: What motivates you at work?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-would-your-professors--managers-describe-you" data-astro-cid-n67f4zmd>Question: How would your professors / managers describe you?</a></li><li data-astro-cid-n67f4zmd><a href="#question-do-you-have-any-commitments-or-constraints-we-should-know-about" data-astro-cid-n67f4zmd>Question: Do you have any commitments or constraints we should know about?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-prioritize-learning-vs-delivering" data-astro-cid-n67f4zmd>Question: How do you prioritize learning vs delivering?</a></li></ul></details><article class="prose" data-astro-cid-n67f4zmd><p class="crumbs" data-astro-cid-n67f4zmd><a href="/The-Web-Interview-Playbook/09-hr-interviews/" data-astro-cid-n67f4zmd>HR Interviews</a> <span class="fresh-badge" tabindex="0" aria-describedby="fresh-tip-09-hr-interviews-common-hr-questions" data-astro-cid-crdmdfjq>⚡ Recently updated<span class="tooltip" role="tooltip" id="fresh-tip-09-hr-interviews-common-hr-questions" data-astro-cid-crdmdfjq>Updated on Jun 30, 2026 — this content may still be evolving.</span></span></p><h1 id="common-hr-interview-questions">Common HR Interview Questions</h1>
+<blockquote>
+<p>30+ questions with full answers. Practice out loud.</p>
+</blockquote>
+<hr>
+<h2 id="question-tell-me-about-yourself">Question: Tell me about yourself.</h2>
+<h3 id="difficulty">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this">Why Interviewers Ask This</h3>
+<p>Almost every HR and hiring manager round starts here; it sets the tone.</p>
+<h3 id="answer">Answer</h3>
+<p>Give a 60–90 second pitch: present role/student status, relevant skills, 1–2 highlights aligned to the job, and why you’re interested. Past → present → future. Not your life story.</p>
+<h3 id="example">Example</h3>
+<p>“I’m a final-year CS student focused on fullstack web dev. I built X using React and Node, interned at Y where I shipped Z. I’m excited about this role because…”</p>
+<h3 id="follow-up-questions">Follow-up Questions</h3>
+<ul>
+<li>How long should it be?</li>
+<li>Should I mention hobbies?</li>
+<li>How technical should I get?</li>
+</ul>
+<h3 id="common-mistakes">Common Mistakes</h3>
+<ul>
+<li>Reciting entire resume chronologically</li>
+<li>No link to the job description</li>
+<li>Rambling over 3 minutes</li>
+</ul>
+<h3 id="interview-tip">Interview Tip</h3>
+<p>Write and rehearse aloud; record yourself and cut anything not relevant to this company.</p>
+<hr>
+<h2 id="question-what-are-your-greatest-strengths">Question: What are your greatest strengths?</h2>
+<h3 id="difficulty-1">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-1">Why Interviewers Ask This</h3>
+<p>They check self-awareness and fit for the role.</p>
+<h3 id="answer-1">Answer</h3>
+<p>Pick 2 strengths with evidence: e.g. learning quickly, debugging, collaboration. Tie each to a short example. Match strengths to job requirements.</p>
+<h3 id="example-1">Example</h3>
+<p>“Strength: breaking down problems — in my capstone I split the app into API, UI, and tests and delivered two weeks early.”</p>
+<h3 id="follow-up-questions-1">Follow-up Questions</h3>
+<ul>
+<li>How many strengths to mention?</li>
+<li>Can strengths be soft skills?</li>
+<li>What if they ask for only one?</li>
+</ul>
+<h3 id="common-mistakes-1">Common Mistakes</h3>
+<ul>
+<li>Generic adjectives with no proof</li>
+<li>Strengths unrelated to role</li>
+<li>Sounding arrogant</li>
+</ul>
+<h3 id="interview-tip-1">Interview Tip</h3>
+<p>Mirror language from the job posting when choosing strengths.</p>
+<hr>
+<h2 id="question-what-is-your-greatest-weakness">Question: What is your greatest weakness?</h2>
+<h3 id="difficulty-2">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-2">Why Interviewers Ask This</h3>
+<p>Tests honesty and growth mindset — a trap if you’re unprepared.</p>
+<h3 id="answer-2">Answer</h3>
+<p>Choose a real but non-fatal weakness, what you’re doing to improve, and progress made. Avoid clichés like ‘I’m a perfectionist’ without substance.</p>
+<h3 id="example-2">Example</h3>
+<p>“I used to jump into code before clarifying requirements; now I write a short spec and confirm with teammates in standup.”</p>
+<h3 id="follow-up-questions-2">Follow-up Questions</h3>
+<ul>
+<li>Can I say I have no weaknesses?</li>
+<li>Work-life balance as weakness?</li>
+<li>Technical weakness ok?</li>
+</ul>
+<h3 id="common-mistakes-2">Common Mistakes</h3>
+<ul>
+<li>Weakness that’s core to the job</li>
+<li>Fake weakness humble-brag</li>
+<li>No improvement plan</li>
+</ul>
+<h3 id="interview-tip-2">Interview Tip</h3>
+<p>Pick a weakness you can show improvement on in the last 6 months.</p>
+<hr>
+<h2 id="question-why-do-you-want-to-work-at-this-company">Question: Why do you want to work at this company?</h2>
+<h3 id="difficulty-3">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-3">Why Interviewers Ask This</h3>
+<p>Filters candidates who applied blindly vs researched.</p>
+<h3 id="answer-3">Answer</h3>
+<p>Combine company mission/product respect, culture values, growth opportunities, and how your skills contribute. Be specific — recent news, tech stack, or product you use.</p>
+<h3 id="example-3">Example</h3>
+<p>“I use your product daily; your open-source design system matches how I build accessible UI. I want to learn from your frontend guild.”</p>
+<h3 id="follow-up-questions-3">Follow-up Questions</h3>
+<ul>
+<li>What if I need any job?</li>
+<li>Mention salary here?</li>
+<li>Bad-mouth current employer?</li>
+</ul>
+<h3 id="common-mistakes-3">Common Mistakes</h3>
+<ul>
+<li>Generic praise anyone could say</li>
+<li>Only mentioning perks</li>
+<li>Not knowing what the company does</li>
+</ul>
+<h3 id="interview-tip-3">Interview Tip</h3>
+<p>Spend 30 minutes on company blog, careers page, and one product before the call.</p>
+<hr>
+<h2 id="question-why-should-we-hire-you">Question: Why should we hire you?</h2>
+<h3 id="difficulty-4">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-4">Why Interviewers Ask This</h3>
+<p>Your closing argument — connect value to their pain.</p>
+<h3 id="answer-4">Answer</h3>
+<p>Summarize unique combo of skills, relevant projects, attitude, and how you’ll help the team hit goals. Differentiate without putting others down.</p>
+<h3 id="example-4">Example</h3>
+<p>“You need someone who can ship React features and own API integration — I’ve done both in my internship and I’m comfortable owning tickets end-to-end.”</p>
+<h3 id="follow-up-questions-4">Follow-up Questions</h3>
+<ul>
+<li>Repeat resume?</li>
+<li>Compare to other candidates?</li>
+<li>Ask for the job directly?</li>
+</ul>
+<h3 id="common-mistakes-4">Common Mistakes</h3>
+<ul>
+<li>Vague ‘I’m hardworking’</li>
+<li>Ignoring job requirements</li>
+<li>Overpromising senior impact as intern</li>
+</ul>
+<h3 id="interview-tip-4">Interview Tip</h3>
+<p>End with enthusiasm and one concrete first-30-days contribution.</p>
+<hr>
+<h2 id="question-what-are-your-salary-expectations">Question: What are your salary expectations?</h2>
+<h3 id="difficulty-5">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-5">Why Interviewers Ask This</h3>
+<p>HR screens budget fit; mishandling can remove you from process.</p>
+<h3 id="answer-5">Answer</h3>
+<p>Research market range for role, level, and city. Give a range or ask their band first if early screen. Factor total comp (bonus, equity, benefits). Stay flexible if learning opportunity is strong.</p>
+<h3 id="example-5">Example</h3>
+<p>“Based on my research for junior frontend roles in this city, I’m looking at X–Y lakhs base, open to discussing the full package.”</p>
+<h3 id="follow-up-questions-5">Follow-up Questions</h3>
+<ul>
+<li>When to share current salary?</li>
+<li>Lowball to get in?</li>
+<li>Negotiate on first call?</li>
+</ul>
+<h3 id="common-mistakes-5">Common Mistakes</h3>
+<ul>
+<li>No research at all</li>
+<li>Ultimatum on first HR call</li>
+<li>Lying about other offers</li>
+</ul>
+<h3 id="interview-tip-5">Interview Tip</h3>
+<p>Know a credible range from peers, Glassdoor, and levels.fyi before the call.</p>
+<hr>
+<h2 id="question-are-you-open-to-relocation">Question: Are you open to relocation?</h2>
+<h3 id="difficulty-6">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-6">Why Interviewers Ask This</h3>
+<p>Logistics and commitment check for onsite/hybrid roles.</p>
+<h3 id="answer-6">Answer</h3>
+<p>Answer honestly with timeline and constraints. If yes, show enthusiasm and plan. If no, clarify remote/hybrid options without burning bridges.</p>
+<h3 id="example-6">Example</h3>
+<p>“Yes, I can relocate within 4 weeks after offer; I’ve already looked at housing near the office.”</p>
+<h3 id="follow-up-questions-6">Follow-up Questions</h3>
+<ul>
+<li>Relocation package?</li>
+<li>Remote forever?</li>
+<li>Family constraints?</li>
+</ul>
+<h3 id="common-mistakes-6">Common Mistakes</h3>
+<ul>
+<li>Saying yes then backing out</li>
+<li>Refusing without discussing alternatives</li>
+<li>No questions about support</li>
+</ul>
+<h3 id="interview-tip-6">Interview Tip</h3>
+<p>If hesitant, ask what % of team is onsite and flexibility after onboarding.</p>
+<hr>
+<h2 id="question-describe-a-time-you-worked-effectively-in-a-team">Question: Describe a time you worked effectively in a team.</h2>
+<h3 id="difficulty-7">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-7">Why Interviewers Ask This</h3>
+<p>Behavioral STAR questions assess collaboration.</p>
+<h3 id="answer-7">Answer</h3>
+<p>Use STAR: Situation, Task, Action, Result. Highlight communication, dividing work, unblocking others, and measurable outcome.</p>
+<h3 id="example-7">Example</h3>
+<p>“Hackathon team of 4; I owned API while pairing on UI bugs; we placed top 10 because we synced daily and split tasks in Notion.”</p>
+<h3 id="follow-up-questions-7">Follow-up Questions</h3>
+<ul>
+<li>Solo hero story?</li>
+<li>Conflict in same story?</li>
+<li>How much technical detail?</li>
+</ul>
+<h3 id="common-mistakes-7">Common Mistakes</h3>
+<ul>
+<li>Only ‘we’ with no your role</li>
+<li>Blaming teammates</li>
+<li>No result metric</li>
+</ul>
+<h3 id="interview-tip-7">Interview Tip</h3>
+<p>Prepare 3 STAR stories that overlap teamwork, conflict, and failure.</p>
+<hr>
+<h2 id="question-tell-me-about-a-conflict-with-a-teammate-how-did-you-handle-it">Question: Tell me about a conflict with a teammate. How did you handle it?</h2>
+<h3 id="difficulty-8">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-8">Why Interviewers Ask This</h3>
+<p>They want maturity, not drama.</p>
+<h3 id="answer-8">Answer</h3>
+<p>Describe disagreement professionally, how you listened, found facts, compromised or escalated appropriately, and outcome. No trash talk.</p>
+<h3 id="example-8">Example</h3>
+<p>“Disagreed on state library choice; we listed pros/cons, prototyped both for two days, team voted — relationship stayed positive.”</p>
+<h3 id="follow-up-questions-8">Follow-up Questions</h3>
+<ul>
+<li>Ever escalate to manager?</li>
+<li>Conflict with boss?</li>
+<li>Cultural conflict?</li>
+</ul>
+<h3 id="common-mistakes-8">Common Mistakes</h3>
+<ul>
+<li>Story ending in resentment</li>
+<li>You were always right narrative</li>
+<li>Illegal/discriminatory examples</li>
+</ul>
+<h3 id="interview-tip-8">Interview Tip</h3>
+<p>Show you separate ideas from people and focus on user/project outcome.</p>
+<hr>
+<h2 id="question-tell-me-about-a-time-you-failed">Question: Tell me about a time you failed.</h2>
+<h3 id="difficulty-9">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-9">Why Interviewers Ask This</h3>
+<p>Resilience and learning matter more than a spotless record.</p>
+<h3 id="answer-9">Answer</h3>
+<p>Own the failure, explain impact, what you learned, and what you changed. Avoid failures that show negligence with safety/security.</p>
+<h3 id="example-9">Example</h3>
+<p>“Missed demo deadline due to poor estimation; I now break tasks smaller and flag risks in standup — next release shipped on time.”</p>
+<h3 id="follow-up-questions-9">Follow-up Questions</h3>
+<ul>
+<li>Academic vs work failure?</li>
+<li>Failure not your fault?</li>
+<li>Too minor?</li>
+</ul>
+<h3 id="common-mistakes-9">Common Mistakes</h3>
+<ul>
+<li>Blaming others only</li>
+<li>No lesson learned</li>
+<li>Choosing catastrophic ethical failure</li>
+</ul>
+<h3 id="interview-tip-9">Interview Tip</h3>
+<p>Pick a failure that led to a habit you still use today.</p>
+<hr>
+<h2 id="question-describe-a-leadership-experience">Question: Describe a leadership experience.</h2>
+<h3 id="difficulty-10">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-10">Why Interviewers Ask This</h3>
+<p>Leadership isn’t only manager titles — initiative counts.</p>
+<h3 id="answer-10">Answer</h3>
+<p>Mentoring juniors, leading a project slice, organizing club hackathon, or driving a refactor. Show influence without authority and results.</p>
+<h3 id="example-10">Example</h3>
+<p>“Led frontend guild in college club; set coding standards and review checklist — reduced review cycles by half.”</p>
+<h3 id="follow-up-questions-10">Follow-up Questions</h3>
+<ul>
+<li>No formal lead title?</li>
+<li>Leadership vs management?</li>
+<li>Conflict while leading?</li>
+</ul>
+<h3 id="common-mistakes-10">Common Mistakes</h3>
+<ul>
+<li>Only giving orders</li>
+<li>No measurable outcome</li>
+<li>Taking all credit</li>
+</ul>
+<h3 id="interview-tip-10">Interview Tip</h3>
+<p>Students can cite tech lead on group project with clear delegation examples.</p>
+<hr>
+<h2 id="question-how-do-you-manage-your-time-and-priorities">Question: How do you manage your time and priorities?</h2>
+<h3 id="difficulty-11">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-11">Why Interviewers Ask This</h3>
+<p>Junior roles still need ownership of deadlines.</p>
+<h3 id="answer-11">Answer</h3>
+<p>Mention calendar/to-do system, breaking work, communicating blockers early, balancing study and job prep. Align with agile concepts if you’ve used them.</p>
+<h3 id="example-11">Example</h3>
+<p>“I plan weekly goals, timebox deep work, and say no or renegotiate when overloaded — during internship I flagged scope creep early.”</p>
+<h3 id="follow-up-questions-11">Follow-up Questions</h3>
+<ul>
+<li>Multitasking?</li>
+<li>Overtime?</li>
+<li>Tools you use?</li>
+</ul>
+<h3 id="common-mistakes-11">Common Mistakes</h3>
+<ul>
+<li>Claim you never miss deadlines</li>
+<li>No system at all</li>
+<li>Only work nights unsustainably</li>
+</ul>
+<h3 id="interview-tip-11">Interview Tip</h3>
+<p>Give one example of saying no or reprioritizing with manager buy-in.</p>
+<hr>
+<h2 id="question-how-do-you-explain-a-gap-in-your-resume">Question: How do you explain a gap in your resume?</h2>
+<h3 id="difficulty-12">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-12">Why Interviewers Ask This</h3>
+<p>Gaps are common; honesty and forward focus win.</p>
+<h3 id="answer-12">Answer</h3>
+<p>Brief truthful reason (health, family, job search, upskilling), what you did during gap (courses, projects, open source), readiness now.</p>
+<h3 id="example-12">Example</h3>
+<p>“Six-month gap after graduation — completed React certification and built two portfolio projects; ready for full-time now.”</p>
+<h3 id="follow-up-questions-12">Follow-up Questions</h3>
+<ul>
+<li>Hide gap?</li>
+<li>Mental health disclosure?</li>
+<li>Gap due to firing?</li>
+</ul>
+<h3 id="common-mistakes-12">Common Mistakes</h3>
+<ul>
+<li>Long defensive story</li>
+<li>Fake employment</li>
+<li>No productive activities during gap</li>
+</ul>
+<h3 id="interview-tip-12">Interview Tip</h3>
+<p>Practice a 20-second gap answer then pivot to current skills.</p>
+<hr>
+<h2 id="question-are-you-looking-for-internship-or-full-time-roles">Question: Are you looking for internship or full-time roles?</h2>
+<h3 id="difficulty-13">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-13">Why Interviewers Ask This</h3>
+<p>Clarifies pipeline and offer type.</p>
+<h3 id="answer-13">Answer</h3>
+<p>State clearly what you apply for and flexibility (intern-to-hire, co-op). Match graduation timeline and visa if relevant.</p>
+<h3 id="example-13">Example</h3>
+<p>“I’m graduating in May and seeking full-time; open to a spring internship if it converts.”</p>
+<h3 id="follow-up-questions-13">Follow-up Questions</h3>
+<ul>
+<li>Both in same process?</li>
+<li>Part-time?</li>
+<li>Contract roles?</li>
+</ul>
+<h3 id="common-mistakes-13">Common Mistakes</h3>
+<ul>
+<li>Contradicting application</li>
+<li>Unclear graduation date</li>
+<li>No interest in conversion intern</li>
+</ul>
+<h3 id="interview-tip-13">Interview Tip</h3>
+<p>Read the job title before the call — align your answer to that posting.</p>
+<hr>
+<h2 id="question-what-are-your-thoughts-on-working-from-the-office">Question: What are your thoughts on working from the office?</h2>
+<h3 id="difficulty-14">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-14">Why Interviewers Ask This</h3>
+<p>Hybrid policies are common post-2020.</p>
+<h3 id="answer-14">Answer</h3>
+<p>Align honestly with their policy. If hybrid, express willingness for in-person collaboration days and how you stay effective remotely other days.</p>
+<h3 id="example-14">Example</h3>
+<p>“Happy with 3 days in office for pairing and planning; focused coding at home works for me too.”</p>
+<h3 id="follow-up-questions-14">Follow-up Questions</h3>
+<ul>
+<li>Fully remote only?</li>
+<li>Relocate for onsite?</li>
+<li>Commute limits?</li>
+</ul>
+<h3 id="common-mistakes-14">Common Mistakes</h3>
+<ul>
+<li>Rigid no without discussion</li>
+<li>Saying whatever they want insincerely</li>
+<li>Ignoring team culture benefits of office</li>
+</ul>
+<h3 id="interview-tip-14">Interview Tip</h3>
+<p>Ask their current hybrid policy instead of assuming.</p>
+<hr>
+<h2 id="question-what-is-your-notice-period">Question: What is your notice period?</h2>
+<h3 id="difficulty-15">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-15">Why Interviewers Ask This</h3>
+<p>Practical hiring timeline question.</p>
+<h3 id="answer-15">Answer</h3>
+<p>State contractual notice (often 0–90 days for students/interns may be immediate). If intern, clarify academic schedule. Be accurate to avoid offer delays.</p>
+<h3 id="example-15">Example</h3>
+<p>“As a student I can join after finals week — about 3 weeks from offer acceptance.”</p>
+<h3 id="follow-up-questions-15">Follow-up Questions</h3>
+<ul>
+<li>Buy out notice?</li>
+<li>Current employer reference?</li>
+<li>Garden leave?</li>
+</ul>
+<h3 id="common-mistakes-15">Common Mistakes</h3>
+<ul>
+<li>Promising 1 week when contract says 2 months</li>
+<li>Not having offer letter terms clear</li>
+<li>Ghosting current job</li>
+</ul>
+<h3 id="interview-tip-15">Interview Tip</h3>
+<p>If employed, know HR policy before promising start date.</p>
+<hr>
+<h2 id="question-what-questions-do-you-have-for-us">Question: What questions do you have for us?</h2>
+<h3 id="difficulty-16">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-16">Why Interviewers Ask This</h3>
+<p>Shows interest and discernment — always prepare some.</p>
+<h3 id="answer-16">Answer</h3>
+<p>Ask about team structure, onboarding, success at 30/90 days, tech stack evolution, code review culture. Avoid only asking leave policy on first round.</p>
+<h3 id="example-16">Example</h3>
+<p>“What does a strong first project look like for this role? How does the team balance tech debt and features?”</p>
+<h3 id="follow-up-questions-16">Follow-up Questions</h3>
+<ul>
+<li>How many to ask?</li>
+<li>Questions for HR vs engineer?</li>
+<li>Salary in Q&#x26;A?</li>
+</ul>
+<h3 id="common-mistakes-16">Common Mistakes</h3>
+<ul>
+<li>No questions</li>
+<li>Only perks/leave</li>
+<li>Questions easily Googled</li>
+</ul>
+<h3 id="interview-tip-16">Interview Tip</h3>
+<p>Prepare 5 questions; you’ll use 2–3 depending on time.</p>
+<hr>
+<h2 id="question-what-are-your-career-goals-for-the-next-35-years">Question: What are your career goals for the next 3–5 years?</h2>
+<h3 id="difficulty-17">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-17">Why Interviewers Ask This</h3>
+<p>Checks ambition and retention realism.</p>
+<h3 id="answer-17">Answer</h3>
+<p>Show growth in craft (e.g. solid fullstack engineer), impact on product, maybe mentoring — aligned with ladder at company. Avoid ‘your CEO job in 2 years’.</p>
+<h3 id="example-17">Example</h3>
+<p>“In 3 years I want to own features across stack, mentor interns, and deepen system design — this team’s growth path matches that.”</p>
+<h3 id="follow-up-questions-17">Follow-up Questions</h3>
+<ul>
+<li>MBA plans?</li>
+<li>Founding startup?</li>
+<li>Stay in IC vs management?</li>
+</ul>
+<h3 id="common-mistakes-17">Common Mistakes</h3>
+<ul>
+<li>No goals</li>
+<li>Goals unrelated to role</li>
+<li>Overly title-focused</li>
+</ul>
+<h3 id="interview-tip-17">Interview Tip</h3>
+<p>Tie goals to skills you’ll build in this specific team.</p>
+<hr>
+<h2 id="question-how-do-you-handle-pressure-and-tight-deadlines">Question: How do you handle pressure and tight deadlines?</h2>
+<h3 id="difficulty-18">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-18">Why Interviewers Ask This</h3>
+<p>Startups and agencies ask this often.</p>
+<h3 id="answer-18">Answer</h3>
+<p>Describe prioritization, calm communication, asking for help, quality tradeoffs consciously, and post-mortem learning. Give a real example.</p>
+<h3 id="example-18">Example</h3>
+<p>“Before launch we had 48 hours for critical bugs — I triaged P0/P1, pair-fixed auth issue, deferred polish with PM sign-off.”</p>
+<h3 id="follow-up-questions-18">Follow-up Questions</h3>
+<ul>
+<li>Stress vs pressure?</li>
+<li>Overtime?</li>
+<li>Pushing back on deadlines?</li>
+</ul>
+<h3 id="common-mistakes-18">Common Mistakes</h3>
+<ul>
+<li>I thrive on chaos with no method</li>
+<li>Never feel pressure</li>
+<li>Sacrifice all quality</li>
+</ul>
+<h3 id="interview-tip-18">Interview Tip</h3>
+<p>Show you protect sleep and quality for security-related work under pressure.</p>
+<hr>
+<h2 id="question-what-is-your-biggest-professional-achievement">Question: What is your biggest professional achievement?</h2>
+<h3 id="difficulty-19">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-19">Why Interviewers Ask This</h3>
+<p>Lets you shine with a prepared highlight reel.</p>
+<h3 id="answer-19">Answer</h3>
+<p>Pick achievement with scale, difficulty, and outcome. Quantify if possible. Can be academic if early career.</p>
+<h3 id="example-19">Example</h3>
+<p>“Reduced page load 40% by lazy-loading images and API pagination — users in hostel networks reported smoother experience.”</p>
+<h3 id="follow-up-questions-19">Follow-up Questions</h3>
+<ul>
+<li>Personal vs team achievement?</li>
+<li>Non-technical achievement?</li>
+<li>Repeat resume bullet?</li>
+</ul>
+<h3 id="common-mistakes-19">Common Mistakes</h3>
+<ul>
+<li>Humble to point of empty answer</li>
+<li>Unverifiable huge claims</li>
+<li>Achievement unrelated to job</li>
+</ul>
+<h3 id="interview-tip-19">Interview Tip</h3>
+<p>Use metrics even approximate: users, %, time saved, bugs reduced.</p>
+<hr>
+<h2 id="question-describe-an-ethical-dilemma-you-faced">Question: Describe an ethical dilemma you faced.</h2>
+<h3 id="difficulty-20">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-20">Why Interviewers Ask This</h3>
+<p>Integrity questions for companies with code of conduct.</p>
+<h3 id="answer-20">Answer</h3>
+<p>Explain conflict between shortcuts vs correctness, privacy, attribution, or honesty. Show you chose ethical path or escalated.</p>
+<h3 id="example-20">Example</h3>
+<p>“Teammate wanted to copy assignment code; I offered to pair and write our own solution and reported only after they insisted on cheating.”</p>
+<h3 id="follow-up-questions-20">Follow-up Questions</h3>
+<ul>
+<li>Whistleblowing?</li>
+<li>NDA conflicts?</li>
+<li>Hypothetical ok?</li>
+</ul>
+<h3 id="common-mistakes-20">Common Mistakes</h3>
+<ul>
+<li>No dilemma ever</li>
+<li>Choosing profit over users illegally</li>
+<li>Too controversial politics</li>
+</ul>
+<h3 id="interview-tip-20">Interview Tip</h3>
+<p>Keep workplace-appropriate; focus on professional ethics.</p>
+<hr>
+<h2 id="question-what-does-diversity-and-inclusion-mean-to-you-in-the-workplace">Question: What does diversity and inclusion mean to you in the workplace?</h2>
+<h3 id="difficulty-21">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-21">Why Interviewers Ask This</h3>
+<p>Many companies have D&#x26;I values; they gauge alignment respectfully.</p>
+<h3 id="answer-21">Answer</h3>
+<p>Speak to respect, equitable opportunity, listening to underrepresented voices, and inclusive meetings/code reviews. Personal learning moment optional.</p>
+<h3 id="example-21">Example</h3>
+<p>“I make sure PR reviews are kind and specific, invite quieter teammates to share, and learn from ERG resources the company provides.”</p>
+<h3 id="follow-up-questions-21">Follow-up Questions</h3>
+<ul>
+<li>D&#x26;I vs merit?</li>
+<li>Only HR initiatives?</li>
+<li>Your identity disclosure?</li>
+</ul>
+<h3 id="common-mistakes-21">Common Mistakes</h3>
+<ul>
+<li>Dismiss D&#x26;I as politics</li>
+<li>Performative slogans only</li>
+<li>Claim you’re ‘colorblind’ to differences</li>
+</ul>
+<h3 id="interview-tip-21">Interview Tip</h3>
+<p>Connect to concrete behaviors in teams, not only abstract values.</p>
+<hr>
+<h2 id="question-how-do-you-handle-critical-feedback">Question: How do you handle critical feedback?</h2>
+<h3 id="difficulty-22">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-22">Why Interviewers Ask This</h3>
+<p>Growth culture expects you to receive reviews well.</p>
+<h3 id="answer-22">Answer</h3>
+<p>Thank reviewer, clarify, reflect, act, follow up. Example of feedback that improved your work.</p>
+<h3 id="example-22">Example</h3>
+<p>“Senior said my PRs were too large; I split into smaller PRs with descriptions — reviews got faster and merges smoother.”</p>
+<h3 id="follow-up-questions-22">Follow-up Questions</h3>
+<ul>
+<li>Disagree with feedback?</li>
+<li>Manager vs peer feedback?</li>
+<li>360 reviews?</li>
+</ul>
+<h3 id="common-mistakes-22">Common Mistakes</h3>
+<ul>
+<li>Getting defensive in story</li>
+<li>Ignoring feedback</li>
+<li>Pretending you never get negative feedback</li>
+</ul>
+<h3 id="interview-tip-22">Interview Tip</h3>
+<p>Show you separate ego from code quality.</p>
+<hr>
+<h2 id="question-walk-me-through-your-resume--a-project-on-your-resume">Question: Walk me through your resume / a project on your resume.</h2>
+<h3 id="difficulty-23">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-23">Why Interviewers Ask This</h3>
+<p>Validates what’s written and communication clarity.</p>
+<h3 id="answer-23">Answer</h3>
+<p>Pick one project: problem, your role, tech stack, challenges, outcome, link/demo if any. 2 minutes max unless they dig deeper.</p>
+<h3 id="example-23">Example</h3>
+<p>“E-commerce capstone: I built cart API with Express, Stripe test mode, React checkout — hardest part was idempotent webhooks.”</p>
+<h3 id="follow-up-questions-23">Follow-up Questions</h3>
+<ul>
+<li>Group project credit?</li>
+<li>Projects not deployed?</li>
+<li>Buzzword stack?</li>
+</ul>
+<h3 id="common-mistakes-23">Common Mistakes</h3>
+<ul>
+<li>Cannot explain bullets you wrote</li>
+<li>No depth on your own modules</li>
+<li>Only listing technologies</li>
+</ul>
+<h3 id="interview-tip-23">Interview Tip</h3>
+<p>Be ready to open GitHub live and navigate your best repo.</p>
+<hr>
+<h2 id="question-how-do-you-stay-updated-with-web-development">Question: How do you stay updated with web development?</h2>
+<h3 id="difficulty-24">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-24">Why Interviewers Ask This</h3>
+<p>Shows passion and continuous learning.</p>
+<h3 id="answer-24">Answer</h3>
+<p>Mention curated newsletters, docs, courses, side projects, conferences, Twitter/Bluesky follows — quality over quantity.</p>
+<h3 id="example-24">Example</h3>
+<p>“I follow React blog releases, build small repros when APIs change, and completed one course on accessibility last quarter.”</p>
+<h3 id="follow-up-questions-24">Follow-up Questions</h3>
+<ul>
+<li>Favorite resources?</li>
+<li>How much time weekly?</li>
+<li>AI tools?</li>
+</ul>
+<h3 id="common-mistakes-24">Common Mistakes</h3>
+<ul>
+<li>I only learn at work</li>
+<li>Name-dropping without practice</li>
+<li>Trend chasing without fundamentals</li>
+</ul>
+<h3 id="interview-tip-24">Interview Tip</h3>
+<p>Pick one recent learning example from the last month.</p>
+<hr>
+<h2 id="question-why-are-you-leaving-your-current-role--why-did-you-leave">Question: Why are you leaving your current role / why did you leave?</h2>
+<h3 id="difficulty-25">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-25">Why Interviewers Ask This</h3>
+<p>Motivation and professionalism check.</p>
+<h3 id="answer-25">Answer</h3>
+<p>Focus on growth, learning, alignment — never badmouth. Layoff, graduation, contract end are fine stated simply.</p>
+<h3 id="example-25">Example</h3>
+<p>“Internship ended; I want a full-time product team where I can own features longer than 3-month rotations.”</p>
+<h3 id="follow-up-questions-25">Follow-up Questions</h3>
+<ul>
+<li>Still employed?</li>
+<li>Fired?</li>
+<li>Toxic manager?</li>
+</ul>
+<h3 id="common-mistakes-25">Common Mistakes</h3>
+<ul>
+<li>Trash talking boss or company</li>
+<li>Money as only reason</li>
+<li>Contradicting LinkedIn</li>
+</ul>
+<h3 id="interview-tip-25">Interview Tip</h3>
+<p>Rehearse a neutral positive framing with a friend.</p>
+<hr>
+<h2 id="question-where-do-you-see-yourself-in-5-years">Question: Where do you see yourself in 5 years?</h2>
+<h3 id="difficulty-26">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-26">Why Interviewers Ask This</h3>
+<p>Similar to career goals — retention and ambition.</p>
+<h3 id="answer-26">Answer</h3>
+<p>Senior IC path, tech lead, or deep specialist — show commitment to craft and company industry. Flexible but directed.</p>
+<h3 id="example-26">Example</h3>
+<p>“Solid mid-level engineer mentoring juniors, still hands-on, possibly leading small features end-to-end.”</p>
+<h3 id="follow-up-questions-26">Follow-up Questions</h3>
+<ul>
+<li>Management in 5 years?</li>
+<li>Same company?</li>
+<li>Different industry?</li>
+</ul>
+<h3 id="common-mistakes-26">Common Mistakes</h3>
+<ul>
+<li>CEO in 5 years joke only</li>
+<li>No idea</li>
+<li>Goals that show you’ll leave immediately</li>
+</ul>
+<h3 id="interview-tip-26">Interview Tip</h3>
+<p>Mirror the company’s engineering ladder if public.</p>
+<hr>
+<h2 id="question-how-do-you-deal-with-repetitive-or-boring-tasks">Question: How do you deal with repetitive or boring tasks?</h2>
+<h3 id="difficulty-27">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-27">Why Interviewers Ask This</h3>
+<p>Junior work includes grunt tasks — attitude matters.</p>
+<h3 id="answer-27">Answer</h3>
+<p>Acknowledge reality, automate/document, find learning, stay reliable. Connect to team benefit.</p>
+<h3 id="example-27">Example</h3>
+<p>“I scripted log parsing that saved team an hour weekly and used spare cycles to read codebase docs.”</p>
+<h3 id="follow-up-questions-27">Follow-up Questions</h3>
+<ul>
+<li>Push back on tasks?</li>
+<li>Only want greenfield?</li>
+<li>Intern task balance?</li>
+</ul>
+<h3 id="common-mistakes-27">Common Mistakes</h3>
+<ul>
+<li>Say you refuse boring work</li>
+<li>No automation mindset</li>
+<li>Complain about seniors</li>
+</ul>
+<h3 id="interview-tip-27">Interview Tip</h3>
+<p>Frame boring tasks as trust-building and efficiency opportunities.</p>
+<hr>
+<h2 id="question-are-you-interviewing-with-other-companies">Question: Are you interviewing with other companies?</h2>
+<h3 id="difficulty-28">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-28">Why Interviewers Ask This</h3>
+<p>They gauge competition and timeline.</p>
+<h3 id="answer-28">Answer</h3>
+<p>Honest but discreet: stage you’re at, rough timeline, enthusiasm for this role. Don’t fabricate bidding war.</p>
+<h3 id="example-28">Example</h3>
+<p>“I’m in mid-stages with two other companies; yours is a top choice because of the product domain — I can share timing if we move forward.”</p>
+<h3 id="follow-up-questions-28">Follow-up Questions</h3>
+<ul>
+<li>Share company names?</li>
+<li>Use as leverage when?</li>
+<li>Exploding offers?</li>
+</ul>
+<h3 id="common-mistakes-28">Common Mistakes</h3>
+<ul>
+<li>Lie about offers</li>
+<li>Desperate or arrogant tone</li>
+<li>Refuse to answer anything</li>
+</ul>
+<h3 id="interview-tip-28">Interview Tip</h3>
+<p>If asked for timeline, give realistic decision date.</p>
+<hr>
+<h2 id="question-what-motivates-you-at-work">Question: What motivates you at work?</h2>
+<h3 id="difficulty-29">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-29">Why Interviewers Ask This</h3>
+<p>Culture fit and intrinsic drivers.</p>
+<h3 id="answer-29">Answer</h3>
+<p>Mix impact, learning, team, user outcomes — authentic to you. Tie to role.</p>
+<h3 id="example-29">Example</h3>
+<p>“Shipping features users notice and learning from code review — my internship retro every Friday kept me motivated.”</p>
+<h3 id="follow-up-questions-29">Follow-up Questions</h3>
+<ul>
+<li>Money motivation?</li>
+<li>Only promotion?</li>
+<li>Work-life balance?</li>
+</ul>
+<h3 id="common-mistakes-29">Common Mistakes</h3>
+<ul>
+<li>Only extrinsic perks</li>
+<li>Nothing motivates me</li>
+<li>Motivation unrelated to job</li>
+</ul>
+<h3 id="interview-tip-29">Interview Tip</h3>
+<p>Connect motivation to what this team actually does daily.</p>
+<hr>
+<h2 id="question-how-would-your-professors--managers-describe-you">Question: How would your professors / managers describe you?</h2>
+<h3 id="difficulty-30">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-30">Why Interviewers Ask This</h3>
+<p>External perspective validates self-image.</p>
+<h3 id="answer-30">Answer</h3>
+<p>Pick 2–3 traits with why they’d say them; optional: mention you’d offer references.</p>
+<h3 id="example-30">Example</h3>
+<p>“They’d say I’m reliable on deadlines and curious — my manager noted I ask good questions before implementing.”</p>
+<h3 id="follow-up-questions-30">Follow-up Questions</h3>
+<ul>
+<li>Weakness they’d mention?</li>
+<li>Friends vs managers?</li>
+<li>Reference check timing?</li>
+</ul>
+<h3 id="common-mistakes-30">Common Mistakes</h3>
+<ul>
+<li>Traits opposite to your weakness answer</li>
+<li>Nobody would say anything nice</li>
+<li>Invent fake quotes</li>
+</ul>
+<h3 id="interview-tip-30">Interview Tip</h3>
+<p>Align with strengths story for consistency.</p>
+<hr>
+<h2 id="question-do-you-have-any-commitments-or-constraints-we-should-know-about">Question: Do you have any commitments or constraints we should know about?</h2>
+<h3 id="difficulty-31">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-31">Why Interviewers Ask This</h3>
+<p>Practical planning for start dates and hours.</p>
+<h3 id="answer-31">Answer</h3>
+<p>Disclose exam schedules, visa sponsorship needs, part-time education, caregiving — honestly and early if relevant.</p>
+<h3 id="example-31">Example</h3>
+<p>“I need 2 days leave in August for family event; otherwise fully available.”</p>
+<h3 id="follow-up-questions-31">Follow-up Questions</h3>
+<ul>
+<li>Disability accommodations?</li>
+<li>Side business?</li>
+<li>Non-compete?</li>
+</ul>
+<h3 id="common-mistakes-31">Common Mistakes</h3>
+<ul>
+<li>Hiding visa need until offer</li>
+<li>Over-sharing unrelated personal info</li>
+<li>No constraints when there are</li>
+</ul>
+<h3 id="interview-tip-31">Interview Tip</h3>
+<p>Ask if flexible hours exist during exam weeks if you’re a student.</p>
+<hr>
+<h2 id="question-how-do-you-prioritize-learning-vs-delivering">Question: How do you prioritize learning vs delivering?</h2>
+<h3 id="difficulty-32">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-32">Why Interviewers Ask This</h3>
+<p>Shows balance in real jobs with deadlines.</p>
+<h3 id="answer-32">Answer</h3>
+<p>Deliver first on commitments, learn in spikes, document new knowledge, ask for time for spikes when risk is high.</p>
+<h3 id="example-32">Example</h3>
+<p>“I shipped MVP with familiar stack, then refactored auth module after reading OWASP guide between tickets.”</p>
+<h3 id="follow-up-questions-32">Follow-up Questions</h3>
+<ul>
+<li>Refactor time?</li>
+<li>Tech debt?</li>
+<li>Ask for training budget?</li>
+</ul>
+<h3 id="common-mistakes-32">Common Mistakes</h3>
+<ul>
+<li>Endless tutorial mode</li>
+<li>Ship without ever learning</li>
+<li>Rewrite for fun under deadline</li>
+</ul>
+<h3 id="interview-tip-32">Interview Tip</h3>
+<p>Good line: ‘Make it work, make it right, make it fast’ — in that order when needed.</p>
+<hr><nav class="pager" data-astro-cid-n67f4zmd><a class="pager-link" href="/The-Web-Interview-Playbook/09-hr-interviews/behavioral-questions/" data-astro-cid-n67f4zmd>← Behavioral Interview Questions (STAR Format)</a><a class="pager-link next" href="/The-Web-Interview-Playbook/09-hr-interviews/how-to-answer-tell-me-about-yourself/" data-astro-cid-n67f4zmd>How to Answer &quot;Tell Me About Yourself&quot; →</a></nav></article><nav class="toc" aria-label="Table of contents" data-astro-cid-td5y3ttw><p class="toc-title" data-astro-cid-td5y3ttw>On this page</p><ul data-astro-cid-td5y3ttw><li data-astro-cid-td5y3ttw><a href="#question-tell-me-about-yourself" data-astro-cid-td5y3ttw>Question: Tell me about yourself.</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-your-greatest-strengths" data-astro-cid-td5y3ttw>Question: What are your greatest strengths?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-your-greatest-weakness" data-astro-cid-td5y3ttw>Question: What is your greatest weakness?</a></li><li data-astro-cid-td5y3ttw><a href="#question-why-do-you-want-to-work-at-this-company" data-astro-cid-td5y3ttw>Question: Why do you want to work at this company?</a></li><li data-astro-cid-td5y3ttw><a href="#question-why-should-we-hire-you" data-astro-cid-td5y3ttw>Question: Why should we hire you?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-your-salary-expectations" data-astro-cid-td5y3ttw>Question: What are your salary expectations?</a></li><li data-astro-cid-td5y3ttw><a href="#question-are-you-open-to-relocation" data-astro-cid-td5y3ttw>Question: Are you open to relocation?</a></li><li data-astro-cid-td5y3ttw><a href="#question-describe-a-time-you-worked-effectively-in-a-team" data-astro-cid-td5y3ttw>Question: Describe a time you worked effectively in a team.</a></li><li data-astro-cid-td5y3ttw><a href="#question-tell-me-about-a-conflict-with-a-teammate-how-did-you-handle-it" data-astro-cid-td5y3ttw>Question: Tell me about a conflict with a teammate. How did you handle it?</a></li><li data-astro-cid-td5y3ttw><a href="#question-tell-me-about-a-time-you-failed" data-astro-cid-td5y3ttw>Question: Tell me about a time you failed.</a></li><li data-astro-cid-td5y3ttw><a href="#question-describe-a-leadership-experience" data-astro-cid-td5y3ttw>Question: Describe a leadership experience.</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-manage-your-time-and-priorities" data-astro-cid-td5y3ttw>Question: How do you manage your time and priorities?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-explain-a-gap-in-your-resume" data-astro-cid-td5y3ttw>Question: How do you explain a gap in your resume?</a></li><li data-astro-cid-td5y3ttw><a href="#question-are-you-looking-for-internship-or-full-time-roles" data-astro-cid-td5y3ttw>Question: Are you looking for internship or full-time roles?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-your-thoughts-on-working-from-the-office" data-astro-cid-td5y3ttw>Question: What are your thoughts on working from the office?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-your-notice-period" data-astro-cid-td5y3ttw>Question: What is your notice period?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-questions-do-you-have-for-us" data-astro-cid-td5y3ttw>Question: What questions do you have for us?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-your-career-goals-for-the-next-35-years" data-astro-cid-td5y3ttw>Question: What are your career goals for the next 3–5 years?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-handle-pressure-and-tight-deadlines" data-astro-cid-td5y3ttw>Question: How do you handle pressure and tight deadlines?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-your-biggest-professional-achievement" data-astro-cid-td5y3ttw>Question: What is your biggest professional achievement?</a></li><li data-astro-cid-td5y3ttw><a href="#question-describe-an-ethical-dilemma-you-faced" data-astro-cid-td5y3ttw>Question: Describe an ethical dilemma you faced.</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-does-diversity-and-inclusion-mean-to-you-in-the-workplace" data-astro-cid-td5y3ttw>Question: What does diversity and inclusion mean to you in the workplace?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-handle-critical-feedback" data-astro-cid-td5y3ttw>Question: How do you handle critical feedback?</a></li><li data-astro-cid-td5y3ttw><a href="#question-walk-me-through-your-resume--a-project-on-your-resume" data-astro-cid-td5y3ttw>Question: Walk me through your resume / a project on your resume.</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-stay-updated-with-web-development" data-astro-cid-td5y3ttw>Question: How do you stay updated with web development?</a></li><li data-astro-cid-td5y3ttw><a href="#question-why-are-you-leaving-your-current-role--why-did-you-leave" data-astro-cid-td5y3ttw>Question: Why are you leaving your current role / why did you leave?</a></li><li data-astro-cid-td5y3ttw><a href="#question-where-do-you-see-yourself-in-5-years" data-astro-cid-td5y3ttw>Question: Where do you see yourself in 5 years?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-deal-with-repetitive-or-boring-tasks" data-astro-cid-td5y3ttw>Question: How do you deal with repetitive or boring tasks?</a></li><li data-astro-cid-td5y3ttw><a href="#question-are-you-interviewing-with-other-companies" data-astro-cid-td5y3ttw>Question: Are you interviewing with other companies?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-motivates-you-at-work" data-astro-cid-td5y3ttw>Question: What motivates you at work?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-would-your-professors--managers-describe-you" data-astro-cid-td5y3ttw>Question: How would your professors / managers describe you?</a></li><li data-astro-cid-td5y3ttw><a href="#question-do-you-have-any-commitments-or-constraints-we-should-know-about" data-astro-cid-td5y3ttw>Question: Do you have any commitments or constraints we should know about?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-prioritize-learning-vs-delivering" data-astro-cid-td5y3ttw>Question: How do you prioritize learning vs delivering?</a></li></ul></nav></div></main></div><script type="module">var e=document.getElementById(`nav-toggle`),t=document.getElementById(`nav-backdrop`),n=document.documentElement;function r(){n.dataset.navOpen=`true`,e.setAttribute(`aria-expanded`,`true`),document.body.style.overflow=`hidden`}function i(){delete n.dataset.navOpen,e.setAttribute(`aria-expanded`,`false`),document.body.style.overflow=``}e?.addEventListener(`click`,()=>{n.dataset.navOpen===`true`?i():r()}),t?.addEventListener(`click`,i),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&n.dataset.navOpen===`true`&&i()}),document.querySelector(`.shell`)?.addEventListener(`click`,e=>{e.target.closest(`aside.sidebar a`)&&n.dataset.navOpen===`true`&&i()});</script><script type="module" src="/The-Web-Interview-Playbook/_astro/BaseLayout.astro_astro_type_script_index_1_lang.Cw7dNugz.js"></script></body></html>

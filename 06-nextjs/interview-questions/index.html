@@ -1,0 +1,854 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-z4jru4n3><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Interactive web dev interview preparation"><title>Next.js Interview Questions · Web Interview Playbook</title><script>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem('theme'); } catch {}
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script><link rel="stylesheet" href="/The-Web-Interview-Playbook/_astro/BaseLayout.Dl7qG8Ba.css"><style>.fresh-badge[data-astro-cid-crdmdfjq]{color:var(--fresh);background:var(--fresh-bg);cursor:default;border-radius:999px;align-items:center;gap:.3rem;padding:.28rem .65rem;font-size:.78rem;font-weight:600;line-height:1;transition:box-shadow .15s;display:inline-flex;position:relative}.fresh-badge[data-astro-cid-crdmdfjq]:hover,.fresh-badge[data-astro-cid-crdmdfjq]:focus-visible{box-shadow:0 0 0 1px color-mix(in srgb, var(--fresh) 45%, transparent)}.tooltip[data-astro-cid-crdmdfjq]{z-index:20;background:var(--surface);width:max-content;max-width:260px;color:var(--text);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 4px 16px color-mix(in srgb, var(--text) 20%, transparent);opacity:0;pointer-events:none;padding:.5rem .7rem;font-size:.78rem;font-weight:400;line-height:1.45;transition:opacity .12s,transform .12s;position:absolute;top:calc(100% + 6px);left:0;transform:translateY(-2px)}.fresh-badge[data-astro-cid-crdmdfjq]:hover .tooltip[data-astro-cid-crdmdfjq],.fresh-badge[data-astro-cid-crdmdfjq]:focus .tooltip[data-astro-cid-crdmdfjq],.fresh-badge[data-astro-cid-crdmdfjq]:focus-visible .tooltip[data-astro-cid-crdmdfjq]{opacity:1;transform:translateY(0)}.status-banner[data-astro-cid-c4lk2q6h]{background:var(--warn-bg);color:var(--warn);border:1px solid color-mix(in srgb, var(--warn) 35%, transparent);border-radius:var(--radius);align-items:center;gap:.5rem;margin-bottom:1.75rem;padding:.65rem 1rem;font-size:.9rem;font-weight:500;display:flex}.prose{max-width:var(--content-width)}.prose h1{letter-spacing:-.02em;margin:0 0 1rem;font-size:clamp(1.5rem,4vw,2rem);line-height:1.2}.prose h2{border-top:2px dashed var(--border);letter-spacing:-.01em;margin:2rem 0 .75rem;padding-top:1.25rem;scroll-margin-top:4.5rem;font-size:clamp(1.15rem,2.5vw,1.35rem)}.prose h3{color:var(--text);margin:1.5rem 0 .5rem;scroll-margin-top:4.5rem;font-size:clamp(.95rem,2vw,1.05rem)}.prose p,.prose li{color:var(--text)}.prose ul,.prose ol{padding-left:1.4rem}@media (width<=600px){.prose ul,.prose ol{padding-left:1.1rem}}.prose li+li{margin-top:.35rem}.prose strong{font-weight:700}.prose blockquote{border-left:3px solid var(--accent-2);color:var(--text-muted);background:var(--surface-2);border-radius:0 var(--radius) var(--radius) 0;overflow-wrap:break-word;word-wrap:break-word;margin:1rem 0;padding:.35rem 1rem}@media (width<=600px){.prose blockquote{margin:.75rem 0;padding:.35rem .75rem}}.prose table{border-collapse:collapse;width:100%;font-size:.9rem;display:block;overflow-x:auto}@media (width<=600px){.prose table{font-size:.82rem}}.prose th,.prose td{border:1px solid var(--border);text-align:left;padding:.5rem .75rem}@media (width<=600px){.prose th,.prose td{padding:.35rem .5rem}}.prose th{background:var(--surface-2);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.05em;font-size:.78rem}.prose hr{border:none;border-top:2px dashed var(--border);margin:2.5rem 0}.prose img{border-radius:var(--radius);max-width:100%}
+.toc[data-astro-cid-td5y3ttw]{border-left:1px solid var(--border);flex-shrink:0;width:220px;max-height:calc(100vh - 6rem);padding-left:1rem;font-size:.83rem;position:sticky;top:4.5rem;overflow-y:auto}.toc-title[data-astro-cid-td5y3ttw]{text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0 0 .75rem;font-size:.72rem}ul[data-astro-cid-td5y3ttw]{margin:0;padding:0;list-style:none}li[data-astro-cid-td5y3ttw]{margin:.4rem 0}a[data-astro-cid-td5y3ttw]{color:var(--text-muted);line-height:1.4;transition:color .12s;display:block}a[data-astro-cid-td5y3ttw]:hover,a[data-astro-cid-td5y3ttw]:focus-visible{color:var(--accent);text-decoration:none}@media (width<=1300px){.toc[data-astro-cid-td5y3ttw]{display:none}}.doc-shell[data-astro-cid-n67f4zmd]{justify-content:center;gap:2rem;display:flex}.crumbs[data-astro-cid-n67f4zmd]{align-items:center;gap:.75rem;margin-bottom:.5rem;font-size:.85rem;display:flex}.crumbs[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]{color:var(--text-muted);font-weight:500}.crumbs[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]:hover{color:var(--accent);text-decoration:none}.pager[data-astro-cid-n67f4zmd]{justify-content:space-between;gap:1rem;margin-top:3.5rem;display:flex}.pager-link[data-astro-cid-n67f4zmd]{border:1px solid var(--border);border-radius:var(--radius);max-width:45%;color:var(--text);padding:.7rem 1rem;font-size:.88rem;transition:border-color .15s,color .15s;display:block}.pager-link[data-astro-cid-n67f4zmd].next{text-align:right;margin-left:auto}.pager-link[data-astro-cid-n67f4zmd]:hover,.pager-link[data-astro-cid-n67f4zmd]:focus-visible{border-color:var(--accent);color:var(--accent);text-decoration:none}.toc-inline[data-astro-cid-n67f4zmd]{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface-2);max-width:var(--content-width);width:100%;margin-bottom:.5rem;padding:.5rem .8rem;font-size:.85rem;display:none}.toc-inline[data-astro-cid-n67f4zmd] summary[data-astro-cid-n67f4zmd]{cursor:pointer;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);padding:.15rem 0;font-size:.72rem;font-weight:600;list-style:none}.toc-inline[data-astro-cid-n67f4zmd] summary[data-astro-cid-n67f4zmd]:before{content:"▸ ";font-size:.7rem}.toc-inline[data-astro-cid-n67f4zmd][open] summary[data-astro-cid-n67f4zmd]:before{content:"▾ "}.toc-inline[data-astro-cid-n67f4zmd] ul[data-astro-cid-n67f4zmd]{gap:.2rem;margin:.5rem 0 0;padding:0;list-style:none;display:grid}.toc-inline[data-astro-cid-n67f4zmd] li[data-astro-cid-n67f4zmd]{margin:0}.toc-inline[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]{color:var(--text-muted);border-radius:6px;padding:.35rem .5rem;transition:color .12s;display:block}.toc-inline[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]:hover,.toc-inline[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]:focus-visible{color:var(--text);background:var(--surface);text-decoration:none}@media (width<=1300px){.toc-inline[data-astro-cid-n67f4zmd]{display:block}}@media (width<=600px){.pager[data-astro-cid-n67f4zmd]{flex-direction:column;gap:.5rem}.pager-link[data-astro-cid-n67f4zmd]{max-width:100%}.pager-link[data-astro-cid-n67f4zmd].next{text-align:left;margin-left:0}}
+.sidebar[data-astro-cid-wv7whodv]{border-right:1px solid var(--border);background:var(--bg);z-index:20;flex-shrink:0;width:260px;height:calc(100vh - 3.2rem);padding:1.25rem .9rem;font-size:.86rem;position:sticky;top:3.2rem;overflow-y:auto}summary[data-astro-cid-wv7whodv]{cursor:pointer;padding:.3rem .4rem;font-weight:600;list-style:none}summary[data-astro-cid-wv7whodv]:before{content:"▸ ";color:var(--text-muted);font-size:.7rem}details[data-astro-cid-wv7whodv][open] summary[data-astro-cid-wv7whodv]:before{content:"▾ "}summary[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv]{color:var(--text)}ul[data-astro-cid-wv7whodv]{margin:0 0 .5rem;padding:0 0 0 1.1rem;list-style:none}li[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv]{color:var(--text-muted);border-radius:6px;padding:.22rem .5rem;display:block}li[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv]:hover{color:var(--text);background:var(--surface-2);text-decoration:none}li[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv][aria-current=page]{color:var(--accent);background:var(--surface-2);font-weight:600}@media (width<=900px){.sidebar[data-astro-cid-wv7whodv]{border-right:1px solid var(--border);width:280px;height:calc(100vh - 3.2rem);box-shadow:4px 0 24px -12px color-mix(in srgb, var(--text) 25%, transparent);transition:transform .25s;position:fixed;top:3.2rem;left:0;overflow-y:auto;transform:translate(-100%)}html[data-nav-open=true] .sidebar[data-astro-cid-wv7whodv]{transform:translate(0)}}
+</style></head><body data-astro-cid-z4jru4n3><a class="skip-link" href="#main-content" data-astro-cid-z4jru4n3>Skip to content</a><header class="site-header" data-astro-cid-z4jru4n3><a class="brand" href="/The-Web-Interview-Playbook/" data-astro-cid-z4jru4n3><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" data-astro-cid-z4jru4n3><circle cx="6.5" cy="17.5" r="3.4" data-astro-cid-z4jru4n3></circle><path d="M15 15 l6 6 m0 -6 l-6 6" data-astro-cid-z4jru4n3></path><path d="M8 13 C 10 7, 14 8, 18 5.5" stroke-dasharray="3.5 3" data-astro-cid-z4jru4n3></path></svg><span class="brand-text" data-astro-cid-z4jru4n3>Web Interview <strong data-astro-cid-z4jru4n3>Playbook</strong></span></a><div class="header-actions" data-astro-cid-z4jru4n3><button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-astro-cid-z4jru4n3><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" data-astro-cid-z4jru4n3><path class="nav-line-top" d="M4 7 L20 7" data-astro-cid-z4jru4n3></path><path class="nav-line-mid" d="M4 12 L20 12" data-astro-cid-z4jru4n3></path><path class="nav-line-bot" d="M4 17 L20 17" data-astro-cid-z4jru4n3></path></svg></button><button id="search-open" aria-label="Search (Cmd+K)" title="Search" data-astro-cid-etsyzymg><span aria-hidden="true" data-astro-cid-etsyzymg>🔍</span> <kbd data-astro-cid-etsyzymg>⌘K</kbd></button><dialog id="search-dialog" aria-label="Search the playbook" data-astro-cid-etsyzymg><div id="pagefind-container" data-astro-cid-etsyzymg><p class="hint" data-astro-cid-etsyzymg>Search is available after the site is built (`npm run build && npm run preview`).</p></div></dialog><script type="module" src="/The-Web-Interview-Playbook/_astro/SearchModal.astro_astro_type_script_index_0_lang.Cx4GfOgE.js"></script><button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme" data-astro-cid-l6lhmie6><span class="icon-sun" aria-hidden="true" data-astro-cid-l6lhmie6>☀️</span><span class="icon-moon" aria-hidden="true" data-astro-cid-l6lhmie6>🌙</span></button><script type="module">document.getElementById(`theme-toggle`)?.addEventListener(`click`,()=>{let e=document.documentElement,t=e.dataset.theme===`dark`?`light`:`dark`;e.dataset.theme=t;try{localStorage.setItem(`theme`,t)}catch{}});</script></div></header><div id="nav-backdrop" aria-hidden="true" data-astro-cid-z4jru4n3></div><div class="shell" data-astro-cid-z4jru4n3><aside class="sidebar" aria-label="All sections" data-astro-cid-wv7whodv><nav data-astro-cid-wv7whodv><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/" data-astro-cid-wv7whodv>Start Here</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/answer-frameworks/" data-astro-cid-wv7whodv>Answer Frameworks</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/how-to-use-this-repo/" data-astro-cid-wv7whodv>How to Use This Repository</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/interview-mindset/" data-astro-cid-wv7whodv>Interview Mindset</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/last-7-days-plan/" data-astro-cid-wv7whodv>Last 7 Days Plan</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/" data-astro-cid-wv7whodv>HTML &amp; CSS</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/topics-not-to-miss/" data-astro-cid-wv7whodv>HTML &amp; CSS: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/interview-questions/" data-astro-cid-wv7whodv>HTML &amp; CSS Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/mini-tasks/" data-astro-cid-wv7whodv>HTML &amp; CSS: Mini Tasks</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/common-mistakes/" data-astro-cid-wv7whodv>HTML &amp; CSS: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/revision-sheet/" data-astro-cid-wv7whodv>HTML &amp; CSS: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/mock-interview/" data-astro-cid-wv7whodv>HTML &amp; CSS: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/" data-astro-cid-wv7whodv>JavaScript Core</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/topics-not-to-miss/" data-astro-cid-wv7whodv>JavaScript Core: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/interview-questions/" data-astro-cid-wv7whodv>JavaScript Core Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/tricky-output-questions/" data-astro-cid-wv7whodv>JavaScript Core: Tricky Output Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/polyfills/" data-astro-cid-wv7whodv>JavaScript Core: Polyfills</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/coding-questions/" data-astro-cid-wv7whodv>JavaScript Core: Coding Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/common-mistakes/" data-astro-cid-wv7whodv>JavaScript Core: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/revision-sheet/" data-astro-cid-wv7whodv>JavaScript Core: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/mock-interview/" data-astro-cid-wv7whodv>JavaScript Core: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/" data-astro-cid-wv7whodv>JavaScript &amp; DOM</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/topics-not-to-miss/" data-astro-cid-wv7whodv>JavaScript DOM: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/interview-questions/" data-astro-cid-wv7whodv>JavaScript DOM Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/mini-dom-challenges/" data-astro-cid-wv7whodv>JavaScript DOM: Mini Challenges</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/project-style-questions/" data-astro-cid-wv7whodv>JavaScript DOM: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/revision-sheet/" data-astro-cid-wv7whodv>JavaScript DOM: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/mock-interview/" data-astro-cid-wv7whodv>JavaScript DOM: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/" data-astro-cid-wv7whodv>React</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/topics-not-to-miss/" data-astro-cid-wv7whodv>React: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/interview-questions/" data-astro-cid-wv7whodv>React Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/hooks-deep-dive/" data-astro-cid-wv7whodv>React Hooks: Deep Dive</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/performance/" data-astro-cid-wv7whodv>React: Performance</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/project-style-questions/" data-astro-cid-wv7whodv>React: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/common-mistakes/" data-astro-cid-wv7whodv>React: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/revision-sheet/" data-astro-cid-wv7whodv>React: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/mock-interview/" data-astro-cid-wv7whodv>React: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/" data-astro-cid-wv7whodv>Node &amp; Express</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/topics-not-to-miss/" data-astro-cid-wv7whodv>Node.js &amp; Express: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/interview-questions/" data-astro-cid-wv7whodv>Node.js &amp; Express Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/api-design/" data-astro-cid-wv7whodv>Node.js &amp; Express: API Design</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/auth-security/" data-astro-cid-wv7whodv>Node.js &amp; Express: Auth &amp; Security</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/project-style-questions/" data-astro-cid-wv7whodv>Node.js &amp; Express: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/common-mistakes/" data-astro-cid-wv7whodv>Node.js &amp; Express: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/revision-sheet/" data-astro-cid-wv7whodv>Node.js &amp; Express: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/mock-interview/" data-astro-cid-wv7whodv>Node.js &amp; Express: Mock Interview (45 Minutes)</a></li></ul></details><details open data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/" data-astro-cid-wv7whodv>Next.js</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/topics-not-to-miss/" data-astro-cid-wv7whodv>Next.js: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/interview-questions/" aria-current="page" data-astro-cid-wv7whodv>Next.js Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/rendering-patterns/" data-astro-cid-wv7whodv>Next.js: Rendering Patterns</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/project-style-questions/" data-astro-cid-wv7whodv>Next.js: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/revision-sheet/" data-astro-cid-wv7whodv>Next.js: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/mock-interview/" data-astro-cid-wv7whodv>Next.js: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/" data-astro-cid-wv7whodv>System Design</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/interview-questions/" data-astro-cid-wv7whodv>System Design Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/revision-sheet/" data-astro-cid-wv7whodv>System Design: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/mock-interview/" data-astro-cid-wv7whodv>System Design: Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/backend-system-design/" data-astro-cid-wv7whodv>Backend System Design</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/design-a-chat-app/" data-astro-cid-wv7whodv>Design a Chat App (Student-Level Walkthrough)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/design-a-social-media-app/" data-astro-cid-wv7whodv>Design a Social Media App (Student-Level Walkthrough)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/design-a-url-shortener/" data-astro-cid-wv7whodv>Design a URL Shortener (Student-Level Walkthrough)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/frontend-system-design/" data-astro-cid-wv7whodv>Frontend System Design</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/fundamentals/" data-astro-cid-wv7whodv>System Design Fundamentals (Student Level)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/" data-astro-cid-wv7whodv>Project Interview Bible</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/api-design/" data-astro-cid-wv7whodv>Explaining API Design in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/performance/" data-astro-cid-wv7whodv>Explaining Performance in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/architecture/" data-astro-cid-wv7whodv>Explaining Your Project Architecture</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/authentication/" data-astro-cid-wv7whodv>Explaining Authentication in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/challenges-and-tradeoffs/" data-astro-cid-wv7whodv>Challenges and Tradeoffs in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/database-design/" data-astro-cid-wv7whodv>Explaining Database Design in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/deployment/" data-astro-cid-wv7whodv>Explaining Deployment in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/future-improvements/" data-astro-cid-wv7whodv>Future Improvements for Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/how-to-explain-your-project/" data-astro-cid-wv7whodv>How to Explain Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/mock-project-interview/" data-astro-cid-wv7whodv>Project Interview: Mock Practice (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/project-question-bank/" data-astro-cid-wv7whodv>Project Interview Question Bank</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/sample-project-explanations/" data-astro-cid-wv7whodv>Sample Project Explanations</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/security/" data-astro-cid-wv7whodv>Explaining Security in Your Project</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/" data-astro-cid-wv7whodv>HR Interviews</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/behavioral-questions/" data-astro-cid-wv7whodv>Behavioral Interview Questions (STAR Format)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/common-hr-questions/" data-astro-cid-wv7whodv>Common HR Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/how-to-answer-tell-me-about-yourself/" data-astro-cid-wv7whodv>How to Answer &quot;Tell Me About Yourself&quot;</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/mock-hr-interview/" data-astro-cid-wv7whodv>HR Interview: Mock Practice (30 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/" data-astro-cid-wv7whodv>Mock Interview Kits</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/backend-round/" data-astro-cid-wv7whodv>Backend (Node/Express) Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/evaluation-rubric/" data-astro-cid-wv7whodv>Mock Interview Evaluation Rubric</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/fullstack-round/" data-astro-cid-wv7whodv>Full-Stack Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/html-css-round/" data-astro-cid-wv7whodv>HTML &amp; CSS Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/javascript-round/" data-astro-cid-wv7whodv>JavaScript Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/react-round/" data-astro-cid-wv7whodv>React Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/system-design-round/" data-astro-cid-wv7whodv>System Design Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/" data-astro-cid-wv7whodv>Interview Patterns</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/architecture-questions/" data-astro-cid-wv7whodv>Architecture Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/comparison-questions/" data-astro-cid-wv7whodv>X vs Y Comparison Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/debugging-questions/" data-astro-cid-wv7whodv>Debugging Scenario Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/project-defense-questions/" data-astro-cid-wv7whodv>Project Defense Question Patterns</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/top-why-questions/" data-astro-cid-wv7whodv>Top &quot;Why&quot; Interview Questions</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/12-interview-experiences/" data-astro-cid-wv7whodv>Interview Experiences</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/12-interview-experiences/experience-template/" data-astro-cid-wv7whodv>Interview Experience Template</a></li></ul></details></nav></aside><main id="main-content" data-pagefind-body="true" data-astro-cid-z4jru4n3><div class="doc-shell" data-astro-cid-n67f4zmd><details class="toc-inline" data-astro-cid-n67f4zmd><summary data-astro-cid-n67f4zmd>On this page</summary><ul data-astro-cid-n67f4zmd><li data-astro-cid-n67f4zmd><a href="#question-what-is-the-difference-between-ssr-ssg-and-csr" data-astro-cid-n67f4zmd>Question: What is the difference between SSR, SSG, and CSR?</a></li><li data-astro-cid-n67f4zmd><a href="#question-app-router-vs-pages-router--what-changed" data-astro-cid-n67f4zmd>Question: App Router vs Pages Router — what changed?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-does-file-based-routing-work-in-nextjs" data-astro-cid-n67f4zmd>Question: How does file-based routing work in Next.js?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-does-getserversideprops-do-in-the-pages-router" data-astro-cid-n67f4zmd>Question: What does getServerSideProps do in the Pages Router?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-does-getstaticprops-do" data-astro-cid-n67f4zmd>Question: What does getStaticProps do?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-generatestaticparams-in-the-app-router" data-astro-cid-n67f4zmd>Question: What is generateStaticParams in the App Router?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-react-server-components-in-nextjs" data-astro-cid-n67f4zmd>Question: What are React Server Components in Next.js?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-client-components" data-astro-cid-n67f4zmd>Question: What are Client Components?</a></li><li data-astro-cid-n67f4zmd><a href="#question-when-do-you-need-use-client-at-the-top-of-a-file" data-astro-cid-n67f4zmd>Question: When do you need ‘use client’ at the top of a file?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-common-data-fetching-patterns-in-nextjs-app-router" data-astro-cid-n67f4zmd>Question: What are common data fetching patterns in Next.js App Router?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-api-routes--route-handlers-work" data-astro-cid-n67f4zmd>Question: How do API routes / Route Handlers work?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-middlewarets-in-nextjs" data-astro-cid-n67f4zmd>Question: What is middleware.ts in Next.js?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-does-nextimage-optimize-images" data-astro-cid-n67f4zmd>Question: How does next/image optimize images?</a></li><li data-astro-cid-n67f4zmd><a href="#question-why-use-the-nextjs-link-component" data-astro-cid-n67f4zmd>Question: Why use the Next.js Link component?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-metadata-and-seo-work-in-the-app-router" data-astro-cid-n67f4zmd>Question: How do metadata and SEO work in the App Router?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-layouttsx-and-how-do-nested-layouts-work" data-astro-cid-n67f4zmd>Question: What is layout.tsx and how do nested layouts work?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-loadingtsx" data-astro-cid-n67f4zmd>Question: What is loading.tsx?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-errortsx" data-astro-cid-n67f4zmd>Question: What is error.tsx?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-environment-variables-work-in-nextjs" data-astro-cid-n67f4zmd>Question: How do environment variables work in Next.js?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-deploy-nextjs-on-vercel" data-astro-cid-n67f4zmd>Question: How do you deploy Next.js on Vercel?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-isr-incremental-static-regeneration" data-astro-cid-n67f4zmd>Question: What is ISR (Incremental Static Regeneration)?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-dynamic-routes-work" data-astro-cid-n67f4zmd>Question: How do dynamic routes work?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-catch-all-and-optional-catch-all-routes" data-astro-cid-n67f4zmd>Question: What are catch-all and optional catch-all routes?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-does-nextfont-help-performance" data-astro-cid-n67f4zmd>Question: How does next/font help performance?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-nextscript-for" data-astro-cid-n67f4zmd>Question: What is next/script for?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-hydration-and-what-problems-can-occur" data-astro-cid-n67f4zmd>Question: What is hydration and what problems can occur?</a></li><li data-astro-cid-n67f4zmd><a href="#question-when-should-you-choose-nextjs-for-a-project" data-astro-cid-n67f4zmd>Question: When should you choose Next.js for a project?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-the-main-tradeoffs-of-using-nextjs" data-astro-cid-n67f4zmd>Question: What are the main tradeoffs of using Next.js?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-the-pages-router-api-routes-pattern" data-astro-cid-n67f4zmd>Question: What is the Pages Router API routes pattern?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-does-revalidation-work-in-the-app-router" data-astro-cid-n67f4zmd>Question: How does revalidation work in the App Router?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-server-actions" data-astro-cid-n67f4zmd>Question: What are Server Actions?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-the-not-foundtsx-convention" data-astro-cid-n67f4zmd>Question: What is the not-found.tsx convention?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-dynamic--force-static-and-force-dynamic-affect-routes" data-astro-cid-n67f4zmd>Question: How do dynamic = ‘force-static’ and ‘force-dynamic’ affect routes?</a></li></ul></details><article class="prose" data-astro-cid-n67f4zmd><p class="crumbs" data-astro-cid-n67f4zmd><a href="/The-Web-Interview-Playbook/06-nextjs/" data-astro-cid-n67f4zmd>Next.js</a> <span class="fresh-badge" tabindex="0" aria-describedby="fresh-tip-06-nextjs-interview-questions" data-astro-cid-crdmdfjq>⚡ Recently updated<span class="tooltip" role="tooltip" id="fresh-tip-06-nextjs-interview-questions" data-astro-cid-crdmdfjq>Updated on Jun 30, 2026 — this content may still be evolving.</span></span></p><h1 id="nextjs-interview-questions">Next.js Interview Questions</h1>
+<blockquote>
+<p>30+ questions with full answers. Practice out loud.</p>
+</blockquote>
+<hr>
+<h2 id="question-what-is-the-difference-between-ssr-ssg-and-csr">Question: What is the difference between SSR, SSG, and CSR?</h2>
+<h3 id="difficulty">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this">Why Interviewers Ask This</h3>
+<p>Rendering strategy defines performance, SEO, and complexity — core Next.js literacy.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>CSR: browser fetches JS and renders (SPA). SSR: server renders HTML per request (dynamic, fresh). SSG: HTML built at build time (fast CDN, great for static content). Next.js supports all; pick per page needs.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>SSG: blog posts | SSR: personalized dashboard | CSR: heavy client-only widgets</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>What is ISR?</li>
+<li>Hydration in each?</li>
+<li>TTFB vs TTI tradeoffs?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>SSR everything by default</li>
+<li>SSG for highly personalized pages</li>
+<li>Ignoring SEO needs</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Label each route in your app as SSR/SSG/CSR and why.</p>
+</div></details><hr>
+<h2 id="question-app-router-vs-pages-router--what-changed">Question: App Router vs Pages Router — what changed?</h2>
+<h3 id="difficulty-1">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-1">Why Interviewers Ask This</h3>
+<p>Modern Next jobs expect App Router; you must know both migration paths.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Pages Router (pages/): getServerSideProps, getStaticProps, file-based pages. App Router (app/): React Server Components, layouts, nested loading/error, colocated data fetching with async server components.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pages/index.js  vs  app/page.tsx</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Can you mix both?</li>
+<li>Default in new projects?</li>
+<li>Routing differences?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Using pages patterns in app dir</li>
+<li>Client fetching what server components could do</li>
+<li>Ignoring layout.tsx</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Say which router your portfolio uses and one benefit of App Router.</p>
+</div></details><hr>
+<h2 id="question-how-does-file-based-routing-work-in-nextjs">Question: How does file-based routing work in Next.js?</h2>
+<h3 id="difficulty-2">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-2">Why Interviewers Ask This</h3>
+<p>No separate route config — folder structure is the API.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Folders define routes; page.tsx (App) or index.js (Pages) is the UI. layout.tsx wraps segments. Dynamic [id], catch-all […slug], route groups (folder) don’t affect URL.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>app/blog/[slug]/page.tsx  →  /blog/hello-world</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Optional catch-all?</li>
+<li>private folders _folder?</li>
+<li>parallel routes?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Wrong file names (Page.tsx)</li>
+<li>Multiple page in one segment</li>
+<li>Confusing app vs pages paths</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Walk through your app’s folder tree for two URLs.</p>
+</div></details><hr>
+<h2 id="question-what-does-getserversideprops-do-in-the-pages-router">Question: What does getServerSideProps do in the Pages Router?</h2>
+<h3 id="difficulty-3">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-3">Why Interviewers Ask This</h3>
+<p>Legacy but still in brownfield codebases and interviews.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Runs on every request on the server, fetches data, passes props to page. Use for personalized or always-fresh data. Cannot be used with static export.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#35A77C;--shiki-dark:#83C092">export</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> async</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> function</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> getServerSideProps</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">()</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">  const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> data</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> =</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> fetch</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">...</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  return</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> props</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> data</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> }</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> };</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>vs getStaticProps?</li>
+<li>Context object?</li>
+<li>Redirects/notFound?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Fetching in useEffect instead when SSR needed</li>
+<li>Heavy work blocking TTFB</li>
+<li>Secrets leaked to client in props</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>If you learned App Router only, explain equivalent async Server Component fetch.</p>
+</div></details><hr>
+<h2 id="question-what-does-getstaticprops-do">Question: What does getStaticProps do?</h2>
+<h3 id="difficulty-4">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-4">Why Interviewers Ask This</h3>
+<p>Static generation is a major Next selling point for marketing sites and docs.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Runs at build time, generates static HTML/JSON. Props passed to page. revalidate enables ISR. Great when data changes infrequently.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#35A77C;--shiki-dark:#83C092">export</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> async</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> function</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> getStaticProps</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">()</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  return</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> props</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> posts</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> },</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> revalidate</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 60</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> };</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>getStaticPaths?</li>
+<li>fallback true?</li>
+<li>Build time with 10k pages?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>SSG for user-specific data</li>
+<li>No revalidate when content changes hourly</li>
+<li>Fetching private data at build</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Use SSG for a projects list page with weekly updates.</p>
+</div></details><hr>
+<h2 id="question-what-is-generatestaticparams-in-the-app-router">Question: What is generateStaticParams in the App Router?</h2>
+<h3 id="difficulty-5">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-5">Why Interviewers Ask This</h3>
+<p>App Router equivalent of getStaticPaths for dynamic segments.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Returns list of param objects to pre-render at build time for dynamic routes. Can combine with dynamic segments and revalidate for ISR.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">export</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> async</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> function</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> generateStaticParams</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">()</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">  const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> posts</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> =</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> getPosts</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">();</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  return</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> posts</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">map</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(p</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> =></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> ({</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> slug</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> p</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">slug</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> }));</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>dynamic = ‘force-static’?</li>
+<li>Empty array behavior?</li>
+<li>With catch-all routes?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Forgetting async params in page</li>
+<li>Not handling new slugs after build</li>
+<li>Duplicate fetches in page and generateStaticParams</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Pre-render top 100 blog slugs; rest on demand.</p>
+</div></details><hr>
+<h2 id="question-what-are-react-server-components-in-nextjs">Question: What are React Server Components in Next.js?</h2>
+<h3 id="difficulty-6">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-6">Why Interviewers Ask This</h3>
+<p>Default in App Router — changes where JS ships to the client.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Server Components render on server only; not shipped as client JS. Can async fetch DB directly. Cannot use hooks or browser APIs. Compose with Client Components for interactivity.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// app/users/page.tsx — Server Component by default</span></span>
+<span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">export</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> default</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> async</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> function</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> Page</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">()</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">  const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> users</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> =</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> db</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">users</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">findMany</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">();</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  return</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> &#x3C;</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">ul</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">>{</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">users</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">map</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">...</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">}&#x3C;/</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">ul</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Serialization boundaries?</li>
+<li>Passing functions to client?</li>
+<li>RSC payload?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>‘use client’ on every file</li>
+<li>Fetching secret APIs from client unnecessarily</li>
+<li>Huge props to client components</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Fetch data in server page; pass serializable props to a small client chart.</p>
+</div></details><hr>
+<h2 id="question-what-are-client-components">Question: What are Client Components?</h2>
+<h3 id="difficulty-7">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-7">Why Interviewers Ask This</h3>
+<p>Interactivity requires client — interviewers check you know the split.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Marked with ‘use client’. Run in browser, support useState, useEffect, event handlers. Import Server Components as children where allowed. Keep boundary small.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'use client'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">export</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> function</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> Counter</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">()</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">  const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> [n,</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> setN]</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> =</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> useState</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">0</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  return</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> &#x3C;</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">button</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> onClick</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">{</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">()</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> =></span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> setN</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(n</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">+</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">1</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">}>{</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">n</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">}&#x3C;/</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">button</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Can server import client?</li>
+<li>Bundle size impact?</li>
+<li>Third-party libs?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Entire page client for one button</li>
+<li>use client deep in tree unnecessarily</li>
+<li>Secrets in client components</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Split: server shell + client interactive form.</p>
+</div></details><hr>
+<h2 id="question-when-do-you-need-use-client-at-the-top-of-a-file">Question: When do you need ‘use client’ at the top of a file?</h2>
+<h3 id="difficulty-8">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-8">Why Interviewers Ask This</h3>
+<p>Boundary mistakes cause build errors or bloated bundles.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Required when using React hooks, browser APIs, event listeners, or state. First line of file. Only that module and its imports become client — not parent server files.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'use client'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">import</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { useState } </span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">from</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'react'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Re-export server component?</li>
+<li>‘use client’ in layout?</li>
+<li>Transitive client boundary?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>use client in server-only data file</li>
+<li>Forgetting directive when adding useState</li>
+<li>Marking layout client collapsing RSC benefits</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Add ‘use client’ only to modal with onClick, not parent page.</p>
+</div></details><hr>
+<h2 id="question-what-are-common-data-fetching-patterns-in-nextjs-app-router">Question: What are common data fetching patterns in Next.js App Router?</h2>
+<h3 id="difficulty-9">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-9">Why Interviewers Ask This</h3>
+<p>Where and when you fetch affects caching, security, and UX.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Server Components: async fetch with default caching; fetch options next: { revalidate }. Server Actions for mutations. Client: SWR/React Query for highly interactive client cache. Route Handlers for REST.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> res </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> fetch</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(url, { next</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { revalidate</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 3600</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> } });</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>cache: ‘no-store’?</li>
+<li>Parallel routes fetching?</li>
+<li>Deduplication?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Client fetch for public SEO content</li>
+<li>No loading states</li>
+<li>Duplicate fetch in layout and page</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Describe one server fetch with revalidate for a product catalog.</p>
+</div></details><hr>
+<h2 id="question-how-do-api-routes--route-handlers-work">Question: How do API routes / Route Handlers work?</h2>
+<h3 id="difficulty-10">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-10">Why Interviewers Ask This</h3>
+<p>Backend in the same repo — auth webhooks, BFF pattern.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Pages: pages/api/*.ts exports default handler. App Router: app/api/route.ts exports GET, POST, etc. Run on server; access secrets; return Response/json.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// app/api/health/route.ts</span></span>
+<span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">export</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> async</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> function</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> GET</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">()</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  return</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> Response</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">json</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> ok</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> true</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> });</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Edge runtime?</li>
+<li>vs Server Actions?</li>
+<li>CORS in route handlers?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Heavy logic in route instead of service</li>
+<li>Exposing admin routes without auth</li>
+<li>Wrong HTTP method exports</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>BFF route that proxies to your Express API with server-only API key.</p>
+</div></details><hr>
+<h2 id="question-what-is-middlewarets-in-nextjs">Question: What is middleware.ts in Next.js?</h2>
+<h3 id="difficulty-11">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-11">Why Interviewers Ask This</h3>
+<p>Edge middleware for auth, redirects, geo — common interview topic.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Runs before request completes; on Edge by default. Rewrite, redirect, set headers, check cookies/JWT. matcher config limits paths. Not for heavy DB — keep fast.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">export</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> function</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> middleware</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(req)</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  if</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> (</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">!</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">req</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">cookies</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">get</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'session'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">))</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> return</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> NextResponse</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">redirect</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'/login'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span>
+<span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">export</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> config </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { matcher</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> [</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'/dashboard/:path*'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">] };</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>middleware vs route handler?</li>
+<li>Edge limitations?</li>
+<li>NextResponse?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Full DB lookup in middleware</li>
+<li>Matcher too broad slowing site</li>
+<li>Infinite redirect loops</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Protect /dashboard with cookie check in middleware.</p>
+</div></details><hr>
+<h2 id="question-how-does-nextimage-optimize-images">Question: How does next/image optimize images?</h2>
+<h3 id="difficulty-12">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-12">Why Interviewers Ask This</h3>
+<p>Performance and Core Web Vitals — Next provides built-in wins.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Serves responsive sizes, lazy loading, modern formats (WebP/AVIF) when configured, prevents layout shift with width/height. Requires remotePatterns for external domains.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">import</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> Image </span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">from</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'next/image'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">&#x3C;</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">Image</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> src</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">"/hero.jpg"</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> alt</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">""</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> width</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">{</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">1200</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">}</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> height</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">{</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">600</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">}</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> priority</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> /></span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>fill prop?</li>
+<li>placeholder blur?</li>
+<li>unoptimized?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Regular img for LCP hero</li>
+<li>Missing sizes for responsive</li>
+<li>Remote image without config</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Replace img tags on landing page with next/image.</p>
+</div></details><hr>
+<h2 id="question-why-use-the-nextjs-link-component">Question: Why use the Next.js Link component?</h2>
+<h3 id="difficulty-13">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-13">Why Interviewers Ask This</h3>
+<p>Client-side navigation without full reload — SPA feel with MPAs.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Link prefetches routes in viewport (production), does client-side transitions, accepts href and legacyBehavior notes in v13+. Use for internal navigation; <a> for external.</a></p><a>
+</a></div></details><details class="qa-reveal"><summary><a>Example</a></summary><div class="qa-reveal-body"><a>
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">import</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> Link </span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">from</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'next/link'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">&#x3C;</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">Link</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> href</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">"/about"</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">About</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">&#x3C;/</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">Link</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">></span></span></code></pre>
+</a></div></details><details class="qa-reveal"><summary><a>Follow-up Questions</a></summary><div class="qa-reveal-body"><a>
+<ul>
+<li>prefetch false?</li>
+<li>Link with button styles?</li>
+<li>App Router href rules?</li>
+</ul>
+</a></div></details><details class="qa-reveal"><summary><a>Common Mistakes</a></summary><div class="qa-reveal-body"><a>
+</a><ul><a>
+</a><li><a></a><a> for internal routes losing prefetch</a></li><a>
+<li>Nested interactive elements invalid HTML</li>
+<li>Wrong href with dynamic segments unencoded</li>
+</a></ul><a>
+</a></div></details><details class="qa-reveal"><summary><a>Project Connection</a></summary><div class="qa-reveal-body"><a>
+<p>Nav bar using Link for all internal routes.</p>
+</a></div></details><hr><a>
+<h2 id="question-how-do-metadata-and-seo-work-in-the-app-router">Question: How do metadata and SEO work in the App Router?</h2>
+<h3 id="difficulty-14">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-14">Why Interviewers Ask This</h3>
+<p>Marketing and content sites need correct titles, OG tags, robots.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Export metadata object or generateMetadata async in layout/page. Sets title, description, openGraph, twitter, robots. Server-only; reflects per route.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">export</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> metadata </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { title</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'Blog'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, description</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> '...'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> };</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>generateMetadata dynamic?</li>
+<li>metadataBase?</li>
+<li>JSON-LD?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Client component exporting metadata</li>
+<li>Duplicate titles in layout+page confusion</li>
+<li>Missing OG image</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Add generateMetadata for blog slug pages with post title.</p>
+</div></details><hr>
+<h2 id="question-what-is-layouttsx-and-how-do-nested-layouts-work">Question: What is layout.tsx and how do nested layouts work?</h2>
+<h3 id="difficulty-15">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-15">Why Interviewers Ask This</h3>
+<p>Shared UI and data boundaries without re-rendering children unnecessarily.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>layout.tsx wraps child segments; persists across navigation within segment. Root layout has html/body. Nested layouts for dashboard shell. Accept children and optional parallel slots.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">export</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> default</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> function</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> Layout</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> children</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> })</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  return</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> &#x3C;</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">section</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">>&#x3C;</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">Sidebar</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> />{</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">children</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">}&#x3C;/</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">section</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>layout vs template?</li>
+<li>Fetching in layout?</li>
+<li>Multiple root layouts?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Putting page-only state in layout</li>
+<li>Missing children render</li>
+<li>Client layout forcing all children client</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Dashboard layout with sidebar wrapping all /dashboard/* pages.</p>
+</div></details><hr>
+<h2 id="question-what-is-loadingtsx">Question: What is loading.tsx?</h2>
+<h3 id="difficulty-16">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-16">Why Interviewers Ask This</h3>
+<p>Streaming UI — better perceived performance during slow fetches.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Automatic Suspense boundary for route segment. Shows instant loading UI while server component data loads. Can nest per folder.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">export</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> default</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> function</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> Loading</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">()</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  return</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> &#x3C;</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">p</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">>Loading...&#x3C;/</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">p</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>loading vs suspense manual?</li>
+<li>Skeleton patterns?</li>
+<li>Affects SEO?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>One global spinner only</li>
+<li>Heavy loading component</li>
+<li>Confusing with client loading states</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Add skeleton loading.tsx for slow product list route.</p>
+</div></details><hr>
+<h2 id="question-what-is-errortsx">Question: What is error.tsx?</h2>
+<h3 id="difficulty-17">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-17">Why Interviewers Ask This</h3>
+<p>Error boundaries per segment — production resilience.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Client Component boundary catches errors in child segments. Shows fallback UI; reset() retries. error.js does not catch layout errors in same segment — place thoughtfully.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'use client'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">export</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> default</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> function</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> Error</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> error,</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> reset</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> })</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  return</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> &#x3C;</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">button</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> onClick</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">{</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">reset</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">}>Try again&#x3C;/</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">button</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>error vs global-error?</li>
+<li>Logging errors?</li>
+<li>notFound()?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>No error boundary</li>
+<li>Throwing in error.tsx</li>
+<li>Expecting to catch event handler errors</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>error.tsx on checkout with retry and support link.</p>
+</div></details><hr>
+<h2 id="question-how-do-environment-variables-work-in-nextjs">Question: How do environment variables work in Next.js?</h2>
+<h3 id="difficulty-18">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-18">Why Interviewers Ask This</h3>
+<p>NEXT_PUBLIC_ exposure rules trip people up in interviews.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Server-only vars without prefix. NEXT_PUBLIC_ inlined into client bundle — never put secrets there. Use .env.local, .env.production. Access process.env in server components and route handlers.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>DATABASE_URL=postgres://...</span></span>
+<span class="line"><span>NEXT_PUBLIC_API_URL=https://api.example.com</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Runtime env on Vercel?</li>
+<li>Edge vs Node env?</li>
+<li>.env loading order?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>NEXT_PUBLIC_DATABASE_URL</li>
+<li>Secrets in client fetch headers visible</li>
+<li>No .env.example</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>List which vars are server-only in your deployment.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-deploy-nextjs-on-vercel">Question: How do you deploy Next.js on Vercel?</h2>
+<h3 id="difficulty-19">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-19">Why Interviewers Ask This</h3>
+<p>Vercel created Next — deployment story is a common question.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Connect Git repo; auto builds on push. Detects Next config, serverless functions for API/route handlers, edge for middleware. Set env vars in dashboard. Preview deployments per PR.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">git</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> push</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> origin</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> main</span><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">  # triggers production deploy</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Self-hosting?</li>
+<li>Docker?</li>
+<li>Build output standalone?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Wrong Node version</li>
+<li>Missing env in preview</li>
+<li>Ignoring build errors in CI</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Describe your Vercel project settings and preview URL workflow.</p>
+</div></details><hr>
+<h2 id="question-what-is-isr-incremental-static-regeneration">Question: What is ISR (Incremental Static Regeneration)?</h2>
+<h3 id="difficulty-20">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-20">Why Interviewers Ask This</h3>
+<p>Best of static + fresh content without full rebuilds.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Serve cached static page, after revalidate seconds regenerate in background on next request. Pages Router: revalidate in getStaticProps. App Router: fetch revalidate or route segment config.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">return</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { props</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { data }, revalidate</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 60</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> };</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>On-demand revalidation?</li>
+<li>stale-while-revalidate behavior?</li>
+<li>ISR vs SSR cost?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>revalidate 0 misunderstanding</li>
+<li>ISR for highly sensitive real-time data</li>
+<li>No cache invalidation strategy</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>News homepage revalidates every 60 seconds.</p>
+</div></details><hr>
+<h2 id="question-how-do-dynamic-routes-work">Question: How do dynamic routes work?</h2>
+<h3 id="difficulty-21">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-21">Why Interviewers Ask This</h3>
+<p>Params drive product pages, user profiles, etc.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Bracket folder [id] or [slug]. Page receives params (async in App Router 15). generateStaticParams prebuilds subset; dynamicParams controls unknown paths.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">export</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> default</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> async</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> function</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> Page</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> params</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> })</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">  const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> id</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> }</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> =</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> params;</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Optional segments [[id]]?</li>
+<li>Type-safe params?</li>
+<li>generateStaticParams?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Not awaiting params in Next 15</li>
+<li>No notFound() for missing id</li>
+<li>Slug injection</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Product page at /products/[sku] with DB lookup.</p>
+</div></details><hr>
+<h2 id="question-what-are-catch-all-and-optional-catch-all-routes">Question: What are catch-all and optional catch-all routes?</h2>
+<h3 id="difficulty-22">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-22">Why Interviewers Ask This</h3>
+<p>Docs sites and CMS paths use […slug] patterns.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Catch-all […slug] matches one or more segments. Optional [[…slug]] matches zero or more. params.slug is array of segments.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>app/docs/[...slug]/page.tsx  →  /docs/a/b/c</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Difference from dynamic single?</li>
+<li>Priority with static routes?</li>
+<li>i18n routing?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Wrong bracket count</li>
+<li>Not handling empty slug</li>
+<li>Conflicting routes</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Docs site where all paths under /docs/* render one page component.</p>
+</div></details><hr>
+<h2 id="question-how-does-nextfont-help-performance">Question: How does next/font help performance?</h2>
+<h3 id="difficulty-23">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-23">Why Interviewers Ask This</h3>
+<p>Font loading affects CLS and privacy — Next optimizes self-hosting.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Downloads and self-hosts Google/fonts at build time, no layout shift with size-adjust, subsets, CSS variables for Tailwind integration.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">import</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { Inter } </span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">from</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'next/font/google'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> inter </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> Inter</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ subsets</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> [</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'latin'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">] });</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>localFont?</li>
+<li>Variable fonts?</li>
+<li>FOIT/FOUT?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>External Google link in head instead</li>
+<li>Loading too many weights</li>
+<li>Wrong className application</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Apply next/font in root layout for body text.</p>
+</div></details><hr>
+<h2 id="question-what-is-nextscript-for">Question: What is next/script for?</h2>
+<h3 id="difficulty-24">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-24">Why Interviewers Ask This</h3>
+<p>Third-party scripts (analytics, chat) hurt performance without strategy.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Loads external scripts with strategy: afterInteractive, lazyOnload, beforeInteractive, worker. Avoids blocking main thread unnecessarily.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">import</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> Script </span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">from</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'next/script'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">&#x3C;</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">Script</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> src</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">"https://analytics.example.com/script.js"</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> strategy</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">"afterInteractive"</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> /></span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Partytown?</li>
+<li>Inline scripts?</li>
+<li>GDPR/consent?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Raw script in head for analytics</li>
+<li>beforeInteractive everywhere</li>
+<li>Duplicate script loads</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Load analytics with afterInteractive after consent.</p>
+</div></details><hr>
+<h2 id="question-what-is-hydration-and-what-problems-can-occur">Question: What is hydration and what problems can occur?</h2>
+<h3 id="difficulty-25">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-25">Why Interviewers Ask This</h3>
+<p>Mismatch errors confuse juniors — senior interviews probe causes.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Hydration attaches React event listeners to server HTML. Mismatch if server HTML !== client first render (Date.now, random, browser-only APIs in SSR). Fix: render same on server/client or use useEffect for client-only bits.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// bad: {typeof window !== 'undefined' &#x26;&#x26; ...} causing mismatch</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>suppressHydrationWarning?</li>
+<li>Streaming hydration?</li>
+<li>RSC reducing hydration?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Math.random in SSR markup</li>
+<li>Invalid HTML nesting (p inside p)</li>
+<li>Extensions modifying DOM</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Fix a hydration warning from rendering locale date on server vs client.</p>
+</div></details><hr>
+<h2 id="question-when-should-you-choose-nextjs-for-a-project">Question: When should you choose Next.js for a project?</h2>
+<h3 id="difficulty-26">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-26">Why Interviewers Ask This</h3>
+<p>Shows judgment, not hype — tradeoffs matter.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Choose when you need SEO, mixed rendering (SSG/SSR), file-based routing, image/font optimizations, or full-stack React with API routes. Skip for purely internal SPA with no SEO and simple hosting needs.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Marketing + app + blog → Next | Admin SPA only → maybe Vite</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Next vs Remix?</li>
+<li>Next vs Astro?</li>
+<li>Mobile app?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Next for everything</li>
+<li>Ignoring team familiarity</li>
+<li>Overkill for static 3-page site without using SSG</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Defend why your portfolio is Next vs CRA/Vite.</p>
+</div></details><hr>
+<h2 id="question-what-are-the-main-tradeoffs-of-using-nextjs">Question: What are the main tradeoffs of using Next.js?</h2>
+<h3 id="difficulty-27">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-27">Why Interviewers Ask This</h3>
+<p>Balanced answer beats fanboyism.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Pros: rendering flexibility, ecosystem, Vercel integration, conventions. Cons: complexity (RSC, caching), vendor coupling perception, build times at scale, learning curve, deployment opinions.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Caching mental model + server/client split = learning cost</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Lock-in?</li>
+<li>Cold starts?</li>
+<li>Monorepo?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Ignoring caching surprises</li>
+<li>Assuming all pages must be server components</li>
+<li>No static export when needed</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Name one thing that surprised you learning App Router caching.</p>
+</div></details><hr>
+<h2 id="question-what-is-the-pages-router-api-routes-pattern">Question: What is the Pages Router API routes pattern?</h2>
+<h3 id="difficulty-28">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-28">Why Interviewers Ask This</h3>
+<p>Legacy APIs still appear in tutorials and older code.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>File in pages/api/hello.js exports default function handler(req, res). Method check on req.method. res.status(200).json({}).</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#35A77C;--shiki-dark:#83C092">export</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> default</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> function</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> handler</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(req,</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> res)</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  if</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> (req</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">method</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> ===</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'GET'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> res</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">status</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">200</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">json</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> ok</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> true</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> });</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Body parsing?</li>
+<li>Edge API routes?</li>
+<li>Migration to route.ts?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>No method guard</li>
+<li>CORS not set for external callers</li>
+<li>Mixing App and Pages API paths confusingly</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Compare pages/api to app/api/route.ts in your words.</p>
+</div></details><hr>
+<h2 id="question-how-does-revalidation-work-in-the-app-router">Question: How does revalidation work in the App Router?</h2>
+<h3 id="difficulty-29">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-29">Why Interviewers Ask This</h3>
+<p>Cache control is the hardest part of modern Next — interviewers love it.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Time-based: fetch { next: { revalidate: N } } or export const revalidate = N. On-demand: revalidatePath/revalidateTag after mutations (Server Actions or route handlers).</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">import</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { revalidatePath } </span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">from</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'next/cache'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">revalidatePath</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'/posts'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>cache tags?</li>
+<li>no-store?</li>
+<li>dynamic = ‘force-dynamic’?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Expecting instant updates with long revalidate</li>
+<li>Not tagging related fetches</li>
+<li>force-dynamic everywhere killing performance</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>After creating a post, call revalidatePath(‘/blog’).</p>
+</div></details><hr>
+<h2 id="question-what-are-server-actions">Question: What are Server Actions?</h2>
+<h3 id="difficulty-30">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-30">Why Interviewers Ask This</h3>
+<p>Mutations without manual API route boilerplate — App Router feature.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>‘use server’ functions called from forms or events; run on server; integrate with revalidation. Progressive enhancement with form action.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'use server'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">export</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> async</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> function</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> createPost</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(formData)</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  await</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> db</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">post</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">create</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">...</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">  revalidatePath</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'/blog'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Security CSRF?</li>
+<li>vs Route Handlers?</li>
+<li>Serialization?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Exposing sensitive logic without auth check</li>
+<li>Large payloads via actions</li>
+<li>Mixing client and server files wrongly</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Contact form submitting via Server Action instead of client POST.</p>
+</div></details><hr>
+<h2 id="question-what-is-the-not-foundtsx-convention">Question: What is the not-found.tsx convention?</h2>
+<h3 id="difficulty-31">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-31">Why Interviewers Ask This</h3>
+<p>Proper 404 UX per segment.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Call notFound() in server component when resource missing; renders not-found.tsx in that segment. HTTP 404. Can be nested per route.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">import</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { notFound } </span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">from</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'next/navigation'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">if</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> (</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">!</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">post) </span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">notFound</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">();</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>notFound vs error?</li>
+<li>global not-found?</li>
+<li>Metadata on 404?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>return null instead of 404</li>
+<li>Generic site-wide 404 only</li>
+<li>notFound in client component incorrectly</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Product page calls notFound() when SKU missing.</p>
+</div></details><hr>
+<h2 id="question-how-do-dynamic--force-static-and-force-dynamic-affect-routes">Question: How do dynamic = ‘force-static’ and ‘force-dynamic’ affect routes?</h2>
+<h3 id="difficulty-32">Difficulty</h3>
+<p>🔴 Hard</p>
+<h3 id="why-interviewers-ask-this-32">Why Interviewers Ask This</h3>
+<p>Explicit cache control for tricky routes.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>export const dynamic = ‘force-dynamic’ opts out of static caching — always server-render. force-static forces static where possible. Use when defaults guess wrong.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">export</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> dynamic </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'force-dynamic'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Relation to fetch cache?</li>
+<li>cookies() forcing dynamic?</li>
+<li>generateStaticParams interaction?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>force-dynamic everywhere</li>
+<li>Surprised cookies opt into dynamic</li>
+<li>Not documenting why override set</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Dashboard with cookies uses dynamic; marketing page stays static.</p>
+</div></details><hr></a><nav class="pager" data-astro-cid-n67f4zmd><a class="pager-link" href="/The-Web-Interview-Playbook/06-nextjs/topics-not-to-miss/" data-astro-cid-n67f4zmd>← Next.js: Topics Not to Miss</a><a class="pager-link next" href="/The-Web-Interview-Playbook/06-nextjs/rendering-patterns/" data-astro-cid-n67f4zmd>Next.js: Rendering Patterns →</a></nav></article><nav class="toc" aria-label="Table of contents" data-astro-cid-td5y3ttw><p class="toc-title" data-astro-cid-td5y3ttw>On this page</p><ul data-astro-cid-td5y3ttw><li data-astro-cid-td5y3ttw><a href="#question-what-is-the-difference-between-ssr-ssg-and-csr" data-astro-cid-td5y3ttw>Question: What is the difference between SSR, SSG, and CSR?</a></li><li data-astro-cid-td5y3ttw><a href="#question-app-router-vs-pages-router--what-changed" data-astro-cid-td5y3ttw>Question: App Router vs Pages Router — what changed?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-does-file-based-routing-work-in-nextjs" data-astro-cid-td5y3ttw>Question: How does file-based routing work in Next.js?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-does-getserversideprops-do-in-the-pages-router" data-astro-cid-td5y3ttw>Question: What does getServerSideProps do in the Pages Router?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-does-getstaticprops-do" data-astro-cid-td5y3ttw>Question: What does getStaticProps do?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-generatestaticparams-in-the-app-router" data-astro-cid-td5y3ttw>Question: What is generateStaticParams in the App Router?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-react-server-components-in-nextjs" data-astro-cid-td5y3ttw>Question: What are React Server Components in Next.js?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-client-components" data-astro-cid-td5y3ttw>Question: What are Client Components?</a></li><li data-astro-cid-td5y3ttw><a href="#question-when-do-you-need-use-client-at-the-top-of-a-file" data-astro-cid-td5y3ttw>Question: When do you need ‘use client’ at the top of a file?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-common-data-fetching-patterns-in-nextjs-app-router" data-astro-cid-td5y3ttw>Question: What are common data fetching patterns in Next.js App Router?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-api-routes--route-handlers-work" data-astro-cid-td5y3ttw>Question: How do API routes / Route Handlers work?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-middlewarets-in-nextjs" data-astro-cid-td5y3ttw>Question: What is middleware.ts in Next.js?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-does-nextimage-optimize-images" data-astro-cid-td5y3ttw>Question: How does next/image optimize images?</a></li><li data-astro-cid-td5y3ttw><a href="#question-why-use-the-nextjs-link-component" data-astro-cid-td5y3ttw>Question: Why use the Next.js Link component?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-metadata-and-seo-work-in-the-app-router" data-astro-cid-td5y3ttw>Question: How do metadata and SEO work in the App Router?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-layouttsx-and-how-do-nested-layouts-work" data-astro-cid-td5y3ttw>Question: What is layout.tsx and how do nested layouts work?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-loadingtsx" data-astro-cid-td5y3ttw>Question: What is loading.tsx?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-errortsx" data-astro-cid-td5y3ttw>Question: What is error.tsx?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-environment-variables-work-in-nextjs" data-astro-cid-td5y3ttw>Question: How do environment variables work in Next.js?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-deploy-nextjs-on-vercel" data-astro-cid-td5y3ttw>Question: How do you deploy Next.js on Vercel?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-isr-incremental-static-regeneration" data-astro-cid-td5y3ttw>Question: What is ISR (Incremental Static Regeneration)?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-dynamic-routes-work" data-astro-cid-td5y3ttw>Question: How do dynamic routes work?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-catch-all-and-optional-catch-all-routes" data-astro-cid-td5y3ttw>Question: What are catch-all and optional catch-all routes?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-does-nextfont-help-performance" data-astro-cid-td5y3ttw>Question: How does next/font help performance?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-nextscript-for" data-astro-cid-td5y3ttw>Question: What is next/script for?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-hydration-and-what-problems-can-occur" data-astro-cid-td5y3ttw>Question: What is hydration and what problems can occur?</a></li><li data-astro-cid-td5y3ttw><a href="#question-when-should-you-choose-nextjs-for-a-project" data-astro-cid-td5y3ttw>Question: When should you choose Next.js for a project?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-the-main-tradeoffs-of-using-nextjs" data-astro-cid-td5y3ttw>Question: What are the main tradeoffs of using Next.js?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-the-pages-router-api-routes-pattern" data-astro-cid-td5y3ttw>Question: What is the Pages Router API routes pattern?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-does-revalidation-work-in-the-app-router" data-astro-cid-td5y3ttw>Question: How does revalidation work in the App Router?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-server-actions" data-astro-cid-td5y3ttw>Question: What are Server Actions?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-the-not-foundtsx-convention" data-astro-cid-td5y3ttw>Question: What is the not-found.tsx convention?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-dynamic--force-static-and-force-dynamic-affect-routes" data-astro-cid-td5y3ttw>Question: How do dynamic = ‘force-static’ and ‘force-dynamic’ affect routes?</a></li></ul></nav></div></main></div><script type="module">var e=document.getElementById(`nav-toggle`),t=document.getElementById(`nav-backdrop`),n=document.documentElement;function r(){n.dataset.navOpen=`true`,e.setAttribute(`aria-expanded`,`true`),document.body.style.overflow=`hidden`}function i(){delete n.dataset.navOpen,e.setAttribute(`aria-expanded`,`false`),document.body.style.overflow=``}e?.addEventListener(`click`,()=>{n.dataset.navOpen===`true`?i():r()}),t?.addEventListener(`click`,i),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&n.dataset.navOpen===`true`&&i()}),document.querySelector(`.shell`)?.addEventListener(`click`,e=>{e.target.closest(`aside.sidebar a`)&&n.dataset.navOpen===`true`&&i()});</script><script type="module" src="/The-Web-Interview-Playbook/_astro/BaseLayout.astro_astro_type_script_index_1_lang.Cw7dNugz.js"></script></body></html>

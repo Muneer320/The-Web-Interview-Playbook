@@ -1,0 +1,1062 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-z4jru4n3><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Interactive web dev interview preparation"><title>Node.js &amp; Express Interview Questions · Web Interview Playbook</title><script>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem('theme'); } catch {}
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script><link rel="stylesheet" href="/The-Web-Interview-Playbook/_astro/BaseLayout.Dl7qG8Ba.css"><style>.fresh-badge[data-astro-cid-crdmdfjq]{color:var(--fresh);background:var(--fresh-bg);cursor:default;border-radius:999px;align-items:center;gap:.3rem;padding:.28rem .65rem;font-size:.78rem;font-weight:600;line-height:1;transition:box-shadow .15s;display:inline-flex;position:relative}.fresh-badge[data-astro-cid-crdmdfjq]:hover,.fresh-badge[data-astro-cid-crdmdfjq]:focus-visible{box-shadow:0 0 0 1px color-mix(in srgb, var(--fresh) 45%, transparent)}.tooltip[data-astro-cid-crdmdfjq]{z-index:20;background:var(--surface);width:max-content;max-width:260px;color:var(--text);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 4px 16px color-mix(in srgb, var(--text) 20%, transparent);opacity:0;pointer-events:none;padding:.5rem .7rem;font-size:.78rem;font-weight:400;line-height:1.45;transition:opacity .12s,transform .12s;position:absolute;top:calc(100% + 6px);left:0;transform:translateY(-2px)}.fresh-badge[data-astro-cid-crdmdfjq]:hover .tooltip[data-astro-cid-crdmdfjq],.fresh-badge[data-astro-cid-crdmdfjq]:focus .tooltip[data-astro-cid-crdmdfjq],.fresh-badge[data-astro-cid-crdmdfjq]:focus-visible .tooltip[data-astro-cid-crdmdfjq]{opacity:1;transform:translateY(0)}.status-banner[data-astro-cid-c4lk2q6h]{background:var(--warn-bg);color:var(--warn);border:1px solid color-mix(in srgb, var(--warn) 35%, transparent);border-radius:var(--radius);align-items:center;gap:.5rem;margin-bottom:1.75rem;padding:.65rem 1rem;font-size:.9rem;font-weight:500;display:flex}.prose{max-width:var(--content-width)}.prose h1{letter-spacing:-.02em;margin:0 0 1rem;font-size:clamp(1.5rem,4vw,2rem);line-height:1.2}.prose h2{border-top:2px dashed var(--border);letter-spacing:-.01em;margin:2rem 0 .75rem;padding-top:1.25rem;scroll-margin-top:4.5rem;font-size:clamp(1.15rem,2.5vw,1.35rem)}.prose h3{color:var(--text);margin:1.5rem 0 .5rem;scroll-margin-top:4.5rem;font-size:clamp(.95rem,2vw,1.05rem)}.prose p,.prose li{color:var(--text)}.prose ul,.prose ol{padding-left:1.4rem}@media (width<=600px){.prose ul,.prose ol{padding-left:1.1rem}}.prose li+li{margin-top:.35rem}.prose strong{font-weight:700}.prose blockquote{border-left:3px solid var(--accent-2);color:var(--text-muted);background:var(--surface-2);border-radius:0 var(--radius) var(--radius) 0;overflow-wrap:break-word;word-wrap:break-word;margin:1rem 0;padding:.35rem 1rem}@media (width<=600px){.prose blockquote{margin:.75rem 0;padding:.35rem .75rem}}.prose table{border-collapse:collapse;width:100%;font-size:.9rem;display:block;overflow-x:auto}@media (width<=600px){.prose table{font-size:.82rem}}.prose th,.prose td{border:1px solid var(--border);text-align:left;padding:.5rem .75rem}@media (width<=600px){.prose th,.prose td{padding:.35rem .5rem}}.prose th{background:var(--surface-2);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.05em;font-size:.78rem}.prose hr{border:none;border-top:2px dashed var(--border);margin:2.5rem 0}.prose img{border-radius:var(--radius);max-width:100%}
+.toc[data-astro-cid-td5y3ttw]{border-left:1px solid var(--border);flex-shrink:0;width:220px;max-height:calc(100vh - 6rem);padding-left:1rem;font-size:.83rem;position:sticky;top:4.5rem;overflow-y:auto}.toc-title[data-astro-cid-td5y3ttw]{text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0 0 .75rem;font-size:.72rem}ul[data-astro-cid-td5y3ttw]{margin:0;padding:0;list-style:none}li[data-astro-cid-td5y3ttw]{margin:.4rem 0}a[data-astro-cid-td5y3ttw]{color:var(--text-muted);line-height:1.4;transition:color .12s;display:block}a[data-astro-cid-td5y3ttw]:hover,a[data-astro-cid-td5y3ttw]:focus-visible{color:var(--accent);text-decoration:none}@media (width<=1300px){.toc[data-astro-cid-td5y3ttw]{display:none}}.doc-shell[data-astro-cid-n67f4zmd]{justify-content:center;gap:2rem;display:flex}.crumbs[data-astro-cid-n67f4zmd]{align-items:center;gap:.75rem;margin-bottom:.5rem;font-size:.85rem;display:flex}.crumbs[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]{color:var(--text-muted);font-weight:500}.crumbs[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]:hover{color:var(--accent);text-decoration:none}.pager[data-astro-cid-n67f4zmd]{justify-content:space-between;gap:1rem;margin-top:3.5rem;display:flex}.pager-link[data-astro-cid-n67f4zmd]{border:1px solid var(--border);border-radius:var(--radius);max-width:45%;color:var(--text);padding:.7rem 1rem;font-size:.88rem;transition:border-color .15s,color .15s;display:block}.pager-link[data-astro-cid-n67f4zmd].next{text-align:right;margin-left:auto}.pager-link[data-astro-cid-n67f4zmd]:hover,.pager-link[data-astro-cid-n67f4zmd]:focus-visible{border-color:var(--accent);color:var(--accent);text-decoration:none}.toc-inline[data-astro-cid-n67f4zmd]{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface-2);max-width:var(--content-width);width:100%;margin-bottom:.5rem;padding:.5rem .8rem;font-size:.85rem;display:none}.toc-inline[data-astro-cid-n67f4zmd] summary[data-astro-cid-n67f4zmd]{cursor:pointer;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);padding:.15rem 0;font-size:.72rem;font-weight:600;list-style:none}.toc-inline[data-astro-cid-n67f4zmd] summary[data-astro-cid-n67f4zmd]:before{content:"▸ ";font-size:.7rem}.toc-inline[data-astro-cid-n67f4zmd][open] summary[data-astro-cid-n67f4zmd]:before{content:"▾ "}.toc-inline[data-astro-cid-n67f4zmd] ul[data-astro-cid-n67f4zmd]{gap:.2rem;margin:.5rem 0 0;padding:0;list-style:none;display:grid}.toc-inline[data-astro-cid-n67f4zmd] li[data-astro-cid-n67f4zmd]{margin:0}.toc-inline[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]{color:var(--text-muted);border-radius:6px;padding:.35rem .5rem;transition:color .12s;display:block}.toc-inline[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]:hover,.toc-inline[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]:focus-visible{color:var(--text);background:var(--surface);text-decoration:none}@media (width<=1300px){.toc-inline[data-astro-cid-n67f4zmd]{display:block}}@media (width<=600px){.pager[data-astro-cid-n67f4zmd]{flex-direction:column;gap:.5rem}.pager-link[data-astro-cid-n67f4zmd]{max-width:100%}.pager-link[data-astro-cid-n67f4zmd].next{text-align:left;margin-left:0}}
+.sidebar[data-astro-cid-wv7whodv]{border-right:1px solid var(--border);background:var(--bg);z-index:20;flex-shrink:0;width:260px;height:calc(100vh - 3.2rem);padding:1.25rem .9rem;font-size:.86rem;position:sticky;top:3.2rem;overflow-y:auto}summary[data-astro-cid-wv7whodv]{cursor:pointer;padding:.3rem .4rem;font-weight:600;list-style:none}summary[data-astro-cid-wv7whodv]:before{content:"▸ ";color:var(--text-muted);font-size:.7rem}details[data-astro-cid-wv7whodv][open] summary[data-astro-cid-wv7whodv]:before{content:"▾ "}summary[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv]{color:var(--text)}ul[data-astro-cid-wv7whodv]{margin:0 0 .5rem;padding:0 0 0 1.1rem;list-style:none}li[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv]{color:var(--text-muted);border-radius:6px;padding:.22rem .5rem;display:block}li[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv]:hover{color:var(--text);background:var(--surface-2);text-decoration:none}li[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv][aria-current=page]{color:var(--accent);background:var(--surface-2);font-weight:600}@media (width<=900px){.sidebar[data-astro-cid-wv7whodv]{border-right:1px solid var(--border);width:280px;height:calc(100vh - 3.2rem);box-shadow:4px 0 24px -12px color-mix(in srgb, var(--text) 25%, transparent);transition:transform .25s;position:fixed;top:3.2rem;left:0;overflow-y:auto;transform:translate(-100%)}html[data-nav-open=true] .sidebar[data-astro-cid-wv7whodv]{transform:translate(0)}}
+</style></head><body data-astro-cid-z4jru4n3><a class="skip-link" href="#main-content" data-astro-cid-z4jru4n3>Skip to content</a><header class="site-header" data-astro-cid-z4jru4n3><a class="brand" href="/The-Web-Interview-Playbook/" data-astro-cid-z4jru4n3><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" data-astro-cid-z4jru4n3><circle cx="6.5" cy="17.5" r="3.4" data-astro-cid-z4jru4n3></circle><path d="M15 15 l6 6 m0 -6 l-6 6" data-astro-cid-z4jru4n3></path><path d="M8 13 C 10 7, 14 8, 18 5.5" stroke-dasharray="3.5 3" data-astro-cid-z4jru4n3></path></svg><span class="brand-text" data-astro-cid-z4jru4n3>Web Interview <strong data-astro-cid-z4jru4n3>Playbook</strong></span></a><div class="header-actions" data-astro-cid-z4jru4n3><button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-astro-cid-z4jru4n3><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" data-astro-cid-z4jru4n3><path class="nav-line-top" d="M4 7 L20 7" data-astro-cid-z4jru4n3></path><path class="nav-line-mid" d="M4 12 L20 12" data-astro-cid-z4jru4n3></path><path class="nav-line-bot" d="M4 17 L20 17" data-astro-cid-z4jru4n3></path></svg></button><button id="search-open" aria-label="Search (Cmd+K)" title="Search" data-astro-cid-etsyzymg><span aria-hidden="true" data-astro-cid-etsyzymg>🔍</span> <kbd data-astro-cid-etsyzymg>⌘K</kbd></button><dialog id="search-dialog" aria-label="Search the playbook" data-astro-cid-etsyzymg><div id="pagefind-container" data-astro-cid-etsyzymg><p class="hint" data-astro-cid-etsyzymg>Search is available after the site is built (`npm run build && npm run preview`).</p></div></dialog><script type="module" src="/The-Web-Interview-Playbook/_astro/SearchModal.astro_astro_type_script_index_0_lang.Cx4GfOgE.js"></script><button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme" data-astro-cid-l6lhmie6><span class="icon-sun" aria-hidden="true" data-astro-cid-l6lhmie6>☀️</span><span class="icon-moon" aria-hidden="true" data-astro-cid-l6lhmie6>🌙</span></button><script type="module">document.getElementById(`theme-toggle`)?.addEventListener(`click`,()=>{let e=document.documentElement,t=e.dataset.theme===`dark`?`light`:`dark`;e.dataset.theme=t;try{localStorage.setItem(`theme`,t)}catch{}});</script></div></header><div id="nav-backdrop" aria-hidden="true" data-astro-cid-z4jru4n3></div><div class="shell" data-astro-cid-z4jru4n3><aside class="sidebar" aria-label="All sections" data-astro-cid-wv7whodv><nav data-astro-cid-wv7whodv><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/" data-astro-cid-wv7whodv>Start Here</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/answer-frameworks/" data-astro-cid-wv7whodv>Answer Frameworks</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/how-to-use-this-repo/" data-astro-cid-wv7whodv>How to Use This Repository</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/interview-mindset/" data-astro-cid-wv7whodv>Interview Mindset</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/last-7-days-plan/" data-astro-cid-wv7whodv>Last 7 Days Plan</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/" data-astro-cid-wv7whodv>HTML &amp; CSS</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/topics-not-to-miss/" data-astro-cid-wv7whodv>HTML &amp; CSS: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/interview-questions/" data-astro-cid-wv7whodv>HTML &amp; CSS Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/mini-tasks/" data-astro-cid-wv7whodv>HTML &amp; CSS: Mini Tasks</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/common-mistakes/" data-astro-cid-wv7whodv>HTML &amp; CSS: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/revision-sheet/" data-astro-cid-wv7whodv>HTML &amp; CSS: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/mock-interview/" data-astro-cid-wv7whodv>HTML &amp; CSS: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/" data-astro-cid-wv7whodv>JavaScript Core</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/topics-not-to-miss/" data-astro-cid-wv7whodv>JavaScript Core: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/interview-questions/" data-astro-cid-wv7whodv>JavaScript Core Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/tricky-output-questions/" data-astro-cid-wv7whodv>JavaScript Core: Tricky Output Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/polyfills/" data-astro-cid-wv7whodv>JavaScript Core: Polyfills</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/coding-questions/" data-astro-cid-wv7whodv>JavaScript Core: Coding Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/common-mistakes/" data-astro-cid-wv7whodv>JavaScript Core: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/revision-sheet/" data-astro-cid-wv7whodv>JavaScript Core: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/mock-interview/" data-astro-cid-wv7whodv>JavaScript Core: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/" data-astro-cid-wv7whodv>JavaScript &amp; DOM</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/topics-not-to-miss/" data-astro-cid-wv7whodv>JavaScript DOM: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/interview-questions/" data-astro-cid-wv7whodv>JavaScript DOM Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/mini-dom-challenges/" data-astro-cid-wv7whodv>JavaScript DOM: Mini Challenges</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/project-style-questions/" data-astro-cid-wv7whodv>JavaScript DOM: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/revision-sheet/" data-astro-cid-wv7whodv>JavaScript DOM: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/mock-interview/" data-astro-cid-wv7whodv>JavaScript DOM: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/" data-astro-cid-wv7whodv>React</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/topics-not-to-miss/" data-astro-cid-wv7whodv>React: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/interview-questions/" data-astro-cid-wv7whodv>React Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/hooks-deep-dive/" data-astro-cid-wv7whodv>React Hooks: Deep Dive</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/performance/" data-astro-cid-wv7whodv>React: Performance</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/project-style-questions/" data-astro-cid-wv7whodv>React: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/common-mistakes/" data-astro-cid-wv7whodv>React: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/revision-sheet/" data-astro-cid-wv7whodv>React: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/mock-interview/" data-astro-cid-wv7whodv>React: Mock Interview (45 Minutes)</a></li></ul></details><details open data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/" data-astro-cid-wv7whodv>Node &amp; Express</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/topics-not-to-miss/" data-astro-cid-wv7whodv>Node.js &amp; Express: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/interview-questions/" aria-current="page" data-astro-cid-wv7whodv>Node.js &amp; Express Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/api-design/" data-astro-cid-wv7whodv>Node.js &amp; Express: API Design</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/auth-security/" data-astro-cid-wv7whodv>Node.js &amp; Express: Auth &amp; Security</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/project-style-questions/" data-astro-cid-wv7whodv>Node.js &amp; Express: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/common-mistakes/" data-astro-cid-wv7whodv>Node.js &amp; Express: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/revision-sheet/" data-astro-cid-wv7whodv>Node.js &amp; Express: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/mock-interview/" data-astro-cid-wv7whodv>Node.js &amp; Express: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/" data-astro-cid-wv7whodv>Next.js</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/topics-not-to-miss/" data-astro-cid-wv7whodv>Next.js: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/interview-questions/" data-astro-cid-wv7whodv>Next.js Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/rendering-patterns/" data-astro-cid-wv7whodv>Next.js: Rendering Patterns</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/project-style-questions/" data-astro-cid-wv7whodv>Next.js: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/revision-sheet/" data-astro-cid-wv7whodv>Next.js: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/mock-interview/" data-astro-cid-wv7whodv>Next.js: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/" data-astro-cid-wv7whodv>System Design</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/interview-questions/" data-astro-cid-wv7whodv>System Design Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/revision-sheet/" data-astro-cid-wv7whodv>System Design: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/mock-interview/" data-astro-cid-wv7whodv>System Design: Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/backend-system-design/" data-astro-cid-wv7whodv>Backend System Design</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/design-a-chat-app/" data-astro-cid-wv7whodv>Design a Chat App (Student-Level Walkthrough)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/design-a-social-media-app/" data-astro-cid-wv7whodv>Design a Social Media App (Student-Level Walkthrough)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/design-a-url-shortener/" data-astro-cid-wv7whodv>Design a URL Shortener (Student-Level Walkthrough)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/frontend-system-design/" data-astro-cid-wv7whodv>Frontend System Design</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/fundamentals/" data-astro-cid-wv7whodv>System Design Fundamentals (Student Level)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/" data-astro-cid-wv7whodv>Project Interview Bible</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/api-design/" data-astro-cid-wv7whodv>Explaining API Design in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/performance/" data-astro-cid-wv7whodv>Explaining Performance in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/architecture/" data-astro-cid-wv7whodv>Explaining Your Project Architecture</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/authentication/" data-astro-cid-wv7whodv>Explaining Authentication in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/challenges-and-tradeoffs/" data-astro-cid-wv7whodv>Challenges and Tradeoffs in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/database-design/" data-astro-cid-wv7whodv>Explaining Database Design in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/deployment/" data-astro-cid-wv7whodv>Explaining Deployment in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/future-improvements/" data-astro-cid-wv7whodv>Future Improvements for Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/how-to-explain-your-project/" data-astro-cid-wv7whodv>How to Explain Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/mock-project-interview/" data-astro-cid-wv7whodv>Project Interview: Mock Practice (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/project-question-bank/" data-astro-cid-wv7whodv>Project Interview Question Bank</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/sample-project-explanations/" data-astro-cid-wv7whodv>Sample Project Explanations</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/security/" data-astro-cid-wv7whodv>Explaining Security in Your Project</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/" data-astro-cid-wv7whodv>HR Interviews</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/behavioral-questions/" data-astro-cid-wv7whodv>Behavioral Interview Questions (STAR Format)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/common-hr-questions/" data-astro-cid-wv7whodv>Common HR Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/how-to-answer-tell-me-about-yourself/" data-astro-cid-wv7whodv>How to Answer &quot;Tell Me About Yourself&quot;</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/mock-hr-interview/" data-astro-cid-wv7whodv>HR Interview: Mock Practice (30 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/" data-astro-cid-wv7whodv>Mock Interview Kits</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/backend-round/" data-astro-cid-wv7whodv>Backend (Node/Express) Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/evaluation-rubric/" data-astro-cid-wv7whodv>Mock Interview Evaluation Rubric</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/fullstack-round/" data-astro-cid-wv7whodv>Full-Stack Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/html-css-round/" data-astro-cid-wv7whodv>HTML &amp; CSS Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/javascript-round/" data-astro-cid-wv7whodv>JavaScript Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/react-round/" data-astro-cid-wv7whodv>React Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/system-design-round/" data-astro-cid-wv7whodv>System Design Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/" data-astro-cid-wv7whodv>Interview Patterns</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/architecture-questions/" data-astro-cid-wv7whodv>Architecture Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/comparison-questions/" data-astro-cid-wv7whodv>X vs Y Comparison Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/debugging-questions/" data-astro-cid-wv7whodv>Debugging Scenario Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/project-defense-questions/" data-astro-cid-wv7whodv>Project Defense Question Patterns</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/top-why-questions/" data-astro-cid-wv7whodv>Top &quot;Why&quot; Interview Questions</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/12-interview-experiences/" data-astro-cid-wv7whodv>Interview Experiences</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/12-interview-experiences/experience-template/" data-astro-cid-wv7whodv>Interview Experience Template</a></li></ul></details></nav></aside><main id="main-content" data-pagefind-body="true" data-astro-cid-z4jru4n3><div class="doc-shell" data-astro-cid-n67f4zmd><details class="toc-inline" data-astro-cid-n67f4zmd><summary data-astro-cid-n67f4zmd>On this page</summary><ul data-astro-cid-n67f4zmd><li data-astro-cid-n67f4zmd><a href="#question-what-is-nodejs-and-how-does-its-architecture-work" data-astro-cid-n67f4zmd>Question: What is Node.js and how does its architecture work?</a></li><li data-astro-cid-n67f4zmd><a href="#question-explain-the-nodejs-event-loop" data-astro-cid-n67f4zmd>Question: Explain the Node.js event loop.</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-commonjs-and-es-modules-work-in-node" data-astro-cid-n67f4zmd>Question: How do CommonJS and ES modules work in Node?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-npm-and-how-do-packagejson-fields-matter" data-astro-cid-n67f4zmd>Question: What is npm and how do package.json fields matter?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-express-and-why-is-it-used" data-astro-cid-n67f4zmd>Question: What is Express and why is it used?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-middleware-in-express" data-astro-cid-n67f4zmd>Question: What is middleware in Express?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-does-routing-work-in-express" data-astro-cid-n67f4zmd>Question: How does routing work in Express?</a></li><li data-astro-cid-n67f4zmd><a href="#question-explain-the-req-and-res-objects-in-express" data-astro-cid-n67f4zmd>Question: Explain the req and res objects in Express.</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-design-a-rest-api-in-express" data-astro-cid-n67f4zmd>Question: How do you design a REST API in Express?</a></li><li data-astro-cid-n67f4zmd><a href="#question-which-http-status-codes-should-a-node-api-return" data-astro-cid-n67f4zmd>Question: Which HTTP status codes should a Node API return?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-implement-error-handling-middleware-in-express" data-astro-cid-n67f4zmd>Question: How do you implement error-handling middleware in Express?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-does-body-parser--expressjson-do" data-astro-cid-n67f4zmd>Question: What does body-parser / express.json do?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-enable-and-configure-cors-in-express" data-astro-cid-n67f4zmd>Question: How do you enable and configure CORS in Express?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-environment-variables-work-in-node" data-astro-cid-n67f4zmd>Question: How do environment variables work in Node?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-dotenv-and-when-should-you-use-it" data-astro-cid-n67f4zmd>Question: What is dotenv and when should you use it?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-does-jwt-authentication-work-in-an-express-api" data-astro-cid-n67f4zmd>Question: How does JWT authentication work in an Express API?</a></li><li data-astro-cid-n67f4zmd><a href="#question-why-use-bcrypt-for-passwords" data-astro-cid-n67f4zmd>Question: Why use bcrypt for passwords?</a></li><li data-astro-cid-n67f4zmd><a href="#question-sessions-vs-jwt--when-to-use-which" data-astro-cid-n67f4zmd>Question: Sessions vs JWT — when to use which?</a></li><li data-astro-cid-n67f4zmd><a href="#question-mongodb-and-mongoose-basics-for-node-apis" data-astro-cid-n67f4zmd>Question: MongoDB and Mongoose basics for Node APIs.</a></li><li data-astro-cid-n67f4zmd><a href="#question-sql-basics-when-using-node-with-postgresqlmysql" data-astro-cid-n67f4zmd>Question: SQL basics when using Node with PostgreSQL/MySQL.</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-connection-pooling-and-why-use-it" data-astro-cid-n67f4zmd>Question: What is connection pooling and why use it?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-does-the-mvc-pattern-apply-to-express-apps" data-astro-cid-n67f4zmd>Question: How does the MVC pattern apply to Express apps?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-validate-request-data-in-express" data-astro-cid-n67f4zmd>Question: How do you validate request data in Express?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-handle-file-uploads-in-express" data-astro-cid-n67f4zmd>Question: How do you handle file uploads in Express?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-streaming-in-node-and-when-use-it" data-astro-cid-n67f4zmd>Question: What is streaming in Node and when use it?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-the-cluster-module-in-node" data-astro-cid-n67f4zmd>Question: What is the cluster module in Node?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-child-processes-in-node" data-astro-cid-n67f4zmd>Question: What are child processes in Node?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-buffers-in-node" data-astro-cid-n67f4zmd>Question: What are Buffers in Node?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-the-path-and-fs-modules-help-in-node" data-astro-cid-n67f4zmd>Question: How do the path and fs modules help in Node?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-secure-an-express-api-with-helmet-and-rate-limiting" data-astro-cid-n67f4zmd>Question: How do you secure an Express API with Helmet and rate limiting?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-should-you-approach-logging-in-a-node-api" data-astro-cid-n67f4zmd>Question: How should you approach logging in a Node API?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-test-express-apis" data-astro-cid-n67f4zmd>Question: How do you test Express APIs?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-deployment-basics-for-a-nodeexpress-app" data-astro-cid-n67f4zmd>Question: What are deployment basics for a Node/Express app?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-does-async-programming-work-in-node" data-astro-cid-n67f4zmd>Question: How does async programming work in Node?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-callback-hell-and-how-do-you-avoid-it" data-astro-cid-n67f4zmd>Question: What is callback hell and how do you avoid it?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-prevent-sql-injection-in-node" data-astro-cid-n67f4zmd>Question: How do you prevent SQL injection in Node?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-can-xss-affect-the-backend-and-how-do-you-mitigate" data-astro-cid-n67f4zmd>Question: How can XSS affect the backend and how do you mitigate?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-implement-pagination-in-apis" data-astro-cid-n67f4zmd>Question: How do you implement pagination in APIs?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-version-a-rest-api" data-astro-cid-n67f4zmd>Question: How do you version a REST API?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-processenvnode_env-used-for" data-astro-cid-n67f4zmd>Question: What is process.env.NODE_ENV used for?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-the-difference-between-libuv-thread-pool-and-worker-threads" data-astro-cid-n67f4zmd>Question: What is the difference between libuv thread pool and worker threads?</a></li></ul></details><article class="prose" data-astro-cid-n67f4zmd><p class="crumbs" data-astro-cid-n67f4zmd><a href="/The-Web-Interview-Playbook/05-node-express/" data-astro-cid-n67f4zmd>Node &amp; Express</a> <span class="fresh-badge" tabindex="0" aria-describedby="fresh-tip-05-node-express-interview-questions" data-astro-cid-crdmdfjq>⚡ Recently updated<span class="tooltip" role="tooltip" id="fresh-tip-05-node-express-interview-questions" data-astro-cid-crdmdfjq>Updated on Jun 30, 2026 — this content may still be evolving.</span></span></p><h1 id="nodejs--express-interview-questions">Node.js &#x26; Express Interview Questions</h1>
+<blockquote>
+<p>40+ questions with full answers. Practice out loud.</p>
+</blockquote>
+<hr>
+<h2 id="question-what-is-nodejs-and-how-does-its-architecture-work">Question: What is Node.js and how does its architecture work?</h2>
+<h3 id="difficulty">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this">Why Interviewers Ask This</h3>
+<p>They want to know you understand Node is not a language or framework — it’s a runtime.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Node.js is a JavaScript runtime built on Chrome’s V8 engine. It runs JS outside the browser using libuv for async I/O, an event loop, and a thread pool for blocking work. Single-threaded for JS execution, but handles concurrency via non-blocking I/O.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// server.js</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> http </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> require</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'http'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">http</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">createServer</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">((req, res) </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> res</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">end</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'OK'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">))</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">listen</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">3000</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>How does Node differ from browser JS?</li>
+<li>What is libuv?</li>
+<li>Is Node multi-threaded?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Saying Node is multi-threaded for all JS code</li>
+<li>Confusing Node with Express</li>
+<li>Ignoring the event loop</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Explain your API project as: V8 runs your JS, libuv handles sockets and disk I/O.</p>
+</div></details><hr>
+<h2 id="question-explain-the-nodejs-event-loop">Question: Explain the Node.js event loop.</h2>
+<h3 id="difficulty-1">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-1">Why Interviewers Ask This</h3>
+<p>Core concurrency model — senior interviews dig here when APIs stall or CPU spikes.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>The event loop processes callbacks in phases: timers, pending callbacks, idle/prepare, poll (I/O), check, close. Microtasks (promises, queueMicrotask) run between phases. Long synchronous CPU work blocks the entire loop.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">setTimeout</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(() </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'timer'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">), </span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">0</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#3A94C5;--shiki-dark:#7FBBB3">Promise</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">resolve</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">()</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">then</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(() </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'microtask'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">));</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'sync'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// sync, microtask, timer</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>What is the thread pool?</li>
+<li>process.nextTick vs setImmediate?</li>
+<li>How do you avoid blocking the loop?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Thinking setTimeout(0) runs before promises</li>
+<li>Running heavy JSON parse on every request on main thread</li>
+<li>Using sync fs in production hot paths</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>If your Express server froze under load, mention checking for sync crypto or large loops on the main thread.</p>
+</div></details><hr>
+<h2 id="question-how-do-commonjs-and-es-modules-work-in-node">Question: How do CommonJS and ES modules work in Node?</h2>
+<h3 id="difficulty-2">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-2">Why Interviewers Ask This</h3>
+<p>Every real codebase picks a module system; mixing them wrong breaks builds.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>CommonJS uses require/module.exports (default in older Node). ESM uses import/export; enable via .mjs or “type”: “module” in package.json. ESM is static, enables tree-shaking; CJS is dynamic require().</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// CommonJS</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> fs </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> require</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'fs'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#35A77C;--shiki-dark:#83C092">module</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#35A77C;--shiki-dark:#83C092">exports</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> =</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { read</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> fs</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">readFile };</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// ESM</span></span>
+<span class="line"><span style="--shiki-light:#35A77C;--shiki-dark:#83C092">import</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> fs </span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">from</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'fs'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#35A77C;--shiki-dark:#83C092">export</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> function</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> read</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(p)</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> return</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> fs</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">promises</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">readFile</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(p);</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> }</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Can you require ESM from CJS?</li>
+<li>What is __dirname in ESM?</li>
+<li>Dual package hazard?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Using import in a .js file without type module</li>
+<li>Mixing default export styles</li>
+<li>Circular requires without refactoring</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Match your project’s package.json type field when explaining how you structure routes and models.</p>
+</div></details><hr>
+<h2 id="question-what-is-npm-and-how-do-packagejson-fields-matter">Question: What is npm and how do package.json fields matter?</h2>
+<h3 id="difficulty-3">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-3">Why Interviewers Ask This</h3>
+<p>Daily tooling — they check you know dependencies vs devDependencies and scripts.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>npm is Node’s package manager. package.json lists metadata, scripts, dependencies (^semver ranges), and engines. package-lock.json pins exact versions for reproducible installs.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">{</span></span>
+<span class="line"><span style="--shiki-light:#939F91;--shiki-dark:#859289">  "</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">scripts</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">"</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { </span><span style="--shiki-light:#939F91;--shiki-dark:#859289">"</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">start</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">"</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#939F91;--shiki-dark:#859289"> "</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">node server.js</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">"</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">,</span><span style="--shiki-light:#939F91;--shiki-dark:#859289"> "</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">dev</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">"</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#939F91;--shiki-dark:#859289"> "</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">nodemon server.js</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">"</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> }</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">,</span></span>
+<span class="line"><span style="--shiki-light:#939F91;--shiki-dark:#859289">  "</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">dependencies</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">"</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { </span><span style="--shiki-light:#939F91;--shiki-dark:#859289">"</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">express</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">"</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#939F91;--shiki-dark:#859289"> "</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">^4.19.0</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">"</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> }</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">,</span></span>
+<span class="line"><span style="--shiki-light:#939F91;--shiki-dark:#859289">  "</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">devDependencies</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">"</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { </span><span style="--shiki-light:#939F91;--shiki-dark:#859289">"</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">jest</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">"</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#939F91;--shiki-dark:#859289"> "</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">^29.0.0</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">"</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> }</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>npm ci vs npm install?</li>
+<li>What does ^ mean?</li>
+<li>npx?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Committing node_modules</li>
+<li>Using * for versions in production</li>
+<li>No lockfile in CI</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Mention npm run dev and how lockfiles keep teammate machines consistent.</p>
+</div></details><hr>
+<h2 id="question-what-is-express-and-why-is-it-used">Question: What is Express and why is it used?</h2>
+<h3 id="difficulty-4">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-4">Why Interviewers Ask This</h3>
+<p>Baseline for backend Node roles — can you build HTTP APIs?</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Express is a minimal web framework for Node. It wraps http.createServer with routing, middleware pipeline, and helpers for req/res. Unopinionated — you choose DB, auth, structure.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> express </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> require</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'express'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> app </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> express</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">();</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">get</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'/health'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, (req, res) </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> res</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">json</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ ok</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> true</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> }));</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">listen</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">3000</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Express vs Fastify?</li>
+<li>Is Express still relevant?</li>
+<li>What is app.use?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Calling app.listen in every route file</li>
+<li>No error handling for async routes</li>
+<li>Huge monolithic app.js forever</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Frame your REST API as Express routes + middleware + a data layer.</p>
+</div></details><hr>
+<h2 id="question-what-is-middleware-in-express">Question: What is middleware in Express?</h2>
+<h3 id="difficulty-5">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-5">Why Interviewers Ask This</h3>
+<p>Middleware is how auth, logging, and parsing compose — central to Express design.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Middleware functions have (req, res, next). They run in order; call next() to pass control or end the response. Types: application-level, router-level, error-handling (4 args), built-in, third-party.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">use</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(express</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">json</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">());</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">use</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">((req, res, next) </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">  console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(req</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">method, req</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">url);</span></span>
+<span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">  next</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">();</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">});</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>What if you forget next()?</li>
+<li>Order of middleware?</li>
+<li>Async middleware errors?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Mounting auth after routes that need it</li>
+<li>Calling next() after res.send</li>
+<li>Not using error middleware</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Describe a logging middleware you added before protected /api routes.</p>
+</div></details><hr>
+<h2 id="question-how-does-routing-work-in-express">Question: How does routing work in Express?</h2>
+<h3 id="difficulty-6">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-6">Why Interviewers Ask This</h3>
+<p>REST design and clean URLs show up in every backend interview.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Routes map HTTP methods + paths to handlers. express.Router() groups routes. Path params (:id), optional chaining, and route-specific middleware keep APIs organized.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> router </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> express</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">Router</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">();</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">router</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">get</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'/users/:id'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, (req, res) </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">  res</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">json</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ id</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> req</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">params</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">id });</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">});</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">use</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'/api'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, router);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Route vs middleware?</li>
+<li>How to handle 404?</li>
+<li>app.all?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Duplicate route paths with different methods unordered</li>
+<li>No API prefix versioning</li>
+<li>Fat handlers with DB + validation inline</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Split users.routes.js and mount at /api/users — interviewers like modular structure.</p>
+</div></details><hr>
+<h2 id="question-explain-the-req-and-res-objects-in-express">Question: Explain the req and res objects in Express.</h2>
+<h3 id="difficulty-7">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-7">Why Interviewers Ask This</h3>
+<p>You must read input and send correct responses on real endpoints.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>req carries method, url, headers, query (req.query), body (after parser), params. res sends responses: status(), json(), send(), set headers, cookies. Extended from Node’s http.IncomingMessage/ServerResponse.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">post</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'/items'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, (req, res) </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">  const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> name </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> req</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">body</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">name;</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">  res</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">status</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">201</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">json</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ name });</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">});</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>req.body without middleware?</li>
+<li>Difference query vs params?</li>
+<li>res.locals?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Not validating req.body</li>
+<li>Sending 200 for errors</li>
+<li>Leaking stack traces in res.json</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Walk through POST /login reading email/password from body and returning JSON tokens.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-design-a-rest-api-in-express">Question: How do you design a REST API in Express?</h2>
+<h3 id="difficulty-8">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-8">Why Interviewers Ask This</h3>
+<p>Tests resource naming, HTTP verbs, and statelessness.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Use nouns for resources (/users, /users/:id), correct verbs (GET read, POST create, PUT/PATCH update, DELETE remove), consistent JSON, proper status codes, and versioning if needed. Keep handlers thin; delegate to services.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// GET /api/users, POST /api/users, GET /api/users/:id</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>REST vs GraphQL?</li>
+<li>When is POST idempotent?</li>
+<li>HATEOAS?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Verbs in URLs like /getUser</li>
+<li>Using GET to delete</li>
+<li>No pagination on lists</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Map your project’s CRUD endpoints to REST verbs and explain why.</p>
+</div></details><hr>
+<h2 id="question-which-http-status-codes-should-a-node-api-return">Question: Which HTTP status codes should a Node API return?</h2>
+<h3 id="difficulty-9">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-9">Why Interviewers Ask This</h3>
+<p>Wrong codes confuse clients and break monitoring.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Common: 200 OK, 201 Created, 204 No Content, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 409 Conflict, 422 Unprocessable, 429 Too Many Requests, 500 Internal Server Error.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">if</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> (</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">!</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">user) </span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">return</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> res</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">status</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">404</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">json</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ error</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'Not found'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> });</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">res</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">status</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">201</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">json</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(user);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>401 vs 403?</li>
+<li>When 204?</li>
+<li>502 vs 503?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Always 200 with { success: false }</li>
+<li>500 for validation errors</li>
+<li>404 for wrong auth</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Audit one endpoint and justify each status code you’d return.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-implement-error-handling-middleware-in-express">Question: How do you implement error-handling middleware in Express?</h2>
+<h3 id="difficulty-10">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-10">Why Interviewers Ask This</h3>
+<p>Unhandled errors crash requests or leak internals without a central handler.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Error middleware signature is (err, req, res, next) — four parameters. Place after routes. Sync errors need try/catch or wrappers; async errors must reach next(err) or use express-async-errors / wrapper.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">use</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">((err, req, res, next) </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">  console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">error</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(err);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">  res</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">status</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(err</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">status </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">||</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 500</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">json</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ error</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> err</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">message });</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">});</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Why 4 args?</li>
+<li>Handling unhandled promise rejections?</li>
+<li>Operational vs programmer errors?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>No error middleware at all</li>
+<li>Sending full err.stack in production</li>
+<li>Forgetting next(err) in async handlers</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Show a global handler that logs internally but returns safe messages to clients.</p>
+</div></details><hr>
+<h2 id="question-what-does-body-parser--expressjson-do">Question: What does body-parser / express.json do?</h2>
+<h3 id="difficulty-11">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-11">Why Interviewers Ask This</h3>
+<p>POST/PUT APIs fail mysteriously without parsing middleware.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>express.json() parses JSON bodies into req.body (built-in since Express 4.16). express.urlencoded() for forms. Set size limits to prevent huge payloads. Raw body needed for webhooks — use verify option.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">use</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(express</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">json</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ limit</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> '100kb'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> }));</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Content-Type requirements?</li>
+<li>multipart forms?</li>
+<li>Why limit body size?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Parsing before routes that need raw body</li>
+<li>Trusting req.body without validation</li>
+<li>No limit — DoS risk</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Mention validating JSON shape after parsing for your signup endpoint.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-enable-and-configure-cors-in-express">Question: How do you enable and configure CORS in Express?</h2>
+<h3 id="difficulty-12">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-12">Why Interviewers Ask This</h3>
+<p>Frontend on another origin will block API calls without CORS.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>CORS is browser-enforced. Server sends Access-Control-Allow-Origin and related headers. Use cors package: cors() for dev, or whitelist origins in production. Preflight OPTIONS for non-simple requests.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> cors </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> require</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'cors'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">use</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">cors</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ origin</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'https://myapp.com'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, credentials</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> true</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> }));</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Simple vs preflight?</li>
+<li>credentials with *?</li>
+<li>CORS on server-to-server?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>cors() wide open in production</li>
+<li>Forgetting credentials for cookies</li>
+<li>Only setting CORS on some routes</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>If React on localhost:5173 hits API on :3000, explain the headers you set.</p>
+</div></details><hr>
+<h2 id="question-how-do-environment-variables-work-in-node">Question: How do environment variables work in Node?</h2>
+<h3 id="difficulty-13">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-13">Why Interviewers Ask This</h3>
+<p>Secrets and config must not live in code — basic production hygiene.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>process.env holds env vars set by the shell, Docker, or hosting platform. Never commit secrets. Use different values per environment (development, staging, production).</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> port </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> process</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">env</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">PORT </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">||</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 3000</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>12-factor config?</li>
+<li>NODE_ENV?</li>
+<li>Validating env at startup?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Hardcoding API keys</li>
+<li>No default for PORT locally</li>
+<li>Reading env inside tight loops unnecessarily</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Describe PORT and DATABASE_URL coming from Railway/Render/Heroku-style hosting.</p>
+</div></details><hr>
+<h2 id="question-what-is-dotenv-and-when-should-you-use-it">Question: What is dotenv and when should you use it?</h2>
+<h3 id="difficulty-14">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-14">Why Interviewers Ask This</h3>
+<p>Local dev ergonomics vs production injection.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>dotenv loads .env into process.env at startup. Great for local development. In production, platforms inject env vars — don’t rely on .env files on disk. Add .env to .gitignore.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">require</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'dotenv'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">config</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">();</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> secret </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> process</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">env</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">JWT_SECRET;</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>dotenv in production?</li>
+<li>.env.example?</li>
+<li>Multiple env files?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Committing .env</li>
+<li>Calling config() in every file</li>
+<li>No validation that JWT_SECRET exists</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Show .env.example with placeholder keys for contributors.</p>
+</div></details><hr>
+<h2 id="question-how-does-jwt-authentication-work-in-an-express-api">Question: How does JWT authentication work in an Express API?</h2>
+<h3 id="difficulty-15">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-15">Why Interviewers Ask This</h3>
+<p>Stateless auth is standard for SPAs and mobile clients.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>User logs in; server signs a JWT with a secret/private key containing claims (sub, exp). Client sends Authorization: Bearer <token>. Middleware verifies signature and expiry, attaches user to req.</token></p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> token </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> jwt</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">sign</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ sub</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> user</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">id }, process</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">env</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">JWT_SECRET, { expiresIn</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> '1h'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> });</span></span>
+<span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// middleware: jwt.verify(token, secret)</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>JWT vs session cookie?</li>
+<li>Where to store tokens on client?</li>
+<li>Refresh tokens?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Storing passwords in JWT</li>
+<li>No exp claim</li>
+<li>Using alg none attacks — verify alg</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Explain login route issuing JWT and middleware protecting /api/profile.</p>
+</div></details><hr>
+<h2 id="question-why-use-bcrypt-for-passwords">Question: Why use bcrypt for passwords?</h2>
+<h3 id="difficulty-16">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-16">Why Interviewers Ask This</h3>
+<p>Storing plain or weakly hashed passwords is an instant fail.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>bcrypt hashes passwords with a salt and adaptive cost factor (rounds). Slow by design to resist brute force. Compare with bcrypt.compare; never store plaintext or reversible encryption.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> hash </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> bcrypt</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">hash</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(password, </span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">12</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> ok </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> bcrypt</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">compare</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(password, hash);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>bcrypt vs argon2?</li>
+<li>How many rounds?</li>
+<li>Pepper?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>MD5/SHA for passwords</li>
+<li>Same salt for all users manually wrong</li>
+<li>Logging passwords</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Walk through register hashing and login compare in your auth flow.</p>
+</div></details><hr>
+<h2 id="question-sessions-vs-jwt--when-to-use-which">Question: Sessions vs JWT — when to use which?</h2>
+<h3 id="difficulty-17">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-17">Why Interviewers Ask This</h3>
+<p>Architecture choice for auth — tradeoffs matter.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Sessions: server stores session state (memory/Redis), cookie holds session ID, easier revoke, more server state. JWT: stateless, scales horizontally, harder to revoke instantly, client holds token. SPAs often use JWT + refresh; traditional web apps often sessions.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// session: req.session.userId = user.id</span></span>
+<span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// JWT: Authorization header</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Where to store session store?</li>
+<li>JWT revocation strategies?</li>
+<li>CSRF with cookies?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>JWT in localStorage ignoring XSS risk</li>
+<li>Huge JWT payloads</li>
+<li>Session without secure/httpOnly cookies</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Pick what your project uses and defend it with one tradeoff.</p>
+</div></details><hr>
+<h2 id="question-mongodb-and-mongoose-basics-for-node-apis">Question: MongoDB and Mongoose basics for Node APIs.</h2>
+<h3 id="difficulty-18">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-18">Why Interviewers Ask This</h3>
+<p>Many Node jobs use document DBs — can you model and query?</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>MongoDB stores BSON documents. Mongoose adds schemas, validation, middleware, and models. Connect once at startup; use Model.find/create/update with async/await.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> userSchema </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> new</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> Schema</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ email</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { type</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> String, unique</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> true</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> } });</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> User </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> model</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'User'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, userSchema);</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> users </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> User</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">find</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">()</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">limit</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">10</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Embedded vs referenced docs?</li>
+<li>Indexes?</li>
+<li>Transactions?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>No schema validation</li>
+<li>N+1 populate queries</li>
+<li>Storing unbounded arrays in one doc</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Describe one Mongoose model from your project and a typical query.</p>
+</div></details><hr>
+<h2 id="question-sql-basics-when-using-node-with-postgresqlmysql">Question: SQL basics when using Node with PostgreSQL/MySQL.</h2>
+<h3 id="difficulty-19">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-19">Why Interviewers Ask This</h3>
+<p>Relational data and joins still dominate many backends.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Use parameterized queries to prevent injection. Tables, primary keys, foreign keys, JOINs. In Node use pg, mysql2, or an ORM (Prisma, Sequelize). Migrations version schema.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { rows } </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> pool</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">query</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'SELECT * FROM users WHERE id = $1'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, [id]);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>ORM vs raw SQL?</li>
+<li>Migrations?</li>
+<li>Indexes for performance?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>String concatenation in SQL</li>
+<li>SELECT * in hot paths</li>
+<li>No connection pooling</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Explain a users + orders relationship query you would run from Express.</p>
+</div></details><hr>
+<h2 id="question-what-is-connection-pooling-and-why-use-it">Question: What is connection pooling and why use it?</h2>
+<h3 id="difficulty-20">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-20">Why Interviewers Ask This</h3>
+<p>Opening a DB connection per request does not scale.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>A pool maintains reusable DB connections. Requests borrow a connection and return it. Limits max connections, reduces handshake overhead. pg Pool and mongoose connection are common patterns.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> pool </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> new</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> Pool</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ max</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 20</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, connectionString</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> process</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">env</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">DATABASE_URL });</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Pool size tuning?</li>
+<li>What happens when pool exhausted?</li>
+<li>Serverless + DB?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>New connection every request</li>
+<li>Never closing pool on shutdown</li>
+<li>One global client with no limits</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Mention pool max when discussing deployment under concurrent traffic.</p>
+</div></details><hr>
+<h2 id="question-how-does-the-mvc-pattern-apply-to-express-apps">Question: How does the MVC pattern apply to Express apps?</h2>
+<h3 id="difficulty-21">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-21">Why Interviewers Ask This</h3>
+<p>Shows you can structure code beyond a single app.js.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Model: data layer (Mongoose/Prisma). View: often JSON for APIs or templates for SSR. Controller: route handlers orchestrating request/response. Routes wire URLs to controllers.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>routes/ → controllers/ → services/ → models/</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Service layer?</li>
+<li>Fat models?</li>
+<li>Where does validation live?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Business logic only in routes</li>
+<li>Models importing Express</li>
+<li>Circular imports between layers</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Draw your folder structure: routes, controllers, models.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-validate-request-data-in-express">Question: How do you validate request data in Express?</h2>
+<h3 id="difficulty-22">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-22">Why Interviewers Ask This</h3>
+<p>Bad input causes bugs, security issues, and 500s.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Validate body, query, and params with libraries like Zod, Joi, or express-validator. Fail fast with 400/422 and clear messages. Do not trust client input.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> schema </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> z</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">object</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ email</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> z</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">string</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">()</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">email</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">() });</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> body </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> schema</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">parse</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(req</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">body);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Validation vs sanitization?</li>
+<li>Where to validate — middleware?</li>
+<li>OpenAPI?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Only frontend validation</li>
+<li>Generic ‘invalid’ errors</li>
+<li>Validating after DB call</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Show validating registration fields before creating a user.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-handle-file-uploads-in-express">Question: How do you handle file uploads in Express?</h2>
+<h3 id="difficulty-23">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-23">Why Interviewers Ask This</h3>
+<p>Resumes, avatars, and CSV imports come up in product APIs.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Use multer or similar for multipart/form-data. Configure storage (disk, memory, S3). Enforce file size, MIME checks, and auth. Never execute uploaded files.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> upload </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> multer</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ limits</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { fileSize</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 2</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> *</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 1024</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> *</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 1024</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> } });</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">post</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'/avatar'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, upload</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">single</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'file'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">), handler);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Stream to S3?</li>
+<li>Virus scan?</li>
+<li>multipart without multer?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>No size limits</li>
+<li>Trusting client MIME type only</li>
+<li>Serving uploads from same origin without caution</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Describe an avatar upload endpoint with size cap.</p>
+</div></details><hr>
+<h2 id="question-what-is-streaming-in-node-and-when-use-it">Question: What is streaming in Node and when use it?</h2>
+<h3 id="difficulty-24">Difficulty</h3>
+<p>🔴 Hard</p>
+<h3 id="why-interviewers-ask-this-24">Why Interviewers Ask This</h3>
+<p>Large files and real-time data need streams, not loading all into memory.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Streams process data in chunks via Readable, Writable, Duplex, Transform. pipe() connects them. Good for file download/upload, logs, video. Backpressure handled by stream API.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">fs</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">createReadStream</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'big.csv'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">pipe</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(res);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Backpressure?</li>
+<li>Stream vs buffer entire file?</li>
+<li>HTTP chunked encoding?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Reading multi-GB file with readFileSync</li>
+<li>Ignoring stream errors</li>
+<li>No timeout on slow clients</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Mention streaming a CSV export instead of building one giant string.</p>
+</div></details><hr>
+<h2 id="question-what-is-the-cluster-module-in-node">Question: What is the cluster module in Node?</h2>
+<h3 id="difficulty-25">Difficulty</h3>
+<p>🔴 Hard</p>
+<h3 id="why-interviewers-ask-this-25">Why Interviewers Ask This</h3>
+<p>Uses all CPU cores for HTTP servers on one machine.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>cluster forks worker processes sharing a server port. Primary distributes connections; workers run Express. Does not replace horizontal scaling across machines.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">if</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> (cluster</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">isPrimary) {</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  for</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> (</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">let</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> i </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 0</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">; i </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">&#x3C;</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> cpus</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">()</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">length; i</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">++</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">) cluster</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">fork</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">();</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">} </span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">else</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">  require</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'./server'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>cluster vs PM2?</li>
+<li>Sticky sessions?</li>
+<li>When not to use cluster?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Cluster for CPU-heavy JS on one worker misunderstanding</li>
+<li>No process manager in prod</li>
+<li>Shared in-memory state across workers</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Note PM2 cluster mode as production alternative.</p>
+</div></details><hr>
+<h2 id="question-what-are-child-processes-in-node">Question: What are child processes in Node?</h2>
+<h3 id="difficulty-26">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-26">Why Interviewers Ask This</h3>
+<p>Offload CPU work or run CLI tools without blocking the event loop.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>child_process.spawn/exec/fork runs separate processes. fork() has IPC channel. Use for image processing, ffmpeg, or isolated scripts — not for every request without pooling.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { spawn } </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> require</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'child_process'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> ls </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> spawn</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'ls'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, [</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'-la'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">]);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>worker_threads vs child_process?</li>
+<li>Security of user input in shell?</li>
+<li>fork IPC?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>exec with unsanitized user input</li>
+<li>Unbounded child spawns</li>
+<li>Ignoring exit codes</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Example: spawning a worker script for PDF generation off the hot path.</p>
+</div></details><hr>
+<h2 id="question-what-are-buffers-in-node">Question: What are Buffers in Node?</h2>
+<h3 id="difficulty-27">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-27">Why Interviewers Ask This</h3>
+<p>Binary data — files, crypto, networks — lives in buffers.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Buffer is a fixed-length raw binary allocation (Uint8Array under the hood in modern Node). Used with fs, crypto, net. Encoding: utf8, hex, base64.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> buf </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> Buffer</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">from</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'hello'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, </span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'utf8'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(buf</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">toString</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'hex'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">));</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Buffer vs TypedArray?</li>
+<li>Why not strings for binary?</li>
+<li>Alloc unsafe?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Concatenating buffers in a loop inefficiently</li>
+<li>Assuming JSON for binary uploads</li>
+<li>Ignoring encoding</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Tie to hashing passwords or reading file headers.</p>
+</div></details><hr>
+<h2 id="question-how-do-the-path-and-fs-modules-help-in-node">Question: How do the path and fs modules help in Node?</h2>
+<h3 id="difficulty-28">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-28">Why Interviewers Ask This</h3>
+<p>File paths and I/O are everyday backend tasks.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>path joins segments safely cross-platform (path.join, resolve, basename). fs reads/writes files; prefer fs.promises or fs/promises over sync APIs in servers.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> filePath </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> path</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">join</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(__dirname, </span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'data'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, </span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'config.json'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> data </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> fs</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">promises</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">readFile</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(filePath, </span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'utf8'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>path.join vs resolve?</li>
+<li>fs streams?</li>
+<li>__dirname in ESM?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>fs.readFileSync in request handler</li>
+<li>Manual string paths with .. bugs</li>
+<li>No error handling for missing files</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Loading a JSON config at startup with path.join.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-secure-an-express-api-with-helmet-and-rate-limiting">Question: How do you secure an Express API with Helmet and rate limiting?</h2>
+<h3 id="difficulty-29">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-29">Why Interviewers Ask This</h3>
+<p>Security headers and abuse prevention are expected in production APIs.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>helmet sets HTTP headers (X-Content-Type-Options, CSP helpers, etc.). express-rate-limit caps requests per IP/window to reduce brute force and DoS. Combine with auth, validation, HTTPS.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">use</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">helmet</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">());</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">use</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">rateLimit</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ windowMs</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 15</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> *</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 60</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> *</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 1000</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, max</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 100</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> }));</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Rate limit behind proxy?</li>
+<li>CSP breaking frontend?</li>
+<li>Distributed rate limits?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Only helmet, no input validation</li>
+<li>Rate limit too loose on /login</li>
+<li>Trust proxy not set on Render/Heroku</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>List headers helmet adds and rate limit on auth routes.</p>
+</div></details><hr>
+<h2 id="question-how-should-you-approach-logging-in-a-node-api">Question: How should you approach logging in a Node API?</h2>
+<h3 id="difficulty-30">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-30">Why Interviewers Ask This</h3>
+<p>You cannot debug production without structured logs.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Use a logger (pino, winston) with levels (info, warn, error). Log request IDs, errors with context, not passwords. In production, ship logs to a aggregator. Morgan complements HTTP access logs.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">logger</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">info</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ userId, route }, </span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'user login'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Structured vs console.log?</li>
+<li>PII in logs?</li>
+<li>Correlation IDs?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>console.log only</li>
+<li>Logging tokens/passwords</li>
+<li>No log rotation / volume control</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Add request id middleware and log failed auth attempts.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-test-express-apis">Question: How do you test Express APIs?</h2>
+<h3 id="difficulty-31">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-31">Why Interviewers Ask This</h3>
+<p>Proves your endpoints behave — supertest is the common tool.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Use Jest/Vitest + supertest to hit app without listening on a port. Test status codes, JSON bodies, auth. Mock DB layer for unit tests; integration tests hit real test DB.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> res </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> request</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(app)</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">get</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'/api/health'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">expect</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">200</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">expect</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(res</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">body</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">ok)</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">toBe</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">true</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Unit vs integration?</li>
+<li>Test databases?</li>
+<li>Coverage goals?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Only manual Postman</li>
+<li>Tests sharing production DB</li>
+<li>No auth negative tests</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Describe one supertest case for a protected route.</p>
+</div></details><hr>
+<h2 id="question-what-are-deployment-basics-for-a-nodeexpress-app">Question: What are deployment basics for a Node/Express app?</h2>
+<h3 id="difficulty-32">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-32">Why Interviewers Ask This</h3>
+<p>Can you ship code — process managers, env, health checks?</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Set NODE_ENV=production, use process manager (PM2, Docker, platform). Listen on process.env.PORT. Health endpoint, graceful shutdown on SIGTERM, run migrations separately, monitor errors.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">process</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">on</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'SIGTERM'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, () </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> server</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">close</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(() </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> process</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">exit</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">0</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)));</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Docker multi-stage?</li>
+<li>Zero-downtime deploy?</li>
+<li>Secrets management?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>node server.js in prod without restart policy</li>
+<li>No health check</li>
+<li>Running as root in container</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Walk through deploying to Render/Railway/Fly with env vars.</p>
+</div></details><hr>
+<h2 id="question-how-does-async-programming-work-in-node">Question: How does async programming work in Node?</h2>
+<h3 id="difficulty-33">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-33">Why Interviewers Ask This</h3>
+<p>Non-blocking I/O is why Node exists — callbacks, promises, async/await.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>I/O operations are async: callbacks (legacy), Promises, async/await (syntactic sugar). await pauses the function, not the thread. Parallelism with Promise.all for independent tasks.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> [user, posts] </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#3A94C5;--shiki-dark:#7FBBB3"> Promise</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">all</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">([</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">  User</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">findById</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(id),</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">  Post</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">find</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ userId</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> id }),</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">]);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Promise.all vs allSettled?</li>
+<li>Sequential await in loops?</li>
+<li>Error handling in async?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>await inside forEach (does not wait)</li>
+<li>Mixing callbacks and promises badly</li>
+<li>Unbounded parallel requests</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Refactor callback-style fs to fs.promises in an example.</p>
+</div></details><hr>
+<h2 id="question-what-is-callback-hell-and-how-do-you-avoid-it">Question: What is callback hell and how do you avoid it?</h2>
+<h3 id="difficulty-34">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-34">Why Interviewers Ask This</h3>
+<p>Historical pain point — shows you know modern patterns.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Deep nested callbacks become unreadable and error-prone. Fix with modular functions, Promises, async/await, and centralized error handling.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// avoid: getUser(id, (e,u) => getPosts(u, (e,p) => ...))</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> user </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> getUser</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(id);</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> posts </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> getPosts</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(user);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>What is pyramid of doom?</li>
+<li>Error-first callbacks?</li>
+<li>util.promisify?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Ignoring first err argument in callbacks</li>
+<li>Async await without try/catch</li>
+<li>Creating promise anti-patterns</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Show before/after refactoring a nested DB callback chain.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-prevent-sql-injection-in-node">Question: How do you prevent SQL injection in Node?</h2>
+<h3 id="difficulty-35">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-35">Why Interviewers Ask This</h3>
+<p>Critical security — parameterized queries are mandatory.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Never interpolate user input into SQL strings. Use placeholders ($1, ?) via pg/mysql2 or ORM. Validate types server-side. Least privilege DB users.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// BAD: `SELECT * FROM users WHERE email = '${email}'`</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">await</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> pool</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">query</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'SELECT * FROM users WHERE email = $1'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, [email]);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>ORM always safe?</li>
+<li>Second-order injection?</li>
+<li>NoSQL injection?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Raw SQL with template strings</li>
+<li>Trusting ORM without understanding</li>
+<li>DB user with superuser perms</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Audit one query in your project for parameterization.</p>
+</div></details><hr>
+<h2 id="question-how-can-xss-affect-the-backend-and-how-do-you-mitigate">Question: How can XSS affect the backend and how do you mitigate?</h2>
+<h3 id="difficulty-36">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-36">Why Interviewers Ask This</h3>
+<p>XSS is often taught for frontend — backends store and reflect data too.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Stored XSS: malicious scripts saved via API and rendered in a client. Backend should validate/sanitize stored HTML, set Content-Type correctly, encode output in templates, use CSP headers. APIs returning user HTML are risky.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// sanitize before save; JSON APIs usually escape on render in React</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>sanitize-html?</li>
+<li>JSON is not auto-safe in innerHTML</li>
+<li>Markdown rendering?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Storing raw script tags from users</li>
+<li>text/html responses with user content</li>
+<li>No CSP</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>If your API returns bios rendered on a site, explain sanitization strategy.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-implement-pagination-in-apis">Question: How do you implement pagination in APIs?</h2>
+<h3 id="difficulty-37">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-37">Why Interviewers Ask This</h3>
+<p>Listing endpoints without pagination break at scale.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Offset/limit (page, pageSize) simple but slow on large offsets. Cursor-based (after=id) scales better for feeds. Return metadata: total or nextCursor, items array.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// GET /users?page=2&#x26;limit=20</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> users </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> await</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> User</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">find</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">()</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">skip</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">((page</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">-</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">1</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">*</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">limit)</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">limit</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(limit);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Keyset pagination?</li>
+<li>Default limits?</li>
+<li>Sorting stability?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>No max limit (limit=999999)</li>
+<li>Inconsistent sort keys</li>
+<li>Offset on million-row tables</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Add page/limit query params to your list users endpoint.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-version-a-rest-api">Question: How do you version a REST API?</h2>
+<h3 id="difficulty-38">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-38">Why Interviewers Ask This</h3>
+<p>Breaking changes without versioning break mobile apps and partners.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Version via URL (/api/v1/users), header (Accept-Version), or query. URL is clearest for many teams. Deprecate old versions with timeline and docs.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">use</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'/api/v1'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, v1Router);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">use</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'/api/v2'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, v2Router);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Semantic versioning for APIs?</li>
+<li>Backward compatible changes?</li>
+<li>GraphQL versioning?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Breaking changes without bump</li>
+<li>Two versions diverging same logic duplicated forever</li>
+<li>No deprecation headers</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>If you only have v1, explain how you’d add v2 for a renamed field.</p>
+</div></details><hr>
+<h2 id="question-what-is-processenvnode_env-used-for">Question: What is process.env.NODE_ENV used for?</h2>
+<h3 id="difficulty-39">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-39">Why Interviewers Ask This</h3>
+<p>Libraries change behavior based on environment — you should too.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>NODE_ENV commonly ‘development’, ‘test’, or ‘production’. Express enables less verbose errors in production; some libs enable caching. Set explicitly in deployment — not a security boundary alone.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">if</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> (process</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">env</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">NODE_ENV </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">!==</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'production'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">) {</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">  app</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">use</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">morgan</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'dev'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">));</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">}</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Does webpack set it?</li>
+<li>production vs development errors?</li>
+<li>Other env vars?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Relying on NODE_ENV for auth</li>
+<li>Undefined NODE_ENV in prod</li>
+<li>Different behavior not documented</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Toggle detailed error stacks off in production in your error handler.</p>
+</div></details><hr>
+<h2 id="question-what-is-the-difference-between-libuv-thread-pool-and-worker-threads">Question: What is the difference between libuv thread pool and worker threads?</h2>
+<h3 id="difficulty-40">Difficulty</h3>
+<p>🔴 Hard</p>
+<h3 id="why-interviewers-ask-this-40">Why Interviewers Ask This</h3>
+<p>Advanced but shows deep Node knowledge when discussing performance.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>libuv thread pool (default 4) runs some blocking ops: fs, crypto, dns. Worker threads run JS in parallel for CPU tasks. Event loop stays on main thread per process.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// UV_THREADPOOL_SIZE=8 for more pool threads</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>When does DNS use pool?</li>
+<li>crypto.pbkdf2 async?</li>
+<li>worker_threads use case?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Confusing with cluster workers</li>
+<li>CPU work on main thread</li>
+<li>Huge thread pool without reason</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Mention bcrypt async using thread pool under the hood.</p>
+</div></details><hr><nav class="pager" data-astro-cid-n67f4zmd><a class="pager-link" href="/The-Web-Interview-Playbook/05-node-express/topics-not-to-miss/" data-astro-cid-n67f4zmd>← Node.js &amp; Express: Topics Not to Miss</a><a class="pager-link next" href="/The-Web-Interview-Playbook/05-node-express/api-design/" data-astro-cid-n67f4zmd>Node.js &amp; Express: API Design →</a></nav></article><nav class="toc" aria-label="Table of contents" data-astro-cid-td5y3ttw><p class="toc-title" data-astro-cid-td5y3ttw>On this page</p><ul data-astro-cid-td5y3ttw><li data-astro-cid-td5y3ttw><a href="#question-what-is-nodejs-and-how-does-its-architecture-work" data-astro-cid-td5y3ttw>Question: What is Node.js and how does its architecture work?</a></li><li data-astro-cid-td5y3ttw><a href="#question-explain-the-nodejs-event-loop" data-astro-cid-td5y3ttw>Question: Explain the Node.js event loop.</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-commonjs-and-es-modules-work-in-node" data-astro-cid-td5y3ttw>Question: How do CommonJS and ES modules work in Node?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-npm-and-how-do-packagejson-fields-matter" data-astro-cid-td5y3ttw>Question: What is npm and how do package.json fields matter?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-express-and-why-is-it-used" data-astro-cid-td5y3ttw>Question: What is Express and why is it used?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-middleware-in-express" data-astro-cid-td5y3ttw>Question: What is middleware in Express?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-does-routing-work-in-express" data-astro-cid-td5y3ttw>Question: How does routing work in Express?</a></li><li data-astro-cid-td5y3ttw><a href="#question-explain-the-req-and-res-objects-in-express" data-astro-cid-td5y3ttw>Question: Explain the req and res objects in Express.</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-design-a-rest-api-in-express" data-astro-cid-td5y3ttw>Question: How do you design a REST API in Express?</a></li><li data-astro-cid-td5y3ttw><a href="#question-which-http-status-codes-should-a-node-api-return" data-astro-cid-td5y3ttw>Question: Which HTTP status codes should a Node API return?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-implement-error-handling-middleware-in-express" data-astro-cid-td5y3ttw>Question: How do you implement error-handling middleware in Express?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-does-body-parser--expressjson-do" data-astro-cid-td5y3ttw>Question: What does body-parser / express.json do?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-enable-and-configure-cors-in-express" data-astro-cid-td5y3ttw>Question: How do you enable and configure CORS in Express?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-environment-variables-work-in-node" data-astro-cid-td5y3ttw>Question: How do environment variables work in Node?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-dotenv-and-when-should-you-use-it" data-astro-cid-td5y3ttw>Question: What is dotenv and when should you use it?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-does-jwt-authentication-work-in-an-express-api" data-astro-cid-td5y3ttw>Question: How does JWT authentication work in an Express API?</a></li><li data-astro-cid-td5y3ttw><a href="#question-why-use-bcrypt-for-passwords" data-astro-cid-td5y3ttw>Question: Why use bcrypt for passwords?</a></li><li data-astro-cid-td5y3ttw><a href="#question-sessions-vs-jwt--when-to-use-which" data-astro-cid-td5y3ttw>Question: Sessions vs JWT — when to use which?</a></li><li data-astro-cid-td5y3ttw><a href="#question-mongodb-and-mongoose-basics-for-node-apis" data-astro-cid-td5y3ttw>Question: MongoDB and Mongoose basics for Node APIs.</a></li><li data-astro-cid-td5y3ttw><a href="#question-sql-basics-when-using-node-with-postgresqlmysql" data-astro-cid-td5y3ttw>Question: SQL basics when using Node with PostgreSQL/MySQL.</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-connection-pooling-and-why-use-it" data-astro-cid-td5y3ttw>Question: What is connection pooling and why use it?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-does-the-mvc-pattern-apply-to-express-apps" data-astro-cid-td5y3ttw>Question: How does the MVC pattern apply to Express apps?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-validate-request-data-in-express" data-astro-cid-td5y3ttw>Question: How do you validate request data in Express?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-handle-file-uploads-in-express" data-astro-cid-td5y3ttw>Question: How do you handle file uploads in Express?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-streaming-in-node-and-when-use-it" data-astro-cid-td5y3ttw>Question: What is streaming in Node and when use it?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-the-cluster-module-in-node" data-astro-cid-td5y3ttw>Question: What is the cluster module in Node?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-child-processes-in-node" data-astro-cid-td5y3ttw>Question: What are child processes in Node?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-buffers-in-node" data-astro-cid-td5y3ttw>Question: What are Buffers in Node?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-the-path-and-fs-modules-help-in-node" data-astro-cid-td5y3ttw>Question: How do the path and fs modules help in Node?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-secure-an-express-api-with-helmet-and-rate-limiting" data-astro-cid-td5y3ttw>Question: How do you secure an Express API with Helmet and rate limiting?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-should-you-approach-logging-in-a-node-api" data-astro-cid-td5y3ttw>Question: How should you approach logging in a Node API?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-test-express-apis" data-astro-cid-td5y3ttw>Question: How do you test Express APIs?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-deployment-basics-for-a-nodeexpress-app" data-astro-cid-td5y3ttw>Question: What are deployment basics for a Node/Express app?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-does-async-programming-work-in-node" data-astro-cid-td5y3ttw>Question: How does async programming work in Node?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-callback-hell-and-how-do-you-avoid-it" data-astro-cid-td5y3ttw>Question: What is callback hell and how do you avoid it?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-prevent-sql-injection-in-node" data-astro-cid-td5y3ttw>Question: How do you prevent SQL injection in Node?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-can-xss-affect-the-backend-and-how-do-you-mitigate" data-astro-cid-td5y3ttw>Question: How can XSS affect the backend and how do you mitigate?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-implement-pagination-in-apis" data-astro-cid-td5y3ttw>Question: How do you implement pagination in APIs?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-version-a-rest-api" data-astro-cid-td5y3ttw>Question: How do you version a REST API?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-processenvnode_env-used-for" data-astro-cid-td5y3ttw>Question: What is process.env.NODE_ENV used for?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-the-difference-between-libuv-thread-pool-and-worker-threads" data-astro-cid-td5y3ttw>Question: What is the difference between libuv thread pool and worker threads?</a></li></ul></nav></div></main></div><script type="module">var e=document.getElementById(`nav-toggle`),t=document.getElementById(`nav-backdrop`),n=document.documentElement;function r(){n.dataset.navOpen=`true`,e.setAttribute(`aria-expanded`,`true`),document.body.style.overflow=`hidden`}function i(){delete n.dataset.navOpen,e.setAttribute(`aria-expanded`,`false`),document.body.style.overflow=``}e?.addEventListener(`click`,()=>{n.dataset.navOpen===`true`?i():r()}),t?.addEventListener(`click`,i),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&n.dataset.navOpen===`true`&&i()}),document.querySelector(`.shell`)?.addEventListener(`click`,e=>{e.target.closest(`aside.sidebar a`)&&n.dataset.navOpen===`true`&&i()});</script><script type="module" src="/The-Web-Interview-Playbook/_astro/BaseLayout.astro_astro_type_script_index_1_lang.Cw7dNugz.js"></script></body></html>

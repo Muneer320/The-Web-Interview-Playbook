@@ -1,0 +1,685 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-z4jru4n3><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Interactive web dev interview preparation"><title>JavaScript DOM Interview Questions · Web Interview Playbook</title><script>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem('theme'); } catch {}
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script><link rel="stylesheet" href="/The-Web-Interview-Playbook/_astro/BaseLayout.Dl7qG8Ba.css"><style>.fresh-badge[data-astro-cid-crdmdfjq]{color:var(--fresh);background:var(--fresh-bg);cursor:default;border-radius:999px;align-items:center;gap:.3rem;padding:.28rem .65rem;font-size:.78rem;font-weight:600;line-height:1;transition:box-shadow .15s;display:inline-flex;position:relative}.fresh-badge[data-astro-cid-crdmdfjq]:hover,.fresh-badge[data-astro-cid-crdmdfjq]:focus-visible{box-shadow:0 0 0 1px color-mix(in srgb, var(--fresh) 45%, transparent)}.tooltip[data-astro-cid-crdmdfjq]{z-index:20;background:var(--surface);width:max-content;max-width:260px;color:var(--text);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 4px 16px color-mix(in srgb, var(--text) 20%, transparent);opacity:0;pointer-events:none;padding:.5rem .7rem;font-size:.78rem;font-weight:400;line-height:1.45;transition:opacity .12s,transform .12s;position:absolute;top:calc(100% + 6px);left:0;transform:translateY(-2px)}.fresh-badge[data-astro-cid-crdmdfjq]:hover .tooltip[data-astro-cid-crdmdfjq],.fresh-badge[data-astro-cid-crdmdfjq]:focus .tooltip[data-astro-cid-crdmdfjq],.fresh-badge[data-astro-cid-crdmdfjq]:focus-visible .tooltip[data-astro-cid-crdmdfjq]{opacity:1;transform:translateY(0)}.status-banner[data-astro-cid-c4lk2q6h]{background:var(--warn-bg);color:var(--warn);border:1px solid color-mix(in srgb, var(--warn) 35%, transparent);border-radius:var(--radius);align-items:center;gap:.5rem;margin-bottom:1.75rem;padding:.65rem 1rem;font-size:.9rem;font-weight:500;display:flex}.prose{max-width:var(--content-width)}.prose h1{letter-spacing:-.02em;margin:0 0 1rem;font-size:clamp(1.5rem,4vw,2rem);line-height:1.2}.prose h2{border-top:2px dashed var(--border);letter-spacing:-.01em;margin:2rem 0 .75rem;padding-top:1.25rem;scroll-margin-top:4.5rem;font-size:clamp(1.15rem,2.5vw,1.35rem)}.prose h3{color:var(--text);margin:1.5rem 0 .5rem;scroll-margin-top:4.5rem;font-size:clamp(.95rem,2vw,1.05rem)}.prose p,.prose li{color:var(--text)}.prose ul,.prose ol{padding-left:1.4rem}@media (width<=600px){.prose ul,.prose ol{padding-left:1.1rem}}.prose li+li{margin-top:.35rem}.prose strong{font-weight:700}.prose blockquote{border-left:3px solid var(--accent-2);color:var(--text-muted);background:var(--surface-2);border-radius:0 var(--radius) var(--radius) 0;overflow-wrap:break-word;word-wrap:break-word;margin:1rem 0;padding:.35rem 1rem}@media (width<=600px){.prose blockquote{margin:.75rem 0;padding:.35rem .75rem}}.prose table{border-collapse:collapse;width:100%;font-size:.9rem;display:block;overflow-x:auto}@media (width<=600px){.prose table{font-size:.82rem}}.prose th,.prose td{border:1px solid var(--border);text-align:left;padding:.5rem .75rem}@media (width<=600px){.prose th,.prose td{padding:.35rem .5rem}}.prose th{background:var(--surface-2);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.05em;font-size:.78rem}.prose hr{border:none;border-top:2px dashed var(--border);margin:2.5rem 0}.prose img{border-radius:var(--radius);max-width:100%}
+.toc[data-astro-cid-td5y3ttw]{border-left:1px solid var(--border);flex-shrink:0;width:220px;max-height:calc(100vh - 6rem);padding-left:1rem;font-size:.83rem;position:sticky;top:4.5rem;overflow-y:auto}.toc-title[data-astro-cid-td5y3ttw]{text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0 0 .75rem;font-size:.72rem}ul[data-astro-cid-td5y3ttw]{margin:0;padding:0;list-style:none}li[data-astro-cid-td5y3ttw]{margin:.4rem 0}a[data-astro-cid-td5y3ttw]{color:var(--text-muted);line-height:1.4;transition:color .12s;display:block}a[data-astro-cid-td5y3ttw]:hover,a[data-astro-cid-td5y3ttw]:focus-visible{color:var(--accent);text-decoration:none}@media (width<=1300px){.toc[data-astro-cid-td5y3ttw]{display:none}}.doc-shell[data-astro-cid-n67f4zmd]{justify-content:center;gap:2rem;display:flex}.crumbs[data-astro-cid-n67f4zmd]{align-items:center;gap:.75rem;margin-bottom:.5rem;font-size:.85rem;display:flex}.crumbs[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]{color:var(--text-muted);font-weight:500}.crumbs[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]:hover{color:var(--accent);text-decoration:none}.pager[data-astro-cid-n67f4zmd]{justify-content:space-between;gap:1rem;margin-top:3.5rem;display:flex}.pager-link[data-astro-cid-n67f4zmd]{border:1px solid var(--border);border-radius:var(--radius);max-width:45%;color:var(--text);padding:.7rem 1rem;font-size:.88rem;transition:border-color .15s,color .15s;display:block}.pager-link[data-astro-cid-n67f4zmd].next{text-align:right;margin-left:auto}.pager-link[data-astro-cid-n67f4zmd]:hover,.pager-link[data-astro-cid-n67f4zmd]:focus-visible{border-color:var(--accent);color:var(--accent);text-decoration:none}.toc-inline[data-astro-cid-n67f4zmd]{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface-2);max-width:var(--content-width);width:100%;margin-bottom:.5rem;padding:.5rem .8rem;font-size:.85rem;display:none}.toc-inline[data-astro-cid-n67f4zmd] summary[data-astro-cid-n67f4zmd]{cursor:pointer;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);padding:.15rem 0;font-size:.72rem;font-weight:600;list-style:none}.toc-inline[data-astro-cid-n67f4zmd] summary[data-astro-cid-n67f4zmd]:before{content:"▸ ";font-size:.7rem}.toc-inline[data-astro-cid-n67f4zmd][open] summary[data-astro-cid-n67f4zmd]:before{content:"▾ "}.toc-inline[data-astro-cid-n67f4zmd] ul[data-astro-cid-n67f4zmd]{gap:.2rem;margin:.5rem 0 0;padding:0;list-style:none;display:grid}.toc-inline[data-astro-cid-n67f4zmd] li[data-astro-cid-n67f4zmd]{margin:0}.toc-inline[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]{color:var(--text-muted);border-radius:6px;padding:.35rem .5rem;transition:color .12s;display:block}.toc-inline[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]:hover,.toc-inline[data-astro-cid-n67f4zmd] a[data-astro-cid-n67f4zmd]:focus-visible{color:var(--text);background:var(--surface);text-decoration:none}@media (width<=1300px){.toc-inline[data-astro-cid-n67f4zmd]{display:block}}@media (width<=600px){.pager[data-astro-cid-n67f4zmd]{flex-direction:column;gap:.5rem}.pager-link[data-astro-cid-n67f4zmd]{max-width:100%}.pager-link[data-astro-cid-n67f4zmd].next{text-align:left;margin-left:0}}
+.sidebar[data-astro-cid-wv7whodv]{border-right:1px solid var(--border);background:var(--bg);z-index:20;flex-shrink:0;width:260px;height:calc(100vh - 3.2rem);padding:1.25rem .9rem;font-size:.86rem;position:sticky;top:3.2rem;overflow-y:auto}summary[data-astro-cid-wv7whodv]{cursor:pointer;padding:.3rem .4rem;font-weight:600;list-style:none}summary[data-astro-cid-wv7whodv]:before{content:"▸ ";color:var(--text-muted);font-size:.7rem}details[data-astro-cid-wv7whodv][open] summary[data-astro-cid-wv7whodv]:before{content:"▾ "}summary[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv]{color:var(--text)}ul[data-astro-cid-wv7whodv]{margin:0 0 .5rem;padding:0 0 0 1.1rem;list-style:none}li[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv]{color:var(--text-muted);border-radius:6px;padding:.22rem .5rem;display:block}li[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv]:hover{color:var(--text);background:var(--surface-2);text-decoration:none}li[data-astro-cid-wv7whodv] a[data-astro-cid-wv7whodv][aria-current=page]{color:var(--accent);background:var(--surface-2);font-weight:600}@media (width<=900px){.sidebar[data-astro-cid-wv7whodv]{border-right:1px solid var(--border);width:280px;height:calc(100vh - 3.2rem);box-shadow:4px 0 24px -12px color-mix(in srgb, var(--text) 25%, transparent);transition:transform .25s;position:fixed;top:3.2rem;left:0;overflow-y:auto;transform:translate(-100%)}html[data-nav-open=true] .sidebar[data-astro-cid-wv7whodv]{transform:translate(0)}}
+</style></head><body data-astro-cid-z4jru4n3><a class="skip-link" href="#main-content" data-astro-cid-z4jru4n3>Skip to content</a><header class="site-header" data-astro-cid-z4jru4n3><a class="brand" href="/The-Web-Interview-Playbook/" data-astro-cid-z4jru4n3><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" data-astro-cid-z4jru4n3><circle cx="6.5" cy="17.5" r="3.4" data-astro-cid-z4jru4n3></circle><path d="M15 15 l6 6 m0 -6 l-6 6" data-astro-cid-z4jru4n3></path><path d="M8 13 C 10 7, 14 8, 18 5.5" stroke-dasharray="3.5 3" data-astro-cid-z4jru4n3></path></svg><span class="brand-text" data-astro-cid-z4jru4n3>Web Interview <strong data-astro-cid-z4jru4n3>Playbook</strong></span></a><div class="header-actions" data-astro-cid-z4jru4n3><button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-astro-cid-z4jru4n3><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" data-astro-cid-z4jru4n3><path class="nav-line-top" d="M4 7 L20 7" data-astro-cid-z4jru4n3></path><path class="nav-line-mid" d="M4 12 L20 12" data-astro-cid-z4jru4n3></path><path class="nav-line-bot" d="M4 17 L20 17" data-astro-cid-z4jru4n3></path></svg></button><button id="search-open" aria-label="Search (Cmd+K)" title="Search" data-astro-cid-etsyzymg><span aria-hidden="true" data-astro-cid-etsyzymg>🔍</span> <kbd data-astro-cid-etsyzymg>⌘K</kbd></button><dialog id="search-dialog" aria-label="Search the playbook" data-astro-cid-etsyzymg><div id="pagefind-container" data-astro-cid-etsyzymg><p class="hint" data-astro-cid-etsyzymg>Search is available after the site is built (`npm run build && npm run preview`).</p></div></dialog><script type="module" src="/The-Web-Interview-Playbook/_astro/SearchModal.astro_astro_type_script_index_0_lang.Cx4GfOgE.js"></script><button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme" data-astro-cid-l6lhmie6><span class="icon-sun" aria-hidden="true" data-astro-cid-l6lhmie6>☀️</span><span class="icon-moon" aria-hidden="true" data-astro-cid-l6lhmie6>🌙</span></button><script type="module">document.getElementById(`theme-toggle`)?.addEventListener(`click`,()=>{let e=document.documentElement,t=e.dataset.theme===`dark`?`light`:`dark`;e.dataset.theme=t;try{localStorage.setItem(`theme`,t)}catch{}});</script></div></header><div id="nav-backdrop" aria-hidden="true" data-astro-cid-z4jru4n3></div><div class="shell" data-astro-cid-z4jru4n3><aside class="sidebar" aria-label="All sections" data-astro-cid-wv7whodv><nav data-astro-cid-wv7whodv><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/" data-astro-cid-wv7whodv>Start Here</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/answer-frameworks/" data-astro-cid-wv7whodv>Answer Frameworks</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/how-to-use-this-repo/" data-astro-cid-wv7whodv>How to Use This Repository</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/interview-mindset/" data-astro-cid-wv7whodv>Interview Mindset</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/00-start-here/last-7-days-plan/" data-astro-cid-wv7whodv>Last 7 Days Plan</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/" data-astro-cid-wv7whodv>HTML &amp; CSS</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/topics-not-to-miss/" data-astro-cid-wv7whodv>HTML &amp; CSS: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/interview-questions/" data-astro-cid-wv7whodv>HTML &amp; CSS Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/mini-tasks/" data-astro-cid-wv7whodv>HTML &amp; CSS: Mini Tasks</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/common-mistakes/" data-astro-cid-wv7whodv>HTML &amp; CSS: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/revision-sheet/" data-astro-cid-wv7whodv>HTML &amp; CSS: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/01-html-css/mock-interview/" data-astro-cid-wv7whodv>HTML &amp; CSS: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/" data-astro-cid-wv7whodv>JavaScript Core</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/topics-not-to-miss/" data-astro-cid-wv7whodv>JavaScript Core: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/interview-questions/" data-astro-cid-wv7whodv>JavaScript Core Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/tricky-output-questions/" data-astro-cid-wv7whodv>JavaScript Core: Tricky Output Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/polyfills/" data-astro-cid-wv7whodv>JavaScript Core: Polyfills</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/coding-questions/" data-astro-cid-wv7whodv>JavaScript Core: Coding Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/common-mistakes/" data-astro-cid-wv7whodv>JavaScript Core: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/revision-sheet/" data-astro-cid-wv7whodv>JavaScript Core: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/02-javascript-core/mock-interview/" data-astro-cid-wv7whodv>JavaScript Core: Mock Interview (45 Minutes)</a></li></ul></details><details open data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/" data-astro-cid-wv7whodv>JavaScript &amp; DOM</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/topics-not-to-miss/" data-astro-cid-wv7whodv>JavaScript DOM: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/interview-questions/" aria-current="page" data-astro-cid-wv7whodv>JavaScript DOM Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/mini-dom-challenges/" data-astro-cid-wv7whodv>JavaScript DOM: Mini Challenges</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/project-style-questions/" data-astro-cid-wv7whodv>JavaScript DOM: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/revision-sheet/" data-astro-cid-wv7whodv>JavaScript DOM: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/03-javascript-dom/mock-interview/" data-astro-cid-wv7whodv>JavaScript DOM: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/" data-astro-cid-wv7whodv>React</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/topics-not-to-miss/" data-astro-cid-wv7whodv>React: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/interview-questions/" data-astro-cid-wv7whodv>React Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/hooks-deep-dive/" data-astro-cid-wv7whodv>React Hooks: Deep Dive</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/performance/" data-astro-cid-wv7whodv>React: Performance</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/project-style-questions/" data-astro-cid-wv7whodv>React: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/common-mistakes/" data-astro-cid-wv7whodv>React: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/revision-sheet/" data-astro-cid-wv7whodv>React: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/04-react/mock-interview/" data-astro-cid-wv7whodv>React: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/" data-astro-cid-wv7whodv>Node &amp; Express</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/topics-not-to-miss/" data-astro-cid-wv7whodv>Node.js &amp; Express: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/interview-questions/" data-astro-cid-wv7whodv>Node.js &amp; Express Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/api-design/" data-astro-cid-wv7whodv>Node.js &amp; Express: API Design</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/auth-security/" data-astro-cid-wv7whodv>Node.js &amp; Express: Auth &amp; Security</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/project-style-questions/" data-astro-cid-wv7whodv>Node.js &amp; Express: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/common-mistakes/" data-astro-cid-wv7whodv>Node.js &amp; Express: Common Mistakes</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/revision-sheet/" data-astro-cid-wv7whodv>Node.js &amp; Express: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/05-node-express/mock-interview/" data-astro-cid-wv7whodv>Node.js &amp; Express: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/" data-astro-cid-wv7whodv>Next.js</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/topics-not-to-miss/" data-astro-cid-wv7whodv>Next.js: Topics Not to Miss</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/interview-questions/" data-astro-cid-wv7whodv>Next.js Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/rendering-patterns/" data-astro-cid-wv7whodv>Next.js: Rendering Patterns</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/project-style-questions/" data-astro-cid-wv7whodv>Next.js: Project-Style Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/revision-sheet/" data-astro-cid-wv7whodv>Next.js: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/06-nextjs/mock-interview/" data-astro-cid-wv7whodv>Next.js: Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/" data-astro-cid-wv7whodv>System Design</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/interview-questions/" data-astro-cid-wv7whodv>System Design Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/revision-sheet/" data-astro-cid-wv7whodv>System Design: Revision Sheet</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/mock-interview/" data-astro-cid-wv7whodv>System Design: Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/backend-system-design/" data-astro-cid-wv7whodv>Backend System Design</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/design-a-chat-app/" data-astro-cid-wv7whodv>Design a Chat App (Student-Level Walkthrough)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/design-a-social-media-app/" data-astro-cid-wv7whodv>Design a Social Media App (Student-Level Walkthrough)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/design-a-url-shortener/" data-astro-cid-wv7whodv>Design a URL Shortener (Student-Level Walkthrough)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/frontend-system-design/" data-astro-cid-wv7whodv>Frontend System Design</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/07-system-design/fundamentals/" data-astro-cid-wv7whodv>System Design Fundamentals (Student Level)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/" data-astro-cid-wv7whodv>Project Interview Bible</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/api-design/" data-astro-cid-wv7whodv>Explaining API Design in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/performance/" data-astro-cid-wv7whodv>Explaining Performance in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/architecture/" data-astro-cid-wv7whodv>Explaining Your Project Architecture</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/authentication/" data-astro-cid-wv7whodv>Explaining Authentication in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/challenges-and-tradeoffs/" data-astro-cid-wv7whodv>Challenges and Tradeoffs in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/database-design/" data-astro-cid-wv7whodv>Explaining Database Design in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/deployment/" data-astro-cid-wv7whodv>Explaining Deployment in Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/future-improvements/" data-astro-cid-wv7whodv>Future Improvements for Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/how-to-explain-your-project/" data-astro-cid-wv7whodv>How to Explain Your Project</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/mock-project-interview/" data-astro-cid-wv7whodv>Project Interview: Mock Practice (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/project-question-bank/" data-astro-cid-wv7whodv>Project Interview Question Bank</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/sample-project-explanations/" data-astro-cid-wv7whodv>Sample Project Explanations</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/08-project-interview-bible/security/" data-astro-cid-wv7whodv>Explaining Security in Your Project</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/" data-astro-cid-wv7whodv>HR Interviews</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/behavioral-questions/" data-astro-cid-wv7whodv>Behavioral Interview Questions (STAR Format)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/common-hr-questions/" data-astro-cid-wv7whodv>Common HR Interview Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/how-to-answer-tell-me-about-yourself/" data-astro-cid-wv7whodv>How to Answer &quot;Tell Me About Yourself&quot;</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/09-hr-interviews/mock-hr-interview/" data-astro-cid-wv7whodv>HR Interview: Mock Practice (30 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/" data-astro-cid-wv7whodv>Mock Interview Kits</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/backend-round/" data-astro-cid-wv7whodv>Backend (Node/Express) Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/evaluation-rubric/" data-astro-cid-wv7whodv>Mock Interview Evaluation Rubric</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/fullstack-round/" data-astro-cid-wv7whodv>Full-Stack Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/html-css-round/" data-astro-cid-wv7whodv>HTML &amp; CSS Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/javascript-round/" data-astro-cid-wv7whodv>JavaScript Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/react-round/" data-astro-cid-wv7whodv>React Mock Interview (45 Minutes)</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/10-mock-interview-kits/system-design-round/" data-astro-cid-wv7whodv>System Design Mock Interview (45 Minutes)</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/" data-astro-cid-wv7whodv>Interview Patterns</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/architecture-questions/" data-astro-cid-wv7whodv>Architecture Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/comparison-questions/" data-astro-cid-wv7whodv>X vs Y Comparison Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/debugging-questions/" data-astro-cid-wv7whodv>Debugging Scenario Questions</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/project-defense-questions/" data-astro-cid-wv7whodv>Project Defense Question Patterns</a></li><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/11-interview-patterns/top-why-questions/" data-astro-cid-wv7whodv>Top &quot;Why&quot; Interview Questions</a></li></ul></details><details data-astro-cid-wv7whodv><summary data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/12-interview-experiences/" data-astro-cid-wv7whodv>Interview Experiences</a></summary><ul data-astro-cid-wv7whodv><li data-astro-cid-wv7whodv><a href="/The-Web-Interview-Playbook/12-interview-experiences/experience-template/" data-astro-cid-wv7whodv>Interview Experience Template</a></li></ul></details></nav></aside><main id="main-content" data-pagefind-body="true" data-astro-cid-z4jru4n3><div class="doc-shell" data-astro-cid-n67f4zmd><details class="toc-inline" data-astro-cid-n67f4zmd><summary data-astro-cid-n67f4zmd>On this page</summary><ul data-astro-cid-n67f4zmd><li data-astro-cid-n67f4zmd><a href="#question-what-is-the-dom-and-how-does-the-browser-build-the-dom-tree" data-astro-cid-n67f4zmd>Question: What is the DOM and how does the browser build the DOM tree?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-common-ways-to-select-elements-in-the-dom" data-astro-cid-n67f4zmd>Question: What are common ways to select elements in the DOM?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-does-documentqueryselector-differ-from-getelementbyid" data-astro-cid-n67f4zmd>Question: How does document.querySelector differ from getElementById?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-create-and-insert-new-elements-with-createelement-and-appendchild" data-astro-cid-n67f4zmd>Question: How do you create and insert new elements with createElement and appendChild?</a></li><li data-astro-cid-n67f4zmd><a href="#question-when-should-you-use-innerhtml-vs-textcontent" data-astro-cid-n67f4zmd>Question: When should you use innerHTML vs textContent?</a></li><li data-astro-cid-n67f4zmd><a href="#question-explain-event-bubbling-in-the-dom" data-astro-cid-n67f4zmd>Question: Explain event bubbling in the DOM.</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-the-event-capturing-phase" data-astro-cid-n67f4zmd>Question: What is the event capturing phase?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-event-delegation-and-why-use-it" data-astro-cid-n67f4zmd>Question: What is event delegation and why use it?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-does-eventpreventdefault-do" data-astro-cid-n67f4zmd>Question: What does event.preventDefault() do?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-does-eventstoppropagation-do" data-astro-cid-n67f4zmd>Question: What does event.stopPropagation() do?</a></li><li data-astro-cid-n67f4zmd><a href="#question-attributes-vs-properties-on-dom-elements--whats-the-difference" data-astro-cid-n67f4zmd>Question: Attributes vs properties on DOM elements — what’s the difference?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-work-with-elementclasslist" data-astro-cid-n67f4zmd>Question: How do you work with element.classList?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-elementdataset-and-how-do-data--attributes-work" data-astro-cid-n67f4zmd>Question: What is element.dataset and how do data-* attributes work?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-does-localstorage-differ-from-sessionstorage" data-astro-cid-n67f4zmd>Question: How does localStorage differ from sessionStorage?</a></li><li data-astro-cid-n67f4zmd><a href="#question-when-does-domcontentloaded-fire-vs-windowload" data-astro-cid-n67f4zmd>Question: When does DOMContentLoaded fire vs window.load?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-are-reflow-and-repaint-in-the-browser" data-astro-cid-n67f4zmd>Question: What are reflow and repaint in the browser?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-traverse-the-dom-parents-siblings-children" data-astro-cid-n67f4zmd>Question: How do you traverse the DOM (parents, siblings, children)?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-form-related-events-should-you-know" data-astro-cid-n67f4zmd>Question: What form-related events should you know?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-keyboard-events-work-keydown-keyup-keypress" data-astro-cid-n67f4zmd>Question: How do keyboard events work (keydown, keyup, keypress)?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-mutationobserver-used-for" data-astro-cid-n67f4zmd>Question: What is MutationObserver used for?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-the-shadow-dom-at-a-high-level" data-astro-cid-n67f4zmd>Question: What is the Shadow DOM at a high level?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-does-dom-manipulation-relate-to-accessibility" data-astro-cid-n67f4zmd>Question: How does DOM manipulation relate to accessibility?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-you-efficiently-update-many-list-items-in-the-dom" data-astro-cid-n67f4zmd>Question: How do you efficiently update many list items in the DOM?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-is-the-difference-between-node-and-element-in-the-dom" data-astro-cid-n67f4zmd>Question: What is the difference between node and element in the DOM?</a></li><li data-astro-cid-n67f4zmd><a href="#question-how-do-remove-replacewith-and-clonenode-work" data-astro-cid-n67f4zmd>Question: How do remove, replaceWith, and cloneNode work?</a></li><li data-astro-cid-n67f4zmd><a href="#question-what-should-you-know-about-addeventlistener-options" data-astro-cid-n67f4zmd>Question: What should you know about addEventListener options?</a></li></ul></details><article class="prose" data-astro-cid-n67f4zmd><p class="crumbs" data-astro-cid-n67f4zmd><a href="/The-Web-Interview-Playbook/03-javascript-dom/" data-astro-cid-n67f4zmd>JavaScript &amp; DOM</a> <span class="fresh-badge" tabindex="0" aria-describedby="fresh-tip-03-javascript-dom-interview-questions" data-astro-cid-crdmdfjq>⚡ Recently updated<span class="tooltip" role="tooltip" id="fresh-tip-03-javascript-dom-interview-questions" data-astro-cid-crdmdfjq>Updated on Jun 30, 2026 — this content may still be evolving.</span></span></p><h1 id="javascript-dom-interview-questions">JavaScript DOM Interview Questions</h1>
+<blockquote>
+<p>25+ questions with full answers. Practice out loud.</p>
+</blockquote>
+<hr>
+<h2 id="question-what-is-the-dom-and-how-does-the-browser-build-the-dom-tree">Question: What is the DOM and how does the browser build the DOM tree?</h2>
+<h3 id="difficulty">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this">Why Interviewers Ask This</h3>
+<p>Every frontend role assumes you can explain how HTML becomes interactive objects in JavaScript.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>The Document Object Model is a tree-shaped API representing HTML/XML documents. When the browser parses HTML, it creates nodes (document, elements, text). JavaScript can read and mutate this tree; changes can trigger rendering updates.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">&#x3C;</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">ul</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> id</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">"menu"</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">>&#x3C;</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">li</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">Home</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">&#x3C;/</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">li</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">>&#x3C;/</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">ul</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">></span></span></code></pre>
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> menu </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> document</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">getElementById</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'menu'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(menu</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">children</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">length); </span><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// 1</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>What is the difference between DOM and BOM?</li>
+<li>What is a live vs static NodeList?</li>
+<li>How does the DOM relate to accessibility trees?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Confusing DOM with the rendered pixels on screen</li>
+<li>Thinking the DOM is only HTML strings</li>
+<li>Forgetting text nodes exist between elements</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Draw the tree for a page in your portfolio (header, main, footer) before an interview whiteboard question.</p>
+</div></details><hr>
+<h2 id="question-what-are-common-ways-to-select-elements-in-the-dom">Question: What are common ways to select elements in the DOM?</h2>
+<h3 id="difficulty-1">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-1">Why Interviewers Ask This</h3>
+<p>Selectors are daily work; interviewers check API breadth beyond <code>getElementById</code>.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Legacy APIs: <code>getElementById</code>, <code>getElementsByClassName</code>, <code>getElementsByTagName</code> (often live HTMLCollections). Modern: <code>querySelector</code> / <code>querySelectorAll</code> (CSS selectors, static NodeLists). Prefer <code>querySelector</code> for flexibility; cache references if queried often.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">document</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">querySelector</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'nav .active'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">document</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">querySelectorAll</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'button[data-action]'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>When would you avoid <code>querySelector</code>?</li>
+<li>What is a live collection?</li>
+<li>How do you scope queries to a subtree?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Calling <code>querySelector</code> inside hot loops without caching</li>
+<li>Using <code>#id</code> incorrectly in older IE contexts</li>
+<li>Assuming <code>getElementsByClassName</code> returns an array</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Refactor one page to use <code>data-*</code> attributes and <code>querySelectorAll</code> for event delegation.</p>
+</div></details><hr>
+<h2 id="question-how-does-documentqueryselector-differ-from-getelementbyid">Question: How does <code>document.querySelector</code> differ from <code>getElementById</code>?</h2>
+<h3 id="difficulty-2">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-2">Why Interviewers Ask This</h3>
+<p>Tests practical API choice and performance habits.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p><code>getElementById</code> only finds by ID and is very fast. <code>querySelector</code> accepts any CSS selector (first match only). IDs must be unique; querySelector can target classes, attributes, and combinators.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">document</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">getElementById</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'submit'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">document</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">querySelector</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'#submit'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">document</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">querySelector</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'form button.primary'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Can IDs contain special characters?</li>
+<li>What does <code>querySelectorAll</code> return?</li>
+<li>How do you escape CSS in selectors?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Using non-unique IDs then querying with querySelector</li>
+<li>Overusing complex selectors on huge documents</li>
+<li>Forgetting querySelector returns null</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Use <code>element.querySelector</code> inside a modal component to limit search scope.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-create-and-insert-new-elements-with-createelement-and-appendchild">Question: How do you create and insert new elements with <code>createElement</code> and <code>appendChild</code>?</h2>
+<h3 id="difficulty-3">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-3">Why Interviewers Ask This</h3>
+<p>Core imperative DOM manipulation still appears in vanilla JS and interview live coding.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p><code>document.createElement(tag)</code> builds an element node. Set content/properties, then attach with <code>appendChild</code>, <code>insertBefore</code>, or newer <code>append</code>/<code>prepend</code>/<code>replaceChildren</code>. Parent-child links update the tree immediately.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> li </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> document</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">createElement</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'li'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">li</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">textContent </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'New item'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">document</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">querySelector</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'ul'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">appendChild</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(li);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>What is <code>DocumentFragment</code>?</li>
+<li>Difference between <code>append</code> and <code>appendChild</code>?</li>
+<li>How do you remove a node?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Appending HTML strings with innerHTML when structured nodes are safer</li>
+<li>Forgetting to set text before append</li>
+<li>Creating elements in a loop without a fragment (extra reflows)</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Build a todo list that only uses createElement — great portfolio talking point.</p>
+</div></details><hr>
+<h2 id="question-when-should-you-use-innerhtml-vs-textcontent">Question: When should you use <code>innerHTML</code> vs <code>textContent</code>?</h2>
+<h3 id="difficulty-4">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-4">Why Interviewers Ask This</h3>
+<p>Security (XSS) and correctness come up constantly in web interviews.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p><code>textContent</code> sets plain text; HTML characters are escaped and scripts won’t run. <code>innerHTML</code> parses HTML strings — powerful but dangerous with untrusted input. For user data, prefer <code>textContent</code> or sanitize HTML.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">el</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">textContent </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> userInput; </span><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// safe</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">el</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">innerHTML </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> '&#x3C;strong>Hi&#x3C;/strong>'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">; </span><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// trusted HTML only</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>What is <code>insertAdjacentHTML</code>?</li>
+<li>Does innerHTML execute script tags?</li>
+<li>What about <code>innerText</code>?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Injecting user input via innerHTML</li>
+<li>Using innerHTML for simple text labels</li>
+<li>Assuming innerHTML is faster in all cases</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Audit your project for any <code>dangerouslySetInnerHTML</code> or innerHTML with API data.</p>
+</div></details><hr>
+<h2 id="question-explain-event-bubbling-in-the-dom">Question: Explain event bubbling in the DOM.</h2>
+<h3 id="difficulty-5">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-5">Why Interviewers Ask This</h3>
+<p>Event flow questions separate juniors who only use <code>addEventListener</code> blindly.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>After the target phase, most events bubble from the target up through ancestors to <code>document</code>. Handlers on parents run after the target’s handler (unless capture). Useful for delegation.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">button</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">addEventListener</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'click'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, () </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'button'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">));</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">div</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">addEventListener</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'click'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, () </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'div'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">));</span></span>
+<span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// click button logs: button, then div</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Which events do not bubble?</li>
+<li>What is the target vs currentTarget?</li>
+<li>How does capture phase work?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Assuming all events bubble (focus/blur do not)</li>
+<li>Attaching duplicate handlers on every child</li>
+<li>Not understanding order with capture listeners</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Explain how a click on a nested icon still triggers a card handler in your UI.</p>
+</div></details><hr>
+<h2 id="question-what-is-the-event-capturing-phase">Question: What is the event capturing phase?</h2>
+<h3 id="difficulty-6">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-6">Why Interviewers Ask This</h3>
+<p>Shows deeper knowledge of the DOM event model.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Capture travels from window down to the target before bubbling. Register with <code>addEventListener(type, fn, { capture: true })</code> or third argument <code>true</code>. Rare for app logic; used for analytics, focus traps, or intercepting early.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">div</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">addEventListener</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'click'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, () </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'capture'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">), </span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">true</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">button</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">addEventListener</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'click'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, () </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'target'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">));</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Default capture value?</li>
+<li>How do stopPropagation and capture interact?</li>
+<li>Event delegation in capture phase?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Enabling capture without reason and breaking expected order</li>
+<li>Confusing capture with passive listeners</li>
+<li>Forgetting removeEventListener needs same capture flag</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Mention capture when discussing modal focus management in interviews.</p>
+</div></details><hr>
+<h2 id="question-what-is-event-delegation-and-why-use-it">Question: What is event delegation and why use it?</h2>
+<h3 id="difficulty-7">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-7">Why Interviewers Ask This</h3>
+<p>Efficiency and dynamic lists are classic frontend interview topics.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Attach one listener on a parent; use <code>event.target</code> (and <code>closest</code>) to handle child interactions. Works for elements added later without rebinding. Reduces memory and setup cost for long lists.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">list</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">addEventListener</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'click'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, (e) </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">  const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> btn </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> e</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">target</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">closest</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'button[data-id]'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  if</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> (</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">!</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">btn </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">||</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> !</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">list</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">contains</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(btn)) </span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">return</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">  deleteItem</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(btn</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">dataset</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">id);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">});</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>When is delegation a bad idea?</li>
+<li>How does <code>closest</code> help?</li>
+<li>Performance on huge tables?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Checking target without closest and mis-clicking nested spans</li>
+<li>Delegating on too high a node (document) carelessly</li>
+<li>Not filtering non-matching targets</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Your dynamic comment list or table rows should use one delegated listener.</p>
+</div></details><hr>
+<h2 id="question-what-does-eventpreventdefault-do">Question: What does <code>event.preventDefault()</code> do?</h2>
+<h3 id="difficulty-8">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-8">Why Interviewers Ask This</h3>
+<p>Forms and links are everywhere; default actions matter.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Cancels the browser’s default behavior for that event if <code>cancelable</code> is true — e.g. following a link, submitting a form, context menu. Does not stop propagation.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">form</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">addEventListener</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'submit'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, (e) </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">  e</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">preventDefault</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">();</span></span>
+<span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">  submitViaFetch</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">new</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> FormData</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(form));</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">});</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Difference from stopPropagation?</li>
+<li>Is preventDefault always allowed?</li>
+<li>passive touch listeners?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Calling preventDefault on non-cancelable events</li>
+<li>Preventing default but not handling validation UX</li>
+<li>Using return false in old inline handlers inconsistently</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>SPA login forms should preventDefault and show inline errors — demo in portfolio.</p>
+</div></details><hr>
+<h2 id="question-what-does-eventstoppropagation-do">Question: What does <code>event.stopPropagation()</code> do?</h2>
+<h3 id="difficulty-9">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-9">Why Interviewers Ask This</h3>
+<p>Nested interactive UIs need controlled event flow.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Stops the event from traveling to other elements in bubble or capture phases after the current listener runs (unless stopped earlier). Does not prevent default browser action.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">inner</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">addEventListener</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'click'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, (e) </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">  e</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">stopPropagation</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">();</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">});</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>What is stopImmediatePropagation?</li>
+<li>Modal overlay clicks?</li>
+<li>Does it affect other event types on same element?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Stopping propagation instead of fixing delegation logic</li>
+<li>Breaking document-level escape handlers unintentionally</li>
+<li>Mixing up with preventDefault</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Card with inner buttons: explain when you stop propagation so row click doesn’t fire.</p>
+</div></details><hr>
+<h2 id="question-attributes-vs-properties-on-dom-elements--whats-the-difference">Question: Attributes vs properties on DOM elements — what’s the difference?</h2>
+<h3 id="difficulty-10">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-10">Why Interviewers Ask This</h3>
+<p>React and form interviews love this distinction.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Attributes are in HTML markup (strings). Properties are JS object fields on DOM nodes; some mirror attributes, some don’t (<code>value</code>, <code>checked</code>). <code>getAttribute</code>/<code>setAttribute</code> vs <code>.value</code> / <code>.checked</code>.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">&#x3C;</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">input</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> id</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">"x"</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> value</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">"initial"</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">></span></span></code></pre>
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> i </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> document</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">getElementById</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'x'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">i</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">value </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'typed'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(i</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">getAttribute</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'value'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">)); </span><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// still 'initial'</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>How does boolean attribute reflection work?</li>
+<li>custom data attributes?</li>
+<li>Why React uses value/checked carefully?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Using setAttribute(‘value’) expecting current input text</li>
+<li>Reading href attribute vs property on anchors</li>
+<li>Confusing class attribute with className property</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Debug a form bug by comparing attribute default vs live property value.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-work-with-elementclasslist">Question: How do you work with <code>element.classList</code>?</h2>
+<h3 id="difficulty-11">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-11">Why Interviewers Ask This</h3>
+<p>Toggling UI state in vanilla JS or understanding what frameworks compile to.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p><code>classList</code> provides <code>add</code>, <code>remove</code>, <code>toggle</code>, <code>contains</code>, <code>replace</code> without manual string parsing. Respects multiple classes. For whole replacement, <code>className</code> or <code>setAttribute('class')</code> still exist.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">panel</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">classList</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">toggle</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'open'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">btn</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">classList</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">add</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'active'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>classList vs className performance?</li>
+<li>SVG classList quirks?</li>
+<li>How do frameworks batch class updates?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Splitting className strings manually</li>
+<li>Assuming toggle returns void (it returns boolean)</li>
+<li>Forgetting to remove classes on state exit</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Implement accordion open/close with classList only — simple interview exercise.</p>
+</div></details><hr>
+<h2 id="question-what-is-elementdataset-and-how-do-data--attributes-work">Question: What is <code>element.dataset</code> and how do <code>data-*</code> attributes work?</h2>
+<h3 id="difficulty-12">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-12">Why Interviewers Ask This</h3>
+<p>Clean hooks for JS behavior without extra IDs.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>HTML <code>data-*</code> attributes expose a <code>dataset</code> object with camelCase keys (<code>data-user-id</code> → <code>dataset.userId</code>). Values are strings. Useful for config, delegation targets, and testing selectors.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">&#x3C;</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">button</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> data-action</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">"delete"</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> data-id</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">=</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">"42"</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">Del</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">&#x3C;/</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">button</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">></span></span></code></pre>
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">btn</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">dataset</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">action; </span><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// 'delete'</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Are dataset names validated?</li>
+<li>Can you store JSON in data attributes?</li>
+<li>Accessibility concerns?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Storing large JSON in data attributes</li>
+<li>Wrong camelCase mapping</li>
+<li>Using dataset for visible content instead of text</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Mark interactive cards with data-id for delegation in your project.</p>
+</div></details><hr>
+<h2 id="question-how-does-localstorage-differ-from-sessionstorage">Question: How does <code>localStorage</code> differ from <code>sessionStorage</code>?</h2>
+<h3 id="difficulty-13">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-13">Why Interviewers Ask This</h3>
+<p>Client storage basics appear in fullstack student interviews.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Both are key-value Web Storage APIs (strings only). <code>localStorage</code> persists until cleared per origin. <code>sessionStorage</code> lasts for the page session (tab). Same origin policy applies; ~5MB typical limit. Not sent on HTTP requests unlike cookies.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">localStorage</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">setItem</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'theme'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, </span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'dark'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">sessionStorage</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">setItem</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'draft'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, formText);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>How do you store objects?</li>
+<li>Storage events?</li>
+<li>IndexedDB when?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Storing tokens without understanding XSS risk</li>
+<li>Not handling quota errors</li>
+<li>Using localStorage for large binary data</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Theme toggle with localStorage is an easy portfolio feature to discuss.</p>
+</div></details><hr>
+<h2 id="question-when-does-domcontentloaded-fire-vs-windowload">Question: When does <code>DOMContentLoaded</code> fire vs <code>window.load</code>?</h2>
+<h3 id="difficulty-14">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-14">Why Interviewers Ask This</h3>
+<p>Script placement and performance tuning depend on lifecycle events.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p><code>DOMContentLoaded</code> fires when HTML is parsed and deferred scripts run — DOM ready, images may still load. <code>load</code> fires when all resources (images, styles) finish. Prefer DOMContentLoaded for early DOM setup.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">document</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">addEventListener</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'DOMContentLoaded'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, initUI);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">window</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">addEventListener</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'load'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, () </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'all assets ready'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">));</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>What about <code>defer</code> and <code>async</code> scripts?</li>
+<li>Is DOMContentLoaded before body end?</li>
+<li>document.readyState values?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Waiting for window.load before harmless DOM work</li>
+<li>Attaching DOMContentLoaded after it already fired</li>
+<li>Blocking parse with sync scripts in head</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Move init code to DOMContentLoaded to improve perceived load in demos.</p>
+</div></details><hr>
+<h2 id="question-what-are-reflow-and-repaint-in-the-browser">Question: What are reflow and repaint in the browser?</h2>
+<h3 id="difficulty-15">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-15">Why Interviewers Ask This</h3>
+<p>Performance questions often start with layout thrashing vocabulary.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Reflow (layout) recalculates geometry when size/position affecting styles change. Repaint redraws pixels (e.g. color) without layout. Reading layout properties after writes forces synchronous layout (thrashing). Batch DOM reads/writes.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// bad: interleaved read/write</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">els</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">forEach</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(el </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { el</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">style</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">width </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> el</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">offsetWidth </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">+</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> 10</span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875"> +</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'px'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">; });</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>What triggers reflow?</li>
+<li>What is <code>requestAnimationFrame</code> for?</li>
+<li>CSS containment?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Measuring offsetHeight in a loop after style changes</li>
+<li>Animating top/left instead of transform</li>
+<li>Inserting many nodes one-by-one without fragment</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Optimize a list filter that felt janky by batching DOM updates.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-traverse-the-dom-parents-siblings-children">Question: How do you traverse the DOM (parents, siblings, children)?</h2>
+<h3 id="difficulty-16">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-16">Why Interviewers Ask This</h3>
+<p>Navigation APIs help in scraping-like tasks and event delegation debugging.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Use <code>parentElement</code>, <code>children</code> (elements only), <code>childNodes</code> (includes text), <code>nextElementSibling</code> / <code>previousElementSibling</code>, and <code>closest</code> for upward matching. Avoid brittle <code>parentNode</code> chains when <code>closest</code> works.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> row </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> btn</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">closest</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'tr'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> next </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> row</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">nextElementSibling;</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>childNodes vs children?</li>
+<li>What is Node.ELEMENT_NODE?</li>
+<li>TreeWalker use cases?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Using nextSibling and hitting text nodes</li>
+<li>Long parentElement loops instead of closest</li>
+<li>Assuming children includes text nodes</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Walk from a click target to table row in a CRUD app exercise.</p>
+</div></details><hr>
+<h2 id="question-what-form-related-events-should-you-know">Question: What form-related events should you know?</h2>
+<h3 id="difficulty-17">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-17">Why Interviewers Ask This</h3>
+<p>Forms bridge DOM and backend validation interviews.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Key events: <code>submit</code>, <code>input</code>, <code>change</code>, <code>focus</code>, <code>blur</code>, <code>invalid</code> (constraint validation). <code>input</code> fires on each keystroke; <code>change</code> often on commit (select, blur). Use <code>submit</code> on form, not click on button only.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">input</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">addEventListener</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'input'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, </span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">debounce</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(validate, </span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">300</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">));</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">form</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">addEventListener</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'submit'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, onSubmit);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>How does HTML5 validation work?</li>
+<li>preventDefault on invalid submit?</li>
+<li>FormData API?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Listening only to click on submit button</li>
+<li>Confusing change vs input for text fields</li>
+<li>Not resetting validation UI on resubmit</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Show client-side validation with <code>reportValidity()</code> in a portfolio form.</p>
+</div></details><hr>
+<h2 id="question-how-do-keyboard-events-work-keydown-keyup-keypress">Question: How do keyboard events work (<code>keydown</code>, <code>keyup</code>, <code>keypress</code>)?</h2>
+<h3 id="difficulty-18">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-18">Why Interviewers Ask This</h3>
+<p>Accessibility and shortcuts come up for product-minded frontend roles.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Prefer <code>keydown</code>/<code>keyup</code>; <code>keypress</code> is deprecated. Check <code>event.key</code> or <code>code</code> (physical key). Handle Enter/Space on custom controls; respect focus. Use modifiers (<code>shiftKey</code>) carefully.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">document</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">addEventListener</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'keydown'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, (e) </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#F85552;--shiki-dark:#E67E80">  if</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> (e</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">key </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">===</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'Escape'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">) </span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">closeModal</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">();</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">});</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>key vs code?</li>
+<li>How to avoid trapping keys globally?</li>
+<li>Roving tabindex?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Breaking browser shortcuts without checking</li>
+<li>Relying on keypress</li>
+<li>Forgetting keyboard support on div buttons</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Add Escape-to-close on modals and mention it in a11y interviews.</p>
+</div></details><hr>
+<h2 id="question-what-is-mutationobserver-used-for">Question: What is <code>MutationObserver</code> used for?</h2>
+<h3 id="difficulty-19">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-19">Why Interviewers Ask This</h3>
+<p>Shows awareness of modern DOM observation beyond events.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>MutationObserver asynchronously watches DOM tree changes (child list, attributes, character data). Useful for widgets, testing, or syncing third-party DOM inserts — prefer framework patterns when possible.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> obs </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#F85552;--shiki-dark:#E67E80"> new</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080"> MutationObserver</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">((mutations) </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> {</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">  console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'DOM changed'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, mutations</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">length);</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">});</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">obs</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">observe</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(container, { childList</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> true</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, subtree</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> true</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> });</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Performance cost?</li>
+<li>Difference from deprecated Mutation Events?</li>
+<li>disconnect when?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Observing entire document subtree casually</li>
+<li>Doing heavy sync work in callback</li>
+<li>Using MO when events or framework state suffice</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Mention MO when discussing embedding external scripts that mutate the DOM.</p>
+</div></details><hr>
+<h2 id="question-what-is-the-shadow-dom-at-a-high-level">Question: What is the Shadow DOM at a high level?</h2>
+<h3 id="difficulty-20">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-20">Why Interviewers Ask This</h3>
+<p>Web components and framework encapsulation questions reference shadow roots.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Shadow DOM attaches a hidden subtree to an element with scoped styles and DOM (<code>element.attachShadow({ mode: 'open' })</code>). Encapsulates internal structure from <code>document.querySelector</code>. Used in design systems and native elements.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> host </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> document</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">createElement</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'my-widget'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> shadow </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> host</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">attachShadow</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">({ mode</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'open'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> });</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">shadow</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">innerHTML </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> '&#x3C;style>p{color:red}&#x3C;/style>&#x3C;p>Hi&#x3C;/p>'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>open vs closed shadow root?</li>
+<li>How do slots work?</li>
+<li>Shadow DOM vs React shadowing?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Thinking Shadow DOM is the same as virtual DOM</li>
+<li>Piercing shadow for styling without ::part</li>
+<li>Assuming all frameworks use shadow DOM by default</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Relate Shadow DOM to browser built-ins like <code>&#x3C;video></code> internals.</p>
+</div></details><hr>
+<h2 id="question-how-does-dom-manipulation-relate-to-accessibility">Question: How does DOM manipulation relate to accessibility?</h2>
+<h3 id="difficulty-21">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-21">Why Interviewers Ask This</h3>
+<p>A11y is increasingly required even for junior frontend hires.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Use semantic elements, label controls, manage focus on dynamic updates, update ARIA live regions for async content, don’t rely on div-click alone. DOM changes should preserve logical tab order and announce important changes.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">status</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">textContent </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F"> 'Saved'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">;</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">status</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">setAttribute</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'role'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, </span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'status'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>When are ARIA roles needed?</li>
+<li>What is focus trap?</li>
+<li>aria-live polite vs assertive?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Adding buttons as divs without keyboard support</li>
+<li>Removing focus outline in CSS</li>
+<li>Updating DOM without announcing errors to screen readers</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>After adding a toast via DOM, tie it to role=“status” in your app.</p>
+</div></details><hr>
+<h2 id="question-how-do-you-efficiently-update-many-list-items-in-the-dom">Question: How do you efficiently update many list items in the DOM?</h2>
+<h3 id="difficulty-22">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-22">Why Interviewers Ask This</h3>
+<p>Practical performance question tied to reflow and patterns.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Build off-document with <code>DocumentFragment</code> or clone template, batch insert once. Or update data and re-render with a virtual DOM library. Avoid removing/re-adding entire list per keystroke.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> frag </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> document</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">createDocumentFragment</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">();</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">items</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">forEach</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(t </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=></span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> { </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> li </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> document</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">createElement</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'li'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">); li</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">textContent </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> t; frag</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">appendChild</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(li); });</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">ul</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">replaceChildren</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(frag);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>When is innerHTML batch ok?</li>
+<li>Keyed lists in React?</li>
+<li>Virtual scrolling?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>innerHTML = ” then many appendChild in loop on live parent</li>
+<li>Re-querying list each iteration</li>
+<li>Not using replaceChildren/append with fragment</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Compare naive vs fragment approach when profiling your todo app.</p>
+</div></details><hr>
+<h2 id="question-what-is-the-difference-between-node-and-element-in-the-dom">Question: What is the difference between <code>node</code> and <code>element</code> in the DOM?</h2>
+<h3 id="difficulty-23">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-23">Why Interviewers Ask This</h3>
+<p>Clarifies APIs like childNodes vs children.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Nodes include elements, text, comments, document. Elements are nodeType ELEMENT_NODE only. Many properties exist on Node; Element adds tag-specific APIs (<code>classList</code>, <code>attributes</code>).</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(div</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">childNodes); </span><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// may include text nodes</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">console</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">log</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(div</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">children);   </span><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// elements only</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>What is a Text node?</li>
+<li>Node.contains?</li>
+<li>Element.matches?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Trimming HTML but leaving whitespace text nodes</li>
+<li>Using childNodes when you meant children</li>
+<li>Ignoring comment nodes in templates</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Explain a bug where extra spacing came from text nodes between <code>&#x3C;li></code> elements.</p>
+</div></details><hr>
+<h2 id="question-how-do-remove-replacewith-and-clonenode-work">Question: How do <code>remove</code>, <code>replaceWith</code>, and <code>cloneNode</code> work?</h2>
+<h3 id="difficulty-24">Difficulty</h3>
+<p>🟢 Easy</p>
+<h3 id="why-interviewers-ask-this-24">Why Interviewers Ask This</h3>
+<p>Modern DOM APIs reduce jQuery-style patterns.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p><code>element.remove()</code> detaches from parent. <code>replaceWith(newNode)</code> swaps nodes. <code>cloneNode(deep)</code> copies; shallow omits children. Cloned nodes must be inserted to appear in document.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">oldBanner</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">replaceWith</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(newBanner);</span></span>
+<span class="line"><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">const</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> copy </span><span style="--shiki-light:#F57D26;--shiki-dark:#E69875">=</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> template</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">content</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">cloneNode</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6">true</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">);</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Does clone copy event listeners?</li>
+<li>template element?</li>
+<li>importNode?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Expecting cloneNode to copy listeners</li>
+<li>Shallow clone losing nested structure</li>
+<li>Forgetting to insert cloned template content</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Use <code>&#x3C;template></code> and cloneNode for repeatable card components in vanilla JS.</p>
+</div></details><hr>
+<h2 id="question-what-should-you-know-about-addeventlistener-options">Question: What should you know about <code>addEventListener</code> options?</h2>
+<h3 id="difficulty-25">Difficulty</h3>
+<p>🟡 Medium</p>
+<h3 id="why-interviewers-ask-this-25">Why Interviewers Ask This</h3>
+<p>Passive listeners and once/capture appear in senior-leaning junior questions.</p>
+<details class="qa-reveal"><summary>Answer</summary><div class="qa-reveal-body">
+<p>Third argument can be boolean (capture) or <code>{ capture, once, passive, signal }</code>. <code>passive: true</code> helps scroll performance; prevents preventDefault on touch/wheel. <code>once</code> auto-removes after one invoke. <code>signal</code> from AbortController removes cleanly.</p>
+</div></details><details class="qa-reveal"><summary>Example</summary><div class="qa-reveal-body">
+<pre class="astro-code astro-code-themes everforest-light everforest-dark" style="--shiki-light:#5c6a72;--shiki-dark:#d3c6aa;--shiki-light-bg:#fdf6e3;--shiki-dark-bg:#2d353b; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">el</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">addEventListener</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'click'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, handler, { once</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> true</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> });</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">ctrl</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">signal; </span><span style="--shiki-light:#939F91;--shiki-light-font-style:italic;--shiki-dark:#859289;--shiki-dark-font-style:italic">// AbortController</span></span>
+<span class="line"><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">el</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">.</span><span style="--shiki-light:#8DA101;--shiki-dark:#A7C080">addEventListener</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">(</span><span style="--shiki-light:#DFA000;--shiki-dark:#DBBC7F">'scroll'</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA">, onScroll, { passive</span><span style="--shiki-light:#939F91;--shiki-dark:#859289">:</span><span style="--shiki-light:#DF69BA;--shiki-dark:#D699B6"> true</span><span style="--shiki-light:#5C6A72;--shiki-dark:#D3C6AA"> });</span></span></code></pre>
+</div></details><details class="qa-reveal"><summary>Follow-up Questions</summary><div class="qa-reveal-body">
+<ul>
+<li>Why passive for touch?</li>
+<li>Memory leaks from anonymous listeners?</li>
+<li>Event listener on shadow root?</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Common Mistakes</summary><div class="qa-reveal-body">
+<ul>
+<li>Not matching capture flag on removeEventListener</li>
+<li>preventDefault on passive listener (ignored)</li>
+<li>Duplicating listeners on every render in SPAs</li>
+</ul>
+</div></details><details class="qa-reveal"><summary>Project Connection</summary><div class="qa-reveal-body">
+<p>Use AbortController to tear down listeners when unmounting vanilla widgets.</p>
+</div></details><hr><nav class="pager" data-astro-cid-n67f4zmd><a class="pager-link" href="/The-Web-Interview-Playbook/03-javascript-dom/topics-not-to-miss/" data-astro-cid-n67f4zmd>← JavaScript DOM: Topics Not to Miss</a><a class="pager-link next" href="/The-Web-Interview-Playbook/03-javascript-dom/mini-dom-challenges/" data-astro-cid-n67f4zmd>JavaScript DOM: Mini Challenges →</a></nav></article><nav class="toc" aria-label="Table of contents" data-astro-cid-td5y3ttw><p class="toc-title" data-astro-cid-td5y3ttw>On this page</p><ul data-astro-cid-td5y3ttw><li data-astro-cid-td5y3ttw><a href="#question-what-is-the-dom-and-how-does-the-browser-build-the-dom-tree" data-astro-cid-td5y3ttw>Question: What is the DOM and how does the browser build the DOM tree?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-common-ways-to-select-elements-in-the-dom" data-astro-cid-td5y3ttw>Question: What are common ways to select elements in the DOM?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-does-documentqueryselector-differ-from-getelementbyid" data-astro-cid-td5y3ttw>Question: How does document.querySelector differ from getElementById?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-create-and-insert-new-elements-with-createelement-and-appendchild" data-astro-cid-td5y3ttw>Question: How do you create and insert new elements with createElement and appendChild?</a></li><li data-astro-cid-td5y3ttw><a href="#question-when-should-you-use-innerhtml-vs-textcontent" data-astro-cid-td5y3ttw>Question: When should you use innerHTML vs textContent?</a></li><li data-astro-cid-td5y3ttw><a href="#question-explain-event-bubbling-in-the-dom" data-astro-cid-td5y3ttw>Question: Explain event bubbling in the DOM.</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-the-event-capturing-phase" data-astro-cid-td5y3ttw>Question: What is the event capturing phase?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-event-delegation-and-why-use-it" data-astro-cid-td5y3ttw>Question: What is event delegation and why use it?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-does-eventpreventdefault-do" data-astro-cid-td5y3ttw>Question: What does event.preventDefault() do?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-does-eventstoppropagation-do" data-astro-cid-td5y3ttw>Question: What does event.stopPropagation() do?</a></li><li data-astro-cid-td5y3ttw><a href="#question-attributes-vs-properties-on-dom-elements--whats-the-difference" data-astro-cid-td5y3ttw>Question: Attributes vs properties on DOM elements — what’s the difference?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-work-with-elementclasslist" data-astro-cid-td5y3ttw>Question: How do you work with element.classList?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-elementdataset-and-how-do-data--attributes-work" data-astro-cid-td5y3ttw>Question: What is element.dataset and how do data-* attributes work?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-does-localstorage-differ-from-sessionstorage" data-astro-cid-td5y3ttw>Question: How does localStorage differ from sessionStorage?</a></li><li data-astro-cid-td5y3ttw><a href="#question-when-does-domcontentloaded-fire-vs-windowload" data-astro-cid-td5y3ttw>Question: When does DOMContentLoaded fire vs window.load?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-are-reflow-and-repaint-in-the-browser" data-astro-cid-td5y3ttw>Question: What are reflow and repaint in the browser?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-traverse-the-dom-parents-siblings-children" data-astro-cid-td5y3ttw>Question: How do you traverse the DOM (parents, siblings, children)?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-form-related-events-should-you-know" data-astro-cid-td5y3ttw>Question: What form-related events should you know?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-keyboard-events-work-keydown-keyup-keypress" data-astro-cid-td5y3ttw>Question: How do keyboard events work (keydown, keyup, keypress)?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-mutationobserver-used-for" data-astro-cid-td5y3ttw>Question: What is MutationObserver used for?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-the-shadow-dom-at-a-high-level" data-astro-cid-td5y3ttw>Question: What is the Shadow DOM at a high level?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-does-dom-manipulation-relate-to-accessibility" data-astro-cid-td5y3ttw>Question: How does DOM manipulation relate to accessibility?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-you-efficiently-update-many-list-items-in-the-dom" data-astro-cid-td5y3ttw>Question: How do you efficiently update many list items in the DOM?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-is-the-difference-between-node-and-element-in-the-dom" data-astro-cid-td5y3ttw>Question: What is the difference between node and element in the DOM?</a></li><li data-astro-cid-td5y3ttw><a href="#question-how-do-remove-replacewith-and-clonenode-work" data-astro-cid-td5y3ttw>Question: How do remove, replaceWith, and cloneNode work?</a></li><li data-astro-cid-td5y3ttw><a href="#question-what-should-you-know-about-addeventlistener-options" data-astro-cid-td5y3ttw>Question: What should you know about addEventListener options?</a></li></ul></nav></div></main></div><script type="module">var e=document.getElementById(`nav-toggle`),t=document.getElementById(`nav-backdrop`),n=document.documentElement;function r(){n.dataset.navOpen=`true`,e.setAttribute(`aria-expanded`,`true`),document.body.style.overflow=`hidden`}function i(){delete n.dataset.navOpen,e.setAttribute(`aria-expanded`,`false`),document.body.style.overflow=``}e?.addEventListener(`click`,()=>{n.dataset.navOpen===`true`?i():r()}),t?.addEventListener(`click`,i),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&n.dataset.navOpen===`true`&&i()}),document.querySelector(`.shell`)?.addEventListener(`click`,e=>{e.target.closest(`aside.sidebar a`)&&n.dataset.navOpen===`true`&&i()});</script><script type="module" src="/The-Web-Interview-Playbook/_astro/BaseLayout.astro_astro_type_script_index_1_lang.Cw7dNugz.js"></script></body></html>

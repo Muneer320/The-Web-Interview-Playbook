@@ -1,0 +1,1 @@
+function e(e){let t=`/The-Web-Interview-Playbook`;return`${t.endsWith(`/`)?t.slice(0,-1):t}${e.startsWith(`/`)?e:`/${e}`}`}export{e as t};
